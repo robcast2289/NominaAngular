@@ -21,7 +21,7 @@ export class SidebarComponent implements OnInit {
               private router: Router,
               private spinner: NgxSpinnerService) {
     this.spinner.show();
-    this.menuService.titleActive = 'Control Clientes';
+    this.menuService.titleActive = 'Sistema Nomina';
     this.menuService.menu_get(this.authService.credenciales.userId, this.authService.credenciales.accessToken)
     .pipe(catchError(data => {
       return of(data).pipe(
