@@ -159,11 +159,11 @@ ul ul a {
 
 ul ul ul a {
     font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #af9393;
+    padding-left: 50px !important;
+    background: #1b1b1b;
     background: -moz-linear-gradient(left, #000000 0%, #333333 51%, #505050 100%);
     background: -webkit-linear-gradient(left, #000000 0%, #333333 51%, #505050 100%);
-    background: linear-gradient(to right, #000000 0%, #333333 51%, #505050 100%);
+    background: linear-gradient(to right, #391105 0%, #4e3629 51%, #505050 100%);
 }
 
 ul.CTAs {

@@ -23,6 +23,7 @@ import { CuProyModalComponent } from './components/catalogos/proyectos/cu-proy-m
 import { AccesosComponent } from './components/administracion/accesos/accesos.component';
 import { CuAccesModalComponent } from './components/administracion/accesos/cu-acces-modal/cu-acces-modal.component';
 import { RolesComponent } from './components/administracion/roles/roles.component';
+import { ModuloComponent } from './components/modulo/modulo.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RolesComponent } from './components/administracion/roles/roles.componen
     CuProyModalComponent,
     AccesosComponent,
     CuAccesModalComponent,
-    RolesComponent
+    RolesComponent,
+    ModuloComponent
   ],
   imports: [
     BrowserModule,

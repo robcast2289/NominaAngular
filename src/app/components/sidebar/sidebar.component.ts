@@ -46,6 +46,15 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
+    let filtro = this.menuService.menu_all.filter(
+      modulo => {
+        for(const modul in modulo){
+          console.log(modul)
+        }
+        return true;
+      }
+    )
+    console.log(this.router.url);
   }
 
   sidebarCollapse() {

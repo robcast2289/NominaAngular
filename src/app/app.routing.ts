@@ -8,6 +8,7 @@ import { ProyectosComponent } from './components/catalogos/proyectos/proyectos.c
 import { Error404notFoundComponent } from './components/error404not-found/error404not-found.component';
 import { AccesosComponent } from './components/administracion/accesos/accesos.component';
 import { RolesComponent } from './components/administracion/roles/roles.component';
+import { ModuloComponent } from './components/modulo/modulo.component'
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
       {
         path: 'roles',
         component: RolesComponent
+      },
+      {
+        path: 'modulos',
+        component: ModuloComponent,
       }
     ]
   },
