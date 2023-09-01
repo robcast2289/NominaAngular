@@ -1,0 +1,57 @@
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>{{ this.authService.credenciales.nombre }}</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <!-- <p></p> -->
+            <li>
+                <a routerLink="/home" routerLinkActive="active-link" (click)="changeOpt('Control Clientes')">Inicio</a>
+            </li>
+            <li *ngFor="let module of this.menuService.menu_all">
+                <a *ngIf="module.submenu.length > 0" href="#{{ module.nombre }}Submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{ module.nombre }}</a>
+                <ul class="collapse list-unstyled" id="{{ module.nombre }}Submenu">
+                    <li *ngFor="let menu of module.submenu">
+                        <!-- <a routerLink="/{{menu.ruta}}" routerLinkActive="active-link" (click)="changeOpt(menu.nombre)">{{ menu.nombre }}</a> -->
+                        <a *ngIf="menu.submenu.length > 0" href="#{{ menu.nombre }}Subsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{ menu.nombre }}</a>
+                        <ul class="collapse list-unstyled" id="{{ menu.nombre }}Subsubmenu">
+                            <li *ngFor="let opt of menu.submenu">
+                                <a routerLink="/{{opt.Ruta}}" routerLinkActive="active-link" (click)="changeOpt(opt.Opcion)">{{ opt.Opcion }}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a (click)="logOut()">Salir</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <button type="button" id="sidebarCollapse" class="navbar-btn" (click)="sidebarCollapse()">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+                <div class="col text-center">
+                    <h3>{{ this.menuService.titleActive }}</h3>
+                </div>
+            </div>
+        </nav>
+
+        <router-outlet></router-outlet>
+
+        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light footer">
+            <div class="container-fluid">
+                <p>
+                    <strong>Todos los derechos reservados</strong>
+                </p>
+            </div>
+        </nav> -->
+    </div>
+</div>

@@ -1,0 +1,41 @@
+body {
+    padding-top: 120px;
+    padding-bottom: 40px;
+    background-color: #eee;
+}
+
+.fullscreen_bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* background-image: url('../../../assets/img/color-splash.jpg'); */
+}
+
+.notfound {
+    max-width: 100%;
+    padding: 15px;
+    margin: 0 auto;
+    margin-top: 120px;
+    text-align: center;
+}
+
+.notfound .form-control {
+    width: 20%;
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.notfound div {
+    display: block;
+}
+
+.img {
+    width: 100%;
+}
