@@ -26,10 +26,10 @@
                       <!-- <td *ngIf="proyecto.idproyecto == mirow"><input type="text" class="form-control" value="{{ proyecto.idproyecto }}"></td> -->
                       <td>{{ entidad.Nombre }}</td>
                       <td>{{ entidad.OrdenMenu }}</td>
-                      <td data-toggle="modal" data-target="#entidadModal" (click)="preActualizarProyecto(proyecto)">
+                      <td data-toggle="modal" data-target="#entidadModal" (click)="preActualizarProyecto(entidad)">
                           <i class="fa fa-edit text-primary"></i>
                       </td>
-                      <td data-toggle="modal" data-target="#alertModal" (click)="setProyectoDel(proyecto)">
+                      <td data-toggle="modal" data-target="#alertModal" (click)="setEtnidadDel(entidad)">
                           <i class="fa fa-trash text-danger"></i>
                       </td>
                   </tr>
@@ -46,13 +46,15 @@
   <div class="modal-dialog  modal-md" role="document">
       <div class="modal-content modal-alert">
           <div class="modal-body">
-              Confirma que desea eliminar el proyecto {{ this.proyectoDelete.nombre }}?
+              Confirma que desea eliminar el modulo {{ this.entidadDelete.Nombre }}?
               <hr>
               <div class="row text-center">
                   <button type="button" class="btn btn-secondary btn-sm col-4 offset-1" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button>
-                  <button type="button" class="btn btn-danger btn-sm col-4 offset-2" data-dismiss="modal" (click)="eliminarProyecto(this.proyectoDelete.idproyecto)">Eliminar <i class="fa fa-trash"></i></button>
+                  <button type="button" class="btn btn-danger btn-sm col-4 offset-2" data-dismiss="modal" (click)="eliminarEntidad(this.entidadDelete.IdModulo)">Eliminar <i class="fa fa-trash"></i></button>
               </div>
           </div>
       </div>
   </div>
 </div>
+
+<!-- <app-cu-modulo></app-cu-modulo> -->

@@ -13,6 +13,11 @@ import { ModuloService } from '../../../services/seguridad/modulo.service';
 export class ModuloComponent implements OnInit {
   entidad = [];
   entidadTable = [];
+  buscar: string;
+  page = 1;
+  fieldSort: string;
+  fieldSortDirection: string;
+  entidadDelete = [];
 
   constructor(private spinner: NgxSpinnerService,
               private moduloService: ModuloService,
@@ -32,6 +37,20 @@ export class ModuloComponent implements OnInit {
       this.spinner.hide();
       this.entidad = data;
       this.entidadTable = this.entidad;
+    });
+  }
+
+  setEtnidadDel(entidad: any) {
+    this.entidadDelete = entidad;
+  }
+
+  eliminarEntidad(id: string) {
+    this.entidadDelete = [];
+    this.spinner.show();
+    this.moduloService.eliminar_modulo(id)
+    .subscribe(data => {
+      this.spinner.hide();
+      this.obtenerModulos();
     });
   }
 

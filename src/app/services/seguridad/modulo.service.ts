@@ -24,4 +24,15 @@ export class ModuloService {
       );
     }));
   }
+
+  eliminar_modulo(id){
+    const url = `${this.basepath}seguridad/generales/modulos/${id}`;
+
+    return this.http.delete(url)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
 }
