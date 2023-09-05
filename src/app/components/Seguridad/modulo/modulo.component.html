@@ -3,7 +3,7 @@
       <div class="col-sx-12 col-sm-6 col-md-4"></div>
       <div class="row" style="margin-top: 20px">
           <div class="col-3 col-sm-3 col-md-3 col-lg-2">
-              <button class="btn btn-raised btn-secondary form-control" data-toggle="modal" data-target="#proyectoModal" (click)="limpiarForm()">Nuevo <i class="fa fa-plus"></i></button>
+              <button class="btn btn-raised btn-secondary form-control" data-toggle="modal" data-target="#moduloModal" (click)="limpiarForm()">Nuevo <i class="fa fa-plus"></i></button>
           </div>
           <div class="col-9 col-sm-9 col-md-9 col-lg-10">
               <input type="search" class="form-control" placeholder="Buscar" (ngModelChange)="funcSearch($event)" [(ngModel)]="buscar">
@@ -26,7 +26,7 @@
                       <!-- <td *ngIf="proyecto.idproyecto == mirow"><input type="text" class="form-control" value="{{ proyecto.idproyecto }}"></td> -->
                       <td>{{ entidad.Nombre }}</td>
                       <td>{{ entidad.OrdenMenu }}</td>
-                      <td data-toggle="modal" data-target="#entidadModal" (click)="preActualizarProyecto(entidad)">
+                      <td data-toggle="modal" data-target="#moduloModal" (click)="preActualizarEntidad(entidad)">
                           <i class="fa fa-edit text-primary"></i>
                       </td>
                       <td data-toggle="modal" data-target="#alertModal" (click)="setEtnidadDel(entidad)">
@@ -57,4 +57,4 @@
   </div>
 </div>
 
-<!-- <app-cu-modulo></app-cu-modulo> -->
+<app-cu-modulo></app-cu-modulo>

@@ -54,4 +54,22 @@ export class ModuloComponent implements OnInit {
     });
   }
 
+  preActualizarEntidad(entidad) {
+    //this.proyService.selectProyecto = Object.assign(proyecto);
+    console.log(entidad);
+    this.moduloService.selectEntidad = {
+      IdModulo: entidad.IdModulo,
+      Nombre: entidad.Nombre,
+      OrdenMenu: entidad.OrdenMenu
+    };
+  }
+
+  limpiarForm() {
+    this.moduloService.selectEntidad = {
+      IdModulo: null,
+      Nombre: '',
+      OrdenMenu: ''
+    };
+  }
+
 }
