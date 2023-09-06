@@ -24,7 +24,7 @@
               </thead>
               <tbody>
                   <tr *ngFor="let entidad of entidadTable | paginate: { itemsPerPage: 10, currentPage: page }">
-                      <td>{{ entidad.IdMenu }}</td>
+                      <td>{{ entidad.IdOpcion }}</td>
                       <!-- <td *ngIf="proyecto.idproyecto == mirow"><input type="text" class="form-control" value="{{ proyecto.idproyecto }}"></td> -->
                       <td>{{ entidad.Menu }}</td>
                       <td>{{ entidad.Nombre }}</td>
