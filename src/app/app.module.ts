@@ -25,6 +25,11 @@ import { CuAccesModalComponent } from './components/administracion/accesos/cu-ac
 import { RolesComponent } from './components/administracion/roles/roles.component';
 import { ModuloComponent } from './components/Seguridad/modulo/modulo.component';
 import { CuModuloComponent } from './components/Seguridad/modulo/cu-modulo/cu-modulo.component';
+import { MenusComponent } from './components/Seguridad/menus/menus.component';
+import { CuMenuComponent } from './components/Seguridad/menus/cu-menu/cu-menu.component';
+import { OpcionComponent } from './components/Seguridad/opcion/opcion.component';
+import { CuOpcionComponent } from './components/Seguridad/opcion/cu-opcion/cu-opcion.component';
+import { CuRolesComponent } from './components/Seguridad/roles/cu-roles/cu-roles.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +44,12 @@ import { CuModuloComponent } from './components/Seguridad/modulo/cu-modulo/cu-mo
     CuAccesModalComponent,
     RolesComponent,
     ModuloComponent,
-    CuModuloComponent
+    CuModuloComponent,
+    MenusComponent,
+    CuMenuComponent,
+    OpcionComponent,
+    CuOpcionComponent,
+    CuRolesComponent
   ],
   imports: [
     BrowserModule,

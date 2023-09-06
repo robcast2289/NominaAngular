@@ -1,0 +1,47 @@
+<div class="modal fade" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog  modal-xl" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel" class="text-success">{{ this.menuTableService.selectEntidad.IdMenu ? 'Editar Modulo '+this.menuTableService.selectEntidad.IdMenu : 'Nuevo Menu' }}</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form action="" #moduloForm="ngForm" (ngSubmit)="guardarEntidad(moduloForm)">
+                  <input type="hidden" id="IdMenu" name="IdMenu" class="form-control" [(ngModel)]="this.menuTableService.selectEntidad.IdMenu">
+                  <strong><label for="" class="form-control text-primary subtitle">Información General</label></strong>
+                  <div class="form-row">
+                    <div class="form-group col-12">
+                        <label class="bmd-label-static">Modulo</label>
+                        <select name="IdModulo" id="IdModulo" class="form-control" [(ngModel)]="this.menuTableService.selectEntidad.IdModulo">
+                          <option value="{{modulo.IdModulo}}" *ngFor="let modulo of this.menuTableService.modulos">{{ modulo.Nombre }}</option>
+                      </select>
+                    </div>
+                </div>
+                  <div class="form-row">
+                      <div class="form-group col-6">
+                          <label for="nombre" class="bmd-label-floating">Nombre Modulo</label>
+                          <input type="text" id="Nombre" name="Nombre" #nombre="ngModel" class="form-control" required="" [(ngModel)]="this.menuTableService.selectEntidad.Nombre">
+                          <small class="text-warning" *ngIf="moduloForm.submitted && Nombre.invalid">Campo requerido</small>
+                      </div>
+                      <div class="form-group col-6">
+                          <label for="entidadvendedora" class="bmd-label-floating">Orden en Menu</label>
+                          <input type="text" id="OrdenMenu" name="OrdenMenu" #oden="ngModel" class="form-control" required [(ngModel)]="this.menuTableService.selectEntidad.OrdenMenu">
+                          <small class="text-warning" *ngIf="moduloForm.submitted && OrdenMenu.invalid">Campo requerido</small>
+                      </div>                      
+                  </div>
+                  
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button> &nbsp;
+                      <button type="submit" class="btn btn-raised btn-success">Guardar <i class="fa fa-save"></i></button>
+                  </div>
+              </form>
+          </div>
+          <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button> &nbsp;
+              <button type="button" class="btn btn-raised btn-success">Save changes <i class="fa fa-save"></i></button>
+          </div> -->
+      </div>
+  </div>
+</div>

@@ -40,7 +40,7 @@ export class ModuloComponent implements OnInit {
     });
   }
 
-  setEtnidadDel(entidad: any) {
+  setEntidadDel(entidad: any) {
     this.entidadDelete = entidad;
   }
 

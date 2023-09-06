@@ -8,7 +8,10 @@ import { ProyectosComponent } from './components/catalogos/proyectos/proyectos.c
 import { Error404notFoundComponent } from './components/error404not-found/error404not-found.component';
 import { AccesosComponent } from './components/administracion/accesos/accesos.component';
 import { RolesComponent } from './components/administracion/roles/roles.component';
+
 import { ModuloComponent } from './components/Seguridad/modulo/modulo.component'
+import { MenusComponent } from './components/Seguridad/menus/menus.component'
+import { OpcionComponent } from './components/Seguridad/opcion/opcion.component'
 
 const routes: Routes = [
   {
@@ -46,8 +49,16 @@ const routes: Routes = [
         component: RolesComponent
       },
       {
-        path: 'modulos',
+        path: 'seguridad/generales/modulos',
         component: ModuloComponent,
+      },
+      {
+        path: 'seguridad/generales/menus',
+        component: MenusComponent,
+      },
+      {
+        path: 'seguridad/generales/opciones',
+        component: OpcionComponent,
       }
     ]
   },
