@@ -66,6 +66,10 @@ const routes: Routes = [
       {
         path: 'seguridad/generales/roles',
         component: RolesComponent,
+      },
+      {
+        path: 'seguridad/generales/roles/:IdRole',
+        component: RolesComponent,
       }
     ]
   },

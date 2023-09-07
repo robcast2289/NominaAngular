@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-roles',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./roles.component.css']
 })
 export class RolesComponent implements OnInit {
-
-  constructor() { }
+  id:number;
+  constructor(private _Activatedroute:ActivatedRoute) { }
 
   ngOnInit() {
+    this._Activatedroute.params.subscribe(params => { 
+      this.id = params['IdRole']; 
+  });
   }
 
 }
