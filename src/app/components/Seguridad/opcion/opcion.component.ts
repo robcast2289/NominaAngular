@@ -66,7 +66,7 @@ export class OpcionComponent implements OnInit {
   }
 
   limpiarForm() {
-    this.obtenerModulos();
+    this.obtenerMenus();
     this.opcionService.selectEntidad = {
       IdOpcion: null,
       IdMenu: null,
@@ -76,7 +76,7 @@ export class OpcionComponent implements OnInit {
     };
   }
 
-  obtenerModulos(){
+  obtenerMenus(){
     this.opcionService.cargar_menus()
     .subscribe(data => {
       this.opcionService.menus = data;

@@ -15,6 +15,7 @@ import { ModuloComponent } from './components/Seguridad/modulo/modulo.component'
 import { MenusComponent } from './components/Seguridad/menus/menus.component'
 import { OpcionComponent } from './components/Seguridad/opcion/opcion.component'
 import { RolesComponent } from './components/Seguridad/roles/roles.component'
+import { RolesOpcionComponent } from './components/Seguridad/roles-opcion/roles-opcion.component'
 
 const routes: Routes = [
   {
@@ -69,7 +70,7 @@ const routes: Routes = [
       },
       {
         path: 'seguridad/generales/roles/:IdRole',
-        component: RolesComponent,
+        component: RolesOpcionComponent,
       }
     ]
   },

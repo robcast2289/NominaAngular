@@ -1,3 +1,31 @@
-<p>
-  cu-roles works!
-</p>
+<div class="modal fade" id="roleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog  modal-xl" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel" class="text-success">{{ this.rolesService.selectEntidad.IdRole ? 'Editar Role '+this.rolesService.selectEntidad.IdRole : 'Nuevo Role' }}</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form action="" #entidadForm="ngForm" (ngSubmit)="guardarEntidad(entidadForm)">
+                  <input type="hidden" id="IdRole" name="IdRole" class="form-control" [(ngModel)]="this.rolesService.selectEntidad.IdRole">
+                  <!-- <strong><label for="" class="form-control text-primary subtitle">Información General</label></strong> -->
+
+                  <div class="form-row">
+                      <div class="form-group col-12">
+                          <label for="nombre" class="bmd-label-floating">Nombre Role</label>
+                          <input type="text" id="Nombre" name="Nombre" #nombre="ngModel" class="form-control" required="" [(ngModel)]="this.rolesService.selectEntidad.Nombre">
+                          <small class="text-warning" *ngIf="entidadForm.submitted && Nombre.invalid">Campo requerido</small>
+                      </div>                   
+                  </div>
+                  
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button> &nbsp;
+                      <button type="submit" class="btn btn-raised btn-success">Guardar <i class="fa fa-save"></i></button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

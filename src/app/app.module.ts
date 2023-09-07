@@ -31,6 +31,8 @@ import { OpcionComponent } from './components/Seguridad/opcion/opcion.component'
 import { CuOpcionComponent } from './components/Seguridad/opcion/cu-opcion/cu-opcion.component';
 import { RolesComponent } from './components/Seguridad/roles/roles.component';
 import { CuRolesComponent } from './components/Seguridad/roles/cu-roles/cu-roles.component';
+import { RolesOpcionComponent } from './components/Seguridad/roles-opcion/roles-opcion.component';
+import { CuRolesOpcionComponent } from './components/Seguridad/roles-opcion/cu-roles-opcion/cu-roles-opcion.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { CuRolesComponent } from './components/Seguridad/roles/cu-roles/cu-roles
     CuMenuComponent,
     OpcionComponent,
     CuOpcionComponent,
-    CuRolesComponent
+    CuRolesComponent,
+    RolesOpcionComponent,
+    CuRolesOpcionComponent
   ],
   imports: [
     BrowserModule,
