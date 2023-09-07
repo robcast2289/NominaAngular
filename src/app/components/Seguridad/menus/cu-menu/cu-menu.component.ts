@@ -20,7 +20,7 @@ export class CuMenuComponent implements OnInit {
 
   guardarEntidad(entidadForm: NgForm) {
     if (entidadForm.valid) {
-      if (entidadForm.value.IdModulo == null) {
+      if (entidadForm.value.IdMenu == null) {
         // Nuevo
         this.menuTableService.insertar_menus(entidadForm.value)        
         .subscribe(data => {

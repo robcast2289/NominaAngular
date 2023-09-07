@@ -1,3 +1,54 @@
-<p>
-  cu-opcion works!
-</p>
+<div class="modal fade" id="opcionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog  modal-xl" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel" class="text-success">{{ this.opcionService.selectEntidad.IdOpcion ? 'Editar Opcion '+this.opcionService.selectEntidad.IdOpcion : 'Nuevo Opcion' }}</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form action="" #entidadForm="ngForm" (ngSubmit)="guardarEntidad(entidadForm)">
+                  <input type="hidden" id="IdOpcion" name="IdOpcion" class="form-control" [(ngModel)]="this.opcionService.selectEntidad.IdOpcion">
+                  <strong><label for="" class="form-control text-primary subtitle">Información General</label></strong>
+                  <div class="form-row">
+                    <div class="form-group col-12">
+                        <label class="bmd-label-static">Menu</label>
+                        <select name="IdMenu" id="IdMenu" class="form-control" [(ngModel)]="this.opcionService.selectEntidad.IdMenu">
+                          <option value="{{modulo.IdMenu}}" *ngFor="let modulo of this.opcionService.menus">{{ modulo.Nombre }}</option>
+                      </select>
+                    </div>
+                </div>
+                  <div class="form-row">
+                      <div class="form-group col-6">
+                          <label for="nombre" class="bmd-label-floating">Nombre Opcion</label>
+                          <input type="text" id="Nombre" name="Nombre" #nombre="ngModel" class="form-control" required="" [(ngModel)]="this.opcionService.selectEntidad.Nombre">
+                          <small class="text-warning" *ngIf="entidadForm.submitted && Nombre.invalid">Campo requerido</small>
+                      </div>
+                      <div class="form-group col-6">
+                          <label for="entidadvendedora" class="bmd-label-floating">Orden en Menu</label>
+                          <input type="text" id="OrdenMenu" name="OrdenMenu" #oden="ngModel" class="form-control" required [(ngModel)]="this.opcionService.selectEntidad.OrdenMenu">
+                          <small class="text-warning" *ngIf="entidadForm.submitted && OrdenMenu.invalid">Campo requerido</small>
+                      </div>                      
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-12">
+                        <label for="nombre" class="bmd-label-floating">Pagina</label>
+                        <input type="text" id="Pagina" name="Pagina" #nombre="ngModel" class="form-control" required="" [(ngModel)]="this.opcionService.selectEntidad.Pagina">
+                        <small class="text-warning" *ngIf="entidadForm.submitted && Pagina.invalid">Campo requerido</small>
+                    </div>                     
+                </div>
+                  
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button> &nbsp;
+                      <button type="submit" class="btn btn-raised btn-success">Guardar <i class="fa fa-save"></i></button>
+                  </div>
+              </form>
+          </div>
+          <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button> &nbsp;
+              <button type="button" class="btn btn-raised btn-success">Save changes <i class="fa fa-save"></i></button>
+          </div> -->
+      </div>
+  </div>
+</div>

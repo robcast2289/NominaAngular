@@ -33,7 +33,6 @@ export class OpcionComponent implements OnInit {
     this.spinner.show();
     this.opcionService.cargar_opciones()
     .subscribe(data => {
-      console.log(data);
       this.spinner.hide();
       this.entidad = data;
       this.entidadTable = this.entidad;

@@ -4,14 +4,17 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AuthGuard } from './components/login/auth.guard';
-import { ProyectosComponent } from './components/catalogos/proyectos/proyectos.component';
 import { Error404notFoundComponent } from './components/error404not-found/error404not-found.component';
+
+/* import { ProyectosComponent } from './components/catalogos/proyectos/proyectos.component';
 import { AccesosComponent } from './components/administracion/accesos/accesos.component';
 import { RolesComponent } from './components/administracion/roles/roles.component';
+ */
 
 import { ModuloComponent } from './components/Seguridad/modulo/modulo.component'
 import { MenusComponent } from './components/Seguridad/menus/menus.component'
 import { OpcionComponent } from './components/Seguridad/opcion/opcion.component'
+import { RolesComponent } from './components/Seguridad/roles/roles.component'
 
 const routes: Routes = [
   {
@@ -36,7 +39,7 @@ const routes: Routes = [
         path: 'home',
         component: HomeComponent
       },
-      {
+      /* {
         path: 'proyectos',
         component: ProyectosComponent
       },
@@ -47,7 +50,7 @@ const routes: Routes = [
       {
         path: 'roles',
         component: RolesComponent
-      },
+      }, */
       {
         path: 'seguridad/generales/modulos',
         component: ModuloComponent,
@@ -59,6 +62,10 @@ const routes: Routes = [
       {
         path: 'seguridad/generales/opciones',
         component: OpcionComponent,
+      },
+      {
+        path: 'seguridad/generales/roles',
+        component: RolesComponent,
       }
     ]
   },

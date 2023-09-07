@@ -22,13 +22,14 @@ import { Error404notFoundComponent } from './components/error404not-found/error4
 import { CuProyModalComponent } from './components/catalogos/proyectos/cu-proy-modal/cu-proy-modal.component';
 import { AccesosComponent } from './components/administracion/accesos/accesos.component';
 import { CuAccesModalComponent } from './components/administracion/accesos/cu-acces-modal/cu-acces-modal.component';
-import { RolesComponent } from './components/administracion/roles/roles.component';
+//import { RolesComponent } from './components/administracion/roles/roles.component';
 import { ModuloComponent } from './components/Seguridad/modulo/modulo.component';
 import { CuModuloComponent } from './components/Seguridad/modulo/cu-modulo/cu-modulo.component';
 import { MenusComponent } from './components/Seguridad/menus/menus.component';
 import { CuMenuComponent } from './components/Seguridad/menus/cu-menu/cu-menu.component';
 import { OpcionComponent } from './components/Seguridad/opcion/opcion.component';
 import { CuOpcionComponent } from './components/Seguridad/opcion/cu-opcion/cu-opcion.component';
+import { RolesComponent } from './components/Seguridad/roles/roles.component';
 import { CuRolesComponent } from './components/Seguridad/roles/cu-roles/cu-roles.component';
 
 @NgModule({
