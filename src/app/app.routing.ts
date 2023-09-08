@@ -17,6 +17,7 @@ import { MenusComponent } from './components/Seguridad/menus/menus.component'
 import { OpcionComponent } from './components/Seguridad/opcion/opcion.component'
 import { RolesComponent } from './components/Seguridad/roles/roles.component'
 import { RolesOpcionComponent } from './components/Seguridad/roles-opcion/roles-opcion.component'
+import { UsuarioTableComponent } from './components/Seguridad/usuario-table/usuario-table.component'
 
 const routes: Routes = [
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
       {
         path: 'seguridad/generales/roles/:IdRole',
         component: RolesOpcionComponent,
+      },
+      {
+        path: 'seguridad/generales/usuarios',
+        component: UsuarioTableComponent,
       }
     ]
   },  

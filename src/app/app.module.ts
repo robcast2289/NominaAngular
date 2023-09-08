@@ -36,6 +36,12 @@ import { RolesComponent } from './components/Seguridad/roles/roles.component';
 import { CuRolesComponent } from './components/Seguridad/roles/cu-roles/cu-roles.component';
 import { RolesOpcionComponent } from './components/Seguridad/roles-opcion/roles-opcion.component';
 import { CuRolesOpcionComponent } from './components/Seguridad/roles-opcion/cu-roles-opcion/cu-roles-opcion.component';
+import { UsuarioTableComponent } from './components/Seguridad/usuario-table/usuario-table.component';
+import { UsuarioRoleComponent } from './components/Seguridad/usuario-role/usuario-role.component';
+import { EmpresaComponent } from './components/Seguridad/empresa/empresa.component';
+import { SucursalComponent } from './components/Seguridad/sucursal/sucursal.component';
+import { GeneroComponent } from './components/Seguridad/genero/genero.component';
+import { StatusUsuarioComponent } from './components/Seguridad/status-usuario/status-usuario.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +65,12 @@ import { CuRolesOpcionComponent } from './components/Seguridad/roles-opcion/cu-r
     CuRolesComponent,
     RolesOpcionComponent,
     CuRolesOpcionComponent,
+    UsuarioTableComponent,
+    UsuarioRoleComponent,
+    EmpresaComponent,
+    SucursalComponent,
+    GeneroComponent,
+    StatusUsuarioComponent,
   ],
   imports: [
     BrowserModule,
