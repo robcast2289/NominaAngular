@@ -47,6 +47,14 @@ export class AuthService {
     return this.http.post(url, params,{headers} );
   }
 
+
+  tieneAccesoOpcion(buscarUrl){
+    buscarUrl = buscarUrl.substring(1);
+    buscarUrl = buscarUrl.replaceAll("/","-");
+    const url = `${this.basepath}seguridad/generales/opciones/buscaruta/${this.credenciales.userId}/${buscarUrl}`;
+    return this.http.get(url);
+  }
+
   logout() {
     this.isLoggedIn = false;
     this.guardar_storage();

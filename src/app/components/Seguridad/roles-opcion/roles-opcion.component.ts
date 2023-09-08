@@ -44,7 +44,6 @@ export class RolesOpcionComponent implements OnInit {
     .subscribe(data => {
       this.spinner.hide();
       this.role = data;
-      console.log(this.role)
     });
   }
 
@@ -55,6 +54,54 @@ export class RolesOpcionComponent implements OnInit {
       this.spinner.hide();
       this.entidad = data;
       this.entidadTable = this.entidad;
+    });
+  }
+
+  setEntidadDel(entidad: any) {
+    this.entidadDelete = entidad;
+  }
+
+  eliminarEntidad(idrole,idopcion) {
+    this.entidadDelete = [];
+    this.spinner.show();
+    this.rolesopcionService.eliminar_roleopciones(idrole,idopcion)
+    .subscribe(data => {
+      this.spinner.hide();
+      this.obtenerRolesOpciones(idrole);
+    });
+  }
+
+  preActualizarEntidad(entidad) {
+    //this.proyService.selectProyecto = Object.assign(proyecto);
+    this.limpiarForm();
+    this.rolesopcionService.selectEntidad = {
+      IdRole: entidad.IdRole,
+      IdOpcion: entidad.IdOpcion,
+      Alta: entidad.Alta,
+      Baja: entidad.Baja,
+      Cambio: entidad.Cambio,
+      Imprimir: entidad.Imprimir,
+      Exportar: entidad.Exportar,
+    };
+  }
+
+  limpiarForm() {
+    this.obtenerOpciones();
+    this.rolesopcionService.selectEntidad = {
+      IdRole: null,
+      IdOpcion: null,
+      Alta: null,
+      Baja: null,
+      Cambio: null,
+      Imprimir: null,
+      Exportar: null,
+    };
+  }
+
+  obtenerOpciones(){
+    this.rolesopcionService.cargar_opciones()
+    .subscribe(data => {
+      this.rolesopcionService.opciones = data;
     });
   }
 

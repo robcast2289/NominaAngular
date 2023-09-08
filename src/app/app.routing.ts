@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AuthGuard } from './components/login/auth.guard';
 import { Error404notFoundComponent } from './components/error404not-found/error404not-found.component';
+import { Error403forbiddenComponent } from './components/error403forbidden/error403forbidden.component';
 
 /* import { ProyectosComponent } from './components/catalogos/proyectos/proyectos.component';
 import { AccesosComponent } from './components/administracion/accesos/accesos.component';
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: '404notfound',
     component: Error404notFoundComponent
+  },
+  {
+    path: '403forbidden',
+    component: Error403forbiddenComponent
   },
   {
     path: '',
@@ -73,7 +78,7 @@ const routes: Routes = [
         component: RolesOpcionComponent,
       }
     ]
-  },
+  },  
   {
     path: '**',
     redirectTo: '404notfound'

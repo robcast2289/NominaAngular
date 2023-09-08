@@ -45,15 +45,14 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
-  ngOnInit() {
-    let filtro = this.menuService.menu_all.filter(
-      modulo => {
-        for(const modul in modulo){
-          console.log(modul)
+  async ngOnInit() {
+    await this.authService.tieneAccesoOpcion(this.router.url)
+    .subscribe(obs => {
+        if(obs == false){
+          this.router.navigate(["403forbidden"]);
         }
-        return true;
-      }
-    )
+      });
+    
     console.log(this.router.url);
   }
 

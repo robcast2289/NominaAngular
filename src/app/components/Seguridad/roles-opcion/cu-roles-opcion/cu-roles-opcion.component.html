@@ -1,3 +1,65 @@
-<p>
-  cu-roles-opcion works!
-</p>
+<div class="modal fade" id="roleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog  modal-xl" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel" class="text-success">{{ this.roleopcionesService.selectEntidad.IdRole ? 'Editar Registro ' : 'Nuevo Registro' }}</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form action="" #entidadForm="ngForm" (ngSubmit)="guardarEntidad(entidadForm)">
+                  <input type="hidden" id="IdRole" name="IdRole" class="form-control" [(ngModel)]="this.roleopcionesService.selectEntidad.IdRole">
+                  <!-- <strong><label for="" class="form-control text-primary subtitle">Información General</label></strong> -->
+
+                  <div class="form-row">
+                      <div class="form-group col-12">
+                        <label class="bmd-label-static">Opcion</label>
+                        <select name="IdOpcion" id="IdOpcion" class="form-control" [(ngModel)]="this.roleopcionesService.selectEntidad.IdOpcion">
+                          <option value="{{opcion.IdOpcion}}" *ngFor="let opcion of this.roleopcionesService.opciones">{{ opcion.Nombre }}</option>
+                        </select>
+                          <!-- <label for="nombre" class="bmd-label-floating">Opcion</label>
+                          <input type="text" id="Nombre" name="Nombre" #nombre="ngModel" class="form-control" required="" [(ngModel)]="this.roleopcionesService.selectEntidad.IdOpcion"> -->
+                          <small class="text-warning" *ngIf="entidadForm.submitted && IdOpcion.invalid">Campo requerido</small>
+                      </div>                   
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group form-check col-12">
+                      <input type="checkbox" id="Alta" name="Alta" #alta="ngModel" [(ngModel)]="this.roleopcionesService.selectEntidad.Alta">
+                      <label for="Alta" class="form-check-label">&nbsp;Alta</label>
+                    </div>                   
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group form-check col-12">
+                      <input type="checkbox" id="Baja" name="Baja" #Baja="ngModel" [(ngModel)]="this.roleopcionesService.selectEntidad.Baja">
+                      <label for="Baja" class="form-check-label">&nbsp;Baja</label>
+                    </div>                   
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group form-check col-12">
+                      <input type="checkbox" id="Cambio" name="Cambio" #Cambio="ngModel" [(ngModel)]="this.roleopcionesService.selectEntidad.Cambio">
+                      <label for="Cambio" class="form-check-label">&nbsp;Cambio</label>
+                    </div>                   
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group form-check col-12">
+                      <input type="checkbox" id="Imprimir" name="Imprimir" #Imprimir="ngModel" [(ngModel)]="this.roleopcionesService.selectEntidad.Imprimir">
+                      <label for="Imprimir" class="form-check-label">&nbsp;Imprimir</label>
+                    </div>                   
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group form-check col-12">
+                      <input type="checkbox" id="Exportar" name="Exportar" #Exportar="ngModel" [(ngModel)]="this.roleopcionesService.selectEntidad.Exportar">
+                      <label for="Exportar" class="form-check-label">&nbsp;Exportar</label>
+                    </div>                   
+                  </div>
+                  
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button> &nbsp;
+                      <button type="submit" class="btn btn-raised btn-success">Guardar <i class="fa fa-save"></i></button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

@@ -32,11 +32,15 @@
               <tbody>
                   <tr *ngFor="let entidad of entidadTable | paginate: { itemsPerPage: 10, currentPage: page }">
                       <td>{{ entidad.Opcion }}</td>
-                      <td>{{ entidad.Alta }}</td>
+                      <!-- <td>{{ entidad.Alta }}</td>
                       <td>{{ entidad.Baja }}</td>
                       <td>{{ entidad.Cambio }}</td>
-                      <td>{{ entidad.Imprimir }}</td>
-                      <td><input type="checkbox" name="" id="" [(ngModel)]="entidad.Exportar"></td>
+                      <td>{{ entidad.Imprimir }}</td> -->
+                      <td class="text-center"><input type="checkbox" name="Alta" id="Alta" [(ngModel)]="entidad.Alta"  onclick="return false;"></td>
+                      <td class="text-center"><input type="checkbox" name="Baja" id="Baja" [(ngModel)]="entidad.Baja"  onclick="return false;"></td>
+                      <td class="text-center"><input type="checkbox" name="Cambio" id="Cambio" [(ngModel)]="entidad.Cambio"  onclick="return false;"></td>
+                      <td class="text-center"><input type="checkbox" name="Imprimir" id="Imprimir" [(ngModel)]="entidad.Imprimir"  onclick="return false;"></td>
+                      <td class="text-center"><input type="checkbox" name="Exportar" id="Exportar" [(ngModel)]="entidad.Exportar"  onclick="return false;"></td>
                       <td data-toggle="modal" data-target="#roleModal" (click)="preActualizarEntidad(entidad)">
                           <i class="fa fa-edit text-primary"></i>
                       </td>
@@ -61,11 +65,11 @@
               <hr>
               <div class="row text-center">
                   <button type="button" class="btn btn-secondary btn-sm col-4 offset-1" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button>
-                  <button type="button" class="btn btn-danger btn-sm col-4 offset-2" data-dismiss="modal" (click)="eliminarEntidad(this.entidadDelete.IdRole)">Eliminar <i class="fa fa-trash"></i></button>
+                  <button type="button" class="btn btn-danger btn-sm col-4 offset-2" data-dismiss="modal" (click)="eliminarEntidad(this.entidadDelete.IdRole,this.entidadDelete.IdOpcion)">Eliminar <i class="fa fa-trash"></i></button>
               </div>
           </div>
       </div>
   </div>
 </div>
 
-<app-cu-roles></app-cu-roles>
+<app-cu-roles-opcion [IdRoleParent]="this.id"></app-cu-roles-opcion>

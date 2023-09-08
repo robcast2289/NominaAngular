@@ -10,7 +10,7 @@
           <div class="modal-body">
               <form action="" #moduloForm="ngForm" (ngSubmit)="guardarEntidad(moduloForm)">
                   <input type="hidden" id="IdMenu" name="IdMenu" class="form-control" [(ngModel)]="this.menuTableService.selectEntidad.IdMenu">
-                  <strong><label for="" class="form-control text-primary subtitle">Información General</label></strong>
+                  <!-- <strong><label for="" class="form-control text-primary subtitle">Información General</label></strong> -->
                   <div class="form-row">
                     <div class="form-group col-12">
                         <label class="bmd-label-static">Modulo</label>
@@ -21,7 +21,7 @@
                 </div>
                   <div class="form-row">
                       <div class="form-group col-6">
-                          <label for="nombre" class="bmd-label-floating">Nombre Modulo</label>
+                          <label for="nombre" class="bmd-label-floating">Nombre Menu</label>
                           <input type="text" id="Nombre" name="Nombre" #nombre="ngModel" class="form-control" required="" [(ngModel)]="this.menuTableService.selectEntidad.Nombre">
                           <small class="text-warning" *ngIf="moduloForm.submitted && Nombre.invalid">Campo requerido</small>
                       </div>
