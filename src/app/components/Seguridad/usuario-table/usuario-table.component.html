@@ -1,3 +1,67 @@
-<p>
-  usuario-table works!
-</p>
+<section id="usuarios">
+  <div class="container">
+      <div class="col-sx-12 col-sm-6 col-md-4"></div>
+      <div class="row" style="margin-top: 20px">
+          <div class="col-3 col-sm-3 col-md-3 col-lg-2">
+              <button class="btn btn-raised btn-secondary form-control" data-toggle="modal" data-target="#usuarioModal" (click)="limpiarForm()">Nuevo <i class="fa fa-plus"></i></button>
+          </div>
+          <div class="col-9 col-sm-9 col-md-9 col-lg-10">
+              <input type="search" class="form-control" placeholder="Buscar" (ngModelChange)="funcSearch($event)" [(ngModel)]="buscar">
+          </div>
+      </div>
+      <div class="card form-control-rc">
+          <table class="table table-hover table-striped">
+              <thead>
+                  <tr>
+                      <th scope="col" data-toggle="idrole" (click)="funcSort($event)">Código <i class="{{ 'idproyecto' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="nombre" (click)="funcSort($event)">Nombre <i class="{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="nombre" (click)="funcSort($event)">Apellido <i class="{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="nombre" (click)="funcSort($event)">Correo <i class="{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="nombre" (click)="funcSort($event)">Estado <i class="{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col">&nbsp;</th>
+                      <th scope="col">&nbsp;</th>
+                      <th scope="col">&nbsp;</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let entidad of entidadTable | paginate: { itemsPerPage: 10, currentPage: page }">
+                      <td>{{ entidad.IdUsuario }}</td>
+                      <td>{{ entidad.Nombre }}</td>
+                      <td>{{ entidad.Apellido }}</td>
+                      <td>{{ entidad.CorreoElectronico }}</td>
+                      <td>{{ entidad.Status }}</td>
+                      <td data-toggle="modal" data-target="#usuarioModal" (click)="preActualizarEntidad(entidad)">
+                          <i class="fa fa-edit text-primary"></i>
+                      </td>
+                      <td data-toggle="modal" data-target="#alertModal" (click)="setEntidadDel(entidad)">
+                          <i class="fa fa-trash text-danger"></i>
+                      </td>
+                      <td [routerLink]="['/seguridad/generales/roles/',entidad.IdRole]" routerLinkActive="router-link-active" data-toggle="tooltip" data-placement="top" title="Configurar opciones">
+                        <i class="fa fa-cog text-success"></i>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+          <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true">
+          </pagination-controls>
+      </div>
+  </div>
+</section>
+
+<!-- Modal Alert -->
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog  modal-md" role="document">
+      <div class="modal-content modal-alert">
+          <div class="modal-body">
+              Confirma que desea eliminar el modulo {{ this.entidadDelete.Nombre }}?
+              <hr>
+              <div class="row text-center">
+                  <button type="button" class="btn btn-secondary btn-sm col-4 offset-1" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button>
+                  <button type="button" class="btn btn-danger btn-sm col-4 offset-2" data-dismiss="modal" (click)="eliminarEntidad(this.entidadDelete.IdUsuario)">Eliminar <i class="fa fa-trash"></i></button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<app-cu-usuario-table></app-cu-usuario-table>

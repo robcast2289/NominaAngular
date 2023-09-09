@@ -42,6 +42,12 @@ import { EmpresaComponent } from './components/Seguridad/empresa/empresa.compone
 import { SucursalComponent } from './components/Seguridad/sucursal/sucursal.component';
 import { GeneroComponent } from './components/Seguridad/genero/genero.component';
 import { StatusUsuarioComponent } from './components/Seguridad/status-usuario/status-usuario.component';
+import { CuUsuarioTableComponent } from './components/Seguridad/usuario-table/cu-usuario-table/cu-usuario-table.component';
+import { CuUsuarioRoleComponent } from './components/Seguridad/usuario-role/cu-usuario-role/cu-usuario-role.component';
+import { CuSucursalComponent } from './components/Seguridad/sucursal/cu-sucursal/cu-sucursal.component';
+import { CuStatusUsuarioComponent } from './components/Seguridad/status-usuario/cu-status-usuario/cu-status-usuario.component';
+import { CuGeneroComponent } from './components/Seguridad/genero/cu-genero/cu-genero.component';
+import { CuEmpresaComponent } from './components/Seguridad/empresa/cu-empresa/cu-empresa.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +77,12 @@ import { StatusUsuarioComponent } from './components/Seguridad/status-usuario/st
     SucursalComponent,
     GeneroComponent,
     StatusUsuarioComponent,
+    CuUsuarioTableComponent,
+    CuUsuarioRoleComponent,
+    CuSucursalComponent,
+    CuStatusUsuarioComponent,
+    CuGeneroComponent,
+    CuEmpresaComponent,
   ],
   imports: [
     BrowserModule,
