@@ -58,16 +58,56 @@ export class UsuarioTableComponent implements OnInit {
       //this.proyService.selectProyecto = Object.assign(proyecto);
       this.limpiarForm();
       this.usuariotableService.selectEntidad = {
-        IdRole: entidad.IdRole,
-        Nombre: entidad.Nombre
+        IdUsuario:entidad.IdUsuario,
+        UsuarioNuevo:entidad.UsuarioNuevo,
+        Nombre:entidad.Nombre,
+        Apellido:entidad.Apellido,
+        FechaNacimiento:entidad.FechaNacimiento,
+        IdStatusUsuario:entidad.IdStatusUsuario,
+        IdGenero:entidad.IdGenero,
+        IdSucursal:entidad.IdSucursal,
+        TelefonoMovil:entidad.TelefonoMovil,
+        CorreoElectronico:entidad.CorreoElectronico
       };
     }
   
     limpiarForm() {
+      this.obtenerStatus();
+      this.obtenerGeneros();
+      this.obtenerSucursales();
       this.usuariotableService.selectEntidad = {
-        IdRole: null,
-        Nombre: ''
+        IdUsuario:null,
+        UsuarioNuevo:null,
+        Nombre:null,
+        Apellido:null,
+        FechaNacimiento:null,
+        IdStatusUsuario:null,
+        IdGenero:null,
+        IdSucursal:null,
+        TelefonoMovil:null,
+        CorreoElectronico:null
       };
+    }
+
+    obtenerStatus(){
+      this.usuariotableService.cargar_status()
+      .subscribe(data => {
+        this.usuariotableService.status = data;
+      });
+    }
+
+    obtenerGeneros(){
+      this.usuariotableService.cargar_generos()
+      .subscribe(data => {
+        this.usuariotableService.generos = data;
+      });
+    }
+
+    obtenerSucursales(){
+      this.usuariotableService.cargar_sucursales()
+      .subscribe(data => {
+        this.usuariotableService.sucursales = data;
+      });
     }
 
 }

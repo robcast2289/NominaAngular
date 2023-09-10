@@ -14,9 +14,21 @@ export class UsuariotableService {
   basepath = URL_SERVICES;
 
   selectEntidad = {
-    IdRole: null,
-    Nombre: '',
+    IdUsuario:null,
+    UsuarioNuevo:null,
+    Nombre:null,
+    Apellido:null,
+    FechaNacimiento:null,
+    IdStatusUsuario:null,
+    IdGenero:null,
+    IdSucursal:null,
+    TelefonoMovil:null,
+    CorreoElectronico:null
   };
+
+  status = [];
+  generos = [];
+  sucursales = [];
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -46,8 +58,19 @@ export class UsuariotableService {
     const url = `${this.basepath}seguridad/generales/usuarios/${this.authService.credenciales.userId}`;
 
     const params = {
-      Nombre: entidadForm.Nombre
+      UsuarioNuevo:entidadForm.UsuarioNuevo,
+      Nombre:entidadForm.Nombre,
+      Apellido:entidadForm.Apellido,
+      FechaNacimiento:entidadForm.FechaNacimiento+"T00:00:00.000Z",
+      IdStatusUsuario:entidadForm.IdStatusUsuario,
+      IdGenero:entidadForm.IdGenero,
+      IdSucursal:entidadForm.IdSucursal,
+      TelefonoMovil:entidadForm.TelefonoMovil,
+      CorreoElectronico:entidadForm.CorreoElectronico,
+      Password:"!IXQORvSqqv"
     };
+
+    console.log(params);
 
     return this.http.put(url, params)
     .pipe(catchError(data => {
@@ -66,6 +89,39 @@ export class UsuariotableService {
     };
 
     return this.http.post(url, params)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_status(){
+    const url = `${this.basepath}seguridad/generales/statususuario`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_generos(){
+    const url = `${this.basepath}seguridad/generales/genero`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_sucursales(){
+    const url = `${this.basepath}seguridad/generales/sucursal`;
+
+    return this.http.get(url)
     .pipe(catchError(data => {
       return of(data).pipe(
         map(val => data.error)
