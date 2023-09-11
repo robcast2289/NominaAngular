@@ -6,6 +6,7 @@ import { AuthService } from '../auth.service';
 
 import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -25,13 +26,14 @@ export class RolesopcionService {
 
   opciones = [];
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService, private router:Router) { }
 
   cargar_role(id) {    
     const url = `${this.basepath}seguridad/generales/roles/${id}`;
 
     return this.http.get(url)
     .pipe(catchError(data => {
+      this.router.navigate(["404notfound"]);
       return of(data).pipe(
         map(val => data.error)
       );

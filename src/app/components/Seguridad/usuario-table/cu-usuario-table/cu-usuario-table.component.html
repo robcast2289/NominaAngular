@@ -9,7 +9,7 @@
           </div>
           <div class="modal-body">
               <form action="" #entidadForm="ngForm" (ngSubmit)="guardarEntidad(entidadForm)">
-                <div class="form-row">
+                <div class="form-row" *ngIf="!this.usuarioTableService.selectEntidad.IdUsuario">
                   <div class="form-group col-4">
                     <label for="UsuarioNuevo" class="bmd-label-floating">Usuario</label>
                     <input type="text" id="UsuarioNuevo" name="UsuarioNuevo" #UsuarioNuevo="ngModel" class="form-control" required="" [(ngModel)]="this.usuarioTableService.selectEntidad.UsuarioNuevo">
