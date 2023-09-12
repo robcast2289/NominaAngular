@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 import { MenuService } from '../../../services/menu.service';
-import { RolesopcionService } from '../../../services/seguridad/rolesopcion.service';
+import { UsuarioroleService } from '../../../services/seguridad/usuariorole.service';
 
 @Component({
   selector: 'app-usuario-role',
@@ -25,7 +25,7 @@ export class UsuarioRoleComponent implements OnInit {
 
   constructor(private _Activatedroute:ActivatedRoute,
     private spinner: NgxSpinnerService,
-    private rolesopcionService: RolesopcionService,
+    private usuarioroleService: UsuarioroleService,
     private menuService: MenuService) { 
       this.menuService.titleActive = 'Configurar Usuario';
     }
@@ -33,23 +33,23 @@ export class UsuarioRoleComponent implements OnInit {
   ngOnInit() {
     this._Activatedroute.params.subscribe(params => { 
       this.id = params['IdUsuario']; 
-      this.obtenerRole(this.id);
-      this.obtenerRolesOpciones(this.id)
+      this.obtenerUsuario(this.id);
+      this.obtenerUsuarioRoles(this.id)
     });
   }
 
-  obtenerRole(id){
+  obtenerUsuario(id){
     this.spinner.show();
-    this.rolesopcionService.cargar_role(id)
+    this.usuarioroleService.cargar_usuario(id)
     .subscribe(data => {
       this.spinner.hide();
       this.usuario = data;
     });
   }
 
-  obtenerRolesOpciones(id){
+  obtenerUsuarioRoles(id){
     this.spinner.show();
-    this.rolesopcionService.cargar_roleopciones(id)
+    this.usuarioroleService.cargar_usuarioroles(id)
     .subscribe(data => {
       this.spinner.hide();
       this.entidad = data;
@@ -61,47 +61,37 @@ export class UsuarioRoleComponent implements OnInit {
     this.entidadDelete = entidad;
   }
 
-  eliminarEntidad(idrole,idopcion) {
+  eliminarEntidad(idusuario,idrole) {
     this.entidadDelete = [];
     this.spinner.show();
-    this.rolesopcionService.eliminar_roleopciones(idrole,idopcion)
+    this.usuarioroleService.eliminar_usuarioroles(idusuario,idrole)
     .subscribe(data => {
       this.spinner.hide();
-      this.obtenerRolesOpciones(idrole);
+      this.obtenerUsuarioRoles(idusuario);
     });
   }
 
   preActualizarEntidad(entidad) {
     //this.proyService.selectProyecto = Object.assign(proyecto);
     this.limpiarForm();
-    this.rolesopcionService.selectEntidad = {
+    this.usuarioroleService.selectEntidad = {
+      IdUsuario: entidad.IdUsuario,
       IdRole: entidad.IdRole,
-      IdOpcion: entidad.IdOpcion,
-      Alta: entidad.Alta,
-      Baja: entidad.Baja,
-      Cambio: entidad.Cambio,
-      Imprimir: entidad.Imprimir,
-      Exportar: entidad.Exportar,
     };
   }
 
   limpiarForm() {
-    this.obtenerOpciones();
-    this.rolesopcionService.selectEntidad = {
-      IdRole: null,
-      IdOpcion: null,
-      Alta: null,
-      Baja: null,
-      Cambio: null,
-      Imprimir: null,
-      Exportar: null,
+    this.obtenerRoles();
+    this.usuarioroleService.selectEntidad = {
+      IdUsuario: null,
+    IdRole: null,
     };
   }
 
-  obtenerOpciones(){
-    this.rolesopcionService.cargar_opciones()
+  obtenerRoles(){
+    this.usuarioroleService.cargar_roles()
     .subscribe(data => {
-      this.rolesopcionService.opciones = data;
+      this.usuarioroleService.roles = data;
     });
   }
 

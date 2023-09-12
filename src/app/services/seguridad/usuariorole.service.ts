@@ -15,13 +15,8 @@ export class UsuarioroleService {
   basepath = URL_SERVICES;
 
   selectEntidad = {
+    IdUsuario: null,
     IdRole: null,
-    IdOpcion: null,
-    Alta: null,
-    Baja: null,
-    Cambio: null,
-    Imprimir: null,
-    Exportar: null,
   };
 
   roles = [];
@@ -67,12 +62,7 @@ export class UsuarioroleService {
 
     const params = {
       IdUsuario: IdUsuario,
-      IdOpcion: entidadForm.IdOpcion,
-      Alta: entidadForm.Alta == true ? 1 : 0,
-      Baja: entidadForm.Baja  == true ? 1 : 0,
-      Cambio: entidadForm.Cambio  == true ? 1 : 0,
-      Imprimir: entidadForm.Imprimir  == true ? 1 : 0,
-      Exportar: entidadForm.Exportar  == true ? 1 : 0,
+      IdRole: entidadForm.IdRole,
     };
 
     console.log(params);
@@ -86,8 +76,8 @@ export class UsuarioroleService {
   }
 
 
-  cargar_opciones() {    
-    const url = `${this.basepath}seguridad/generales/opciones`;
+  cargar_roles() {    
+    const url = `${this.basepath}seguridad/generales/roles`;
 
     return this.http.get(url)
     .pipe(catchError(data => {
