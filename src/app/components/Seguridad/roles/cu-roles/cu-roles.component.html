@@ -15,7 +15,7 @@
                   <div class="form-row">
                       <div class="form-group col-12">
                           <label for="nombre" class="bmd-label-floating">Nombre Role</label>
-                          <input type="text" id="Nombre" name="Nombre" #nombre="ngModel" class="form-control" required="" [(ngModel)]="this.rolesService.selectEntidad.Nombre">
+                          <input type="text" id="Nombre" name="Nombre" #Nombre="ngModel" class="form-control" required="" [(ngModel)]="this.rolesService.selectEntidad.Nombre">
                           <small class="text-warning" *ngIf="entidadForm.submitted && Nombre.invalid">Campo requerido</small>
                       </div>                   
                   </div>

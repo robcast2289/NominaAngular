@@ -11,8 +11,17 @@
     box-shadow: 0 0 20px 10px tan;
 }
 
-#alertModal {
+/* #alertModal {
     top: 30%;
+    margin: 15rem auto;
+} */
+
+@media(min-width:576px){
+    .modal-dialog{
+        /* margin: 15rem auto; */
+        /* min-height: calc(100% - 1rem) */
+        margin: calc(20%) auto;
+    }
 }
 
 .operation {
