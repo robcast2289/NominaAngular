@@ -61,6 +61,7 @@ export class UsuariotableService {
   }
 
   insertar_usuarios(entidadForm){
+    
     const url = `${this.basepath}seguridad/generales/usuarios/${this.authService.credenciales.userId}`;
 
     const params = {
@@ -81,9 +82,16 @@ export class UsuariotableService {
       RequiereCambiarPassword:1
     };
 
+    const formData: FormData = new FormData();
+    /* files.forEach(file => {
+      //formData.append("image0",file);
+      formData.append("image0","");
+      console.log(file);
+    }); */
+    formData.append("data",JSON.stringify(params));
     console.log(params);
 
-    return this.http.put(url, params)
+    return this.http.put(url, formData)
     .pipe(catchError(data => {
       return of(data).pipe(
         map(val => data.error)
@@ -92,14 +100,31 @@ export class UsuariotableService {
   }
 
   actualizar_usuarios(entidadForm){
-    const id = entidadForm.IdRole;
+    const id = entidadForm.IdUsuario;
     const url = `${this.basepath}seguridad/generales/usuarios/${this.authService.credenciales.userId}/${id}`;
 
     const params = {
-      Nombre: entidadForm.Nombre
+      IdUsuario:entidadForm.IdUsuario,
+      Nombre:entidadForm.Nombre,
+      Apellido:entidadForm.Apellido,
+      FechaNacimiento:entidadForm.FechaNacimiento+"T00:00:00.000Z",
+      IdStatusUsuario:entidadForm.IdStatusUsuario,
+      IdGenero:entidadForm.IdGenero,
+      IdSucursal:entidadForm.IdSucursal,
+      TelefonoMovil:entidadForm.TelefonoMovil,
+      CorreoElectronico:entidadForm.CorreoElectronico,
+      Password:this.authService.vigenereCipher(entidadForm.Password,this.authService.key),
+      Fotografia:entidadForm.Fotografia,
+      UltimaFechaIngreso:"",
+      IntentosDeAcceso:0,
+      UltimaFechaCambioPassword:"",
+      RequiereCambiarPassword:1
     };
 
-    return this.http.post(url, params)
+    const formData: FormData = new FormData();
+    formData.append("data",JSON.stringify(params));
+    console.log(params);
+    return this.http.post(url, formData)
     .pipe(catchError(data => {
       return of(data).pipe(
         map(val => data.error)

@@ -5,4 +5,5 @@ export interface Credenciales {
     accessToken?: string;
     expiresIn?: number;
     userId?: string;
+    foto?: string;
 }

@@ -2,6 +2,9 @@
     <!-- Sidebar Holder -->
     <nav id="sidebar">
         <div class="sidebar-header">
+            <div *ngIf="this.authService.credenciales.foto" class="text-center">
+                <img width="80px" [src]="this.authService.credenciales.foto" class="rounded img-thumbnail" alt="">
+            </div>
             <h3>{{ this.authService.credenciales.nombre }}</h3>
             {{ this.authService.credenciales.usuario }}
         </div>

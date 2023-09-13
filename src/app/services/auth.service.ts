@@ -66,12 +66,14 @@ export class AuthService {
                       usuario: string,
                       accessToken: string,
                       expiresAt: number,
-                      userId: string) {
+                      userId: string,
+                      foto:string) {
     this.credenciales.nombre = nombre;
     this.credenciales.usuario = usuario;
     this.credenciales.accessToken = accessToken;
     this.credenciales.expiresIn = expiresAt;
     this.credenciales.userId = userId;
+    this.credenciales.foto = foto;
   }
 
   guardar_storage() {
@@ -81,12 +83,14 @@ export class AuthService {
       localStorage.setItem('accessToken', this.credenciales.accessToken);
       localStorage.setItem('expiresAt', this.credenciales.expiresIn.toString());
       localStorage.setItem('userId', this.credenciales.userId);
+      localStorage.setItem('foto', this.credenciales.foto);
     } else {
       localStorage.removeItem('nombre');
       localStorage.removeItem('usuario');
       localStorage.removeItem('accessToken');
       localStorage.removeItem('expiresAt');
       localStorage.removeItem('userId');
+      localStorage.removeItem('foto');
     }
   }
 
@@ -96,6 +100,7 @@ export class AuthService {
     if (localStorage.getItem('accessToken')) this.credenciales.accessToken = localStorage.getItem('accessToken');
     if (localStorage.getItem('expiresAt')) this.credenciales.expiresIn = Number(localStorage.getItem('expiresAt'));
     if (localStorage.getItem('userId')) this.credenciales.userId = localStorage.getItem('userId');
+    if (localStorage.getItem('foto')) this.credenciales.foto = localStorage.getItem('foto');
   }
 
   vigenereCipher(texto: string, key: string, mode: string = 'encrypt'): string {

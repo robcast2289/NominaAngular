@@ -115,13 +115,13 @@
                   <div role="tabpanel" class="tab-pane fade" id="foto">
                     <div class="form-row">
                       <div class="form-group col-4">
-                        <label for="Fotografia" class="bmd-label-floating">Fotografia</label>
-                        <input type="file" id="Fotografia" name="Fotografia" #Fotografia="ngModel" class="form-control-file" (change)="catchFile($event)" required="" [(ngModel)]="this.usuarioTableService.selectEntidad.Fotografia">
-                        <small class="text-warning" *ngIf="entidadForm.submitted && Fotografia.invalid">Campo requerido</small>
+                        <label for="Fotografia" class="bmd-label-floating">Fotografia</label>                        
+                        <input type="hidden" id="Fotografia" name="Fotografia" class="form-control" [(ngModel)]="this.usuarioTableService.selectEntidad.Fotografia">
+                        <input type="file" accept="image/png, image/jpeg" class="form-control-file" (change)="catchFile($event)">
                       </div>
                     </div>
-                    <div class="form-row" *ngIf="previsualizacion">
-                      <img width="300px" [src]="previsualizacion" alt="">
+                    <div class="form-row" *ngIf="this.usuarioTableService.selectEntidad.Fotografia">
+                      <img width="300px" [src]="this.usuarioTableService.selectEntidad.Fotografia" alt="">
                     </div>
                   </div>
                   <div role="tabpanel" class="tab-pane fade" id="info">

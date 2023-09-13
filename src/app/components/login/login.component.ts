@@ -52,7 +52,8 @@ export class LoginComponent implements OnInit {
           data.user.CorreoElectronico,
           data.token,
           data.expires_at,
-          data.user.IdUsuario
+          data.user.IdUsuario,
+          data.user.Fotografia
         );
         this.authService.guardar_storage();
         // this.authService.userId = data["id_user"];
