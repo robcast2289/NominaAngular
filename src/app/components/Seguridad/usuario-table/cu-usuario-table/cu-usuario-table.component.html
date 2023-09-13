@@ -9,66 +9,146 @@
           </div>
           <div class="modal-body">
               <form action="" #entidadForm="ngForm" (ngSubmit)="guardarEntidad(entidadForm)">
-                <div class="form-row" *ngIf="!this.usuarioTableService.selectEntidad.IdUsuario">
-                  <div class="form-group col-4">
-                    <label for="UsuarioNuevo" class="bmd-label-floating">Usuario</label>
-                    <input type="text" id="UsuarioNuevo" name="UsuarioNuevo" #UsuarioNuevo="ngModel" class="form-control" required="" [(ngModel)]="this.usuarioTableService.selectEntidad.UsuarioNuevo">
-                    <small class="text-warning" *ngIf="entidadForm.submitted && UsuarioNuevo.invalid">Campo requerido</small>
-                  </div>                 
-                </div>
-                  <input type="hidden" id="IdUsuario" name="IdUsuario" class="form-control" [(ngModel)]="this.usuarioTableService.selectEntidad.IdUsuario">
-                  <!-- <strong><label for="" class="form-control text-primary subtitle">Información General</label></strong> -->
 
-                  <div class="form-row">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" 
+                    href="#general" 
+                    id="ex1-tab-1"
+                    data-toggle="tab" 
+                    role="tab">General</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#pass"
+                    id="ex1-tab-2"
+                    data-toggle="tab" 
+                    role="tab">Password</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#foto"
+                    id="ex1-tab-3"
+                    data-toggle="tab" 
+                    role="tab">Fotografia</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#info"
+                    id="ex1-tab-4"
+                    data-toggle="tab" 
+                    role="tab">Registro</a>
+                  </li>
+                </ul>
+
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade show active" id="general">
+                    <div class="form-row" *ngIf="!this.usuarioTableService.selectEntidad.IdUsuario">
                       <div class="form-group col-4">
-                        <label for="nombre" class="bmd-label-floating">Nombre</label>
-                        <input type="text" id="Nombre" name="Nombre" #Nombre="ngModel" class="form-control" required="" [(ngModel)]="this.usuarioTableService.selectEntidad.Nombre">
-                        <small class="text-warning" *ngIf="entidadForm.submitted && Nombre.invalid">Campo requerido</small>
+                        <label for="UsuarioNuevo" class="bmd-label-floating">Usuario</label>
+                        <input type="text" id="UsuarioNuevo" name="UsuarioNuevo" #UsuarioNuevo="ngModel" class="form-control" required="" [(ngModel)]="this.usuarioTableService.selectEntidad.UsuarioNuevo">
+                        <small class="text-warning" *ngIf="entidadForm.submitted && UsuarioNuevo.invalid">Campo requerido</small>
+                      </div>                 
+                    </div>
+                    <input type="hidden" id="IdUsuario" name="IdUsuario" class="form-control" [(ngModel)]="this.usuarioTableService.selectEntidad.IdUsuario">
+                    <!-- <strong><label for="" class="form-control text-primary subtitle">Información General</label></strong> -->
+
+                    <div class="form-row">
+                        <div class="form-group col-4">
+                          <label for="nombre" class="bmd-label-floating">Nombre</label>
+                          <input type="text" id="Nombre" name="Nombre" #Nombre="ngModel" class="form-control" required="" [(ngModel)]="this.usuarioTableService.selectEntidad.Nombre">
+                          <small class="text-warning" *ngIf="entidadForm.submitted && Nombre.invalid">Campo requerido</small>
+                        </div>
+                        <div class="form-group col-4">
+                          <label for="apellido" class="bmd-label-floating">Apellido</label>
+                          <input type="text" id="Apellido" name="Apellido" #Apellido="ngModel" class="form-control" required="" [(ngModel)]="this.usuarioTableService.selectEntidad.Apellido">
+                          <small class="text-warning" *ngIf="entidadForm.submitted && Apellido.invalid">Campo requerido</small>
+                        </div>
+                        <div class="form-group col-4">
+                          <label for="FechaNacimiento" class="bmd-label-floating">Fecha de Nacimiento</label>
+                          <input type="date" id="FechaNacimiento" name="FechaNacimiento" #FechaNacimiento="ngModel" class="form-control" required [(ngModel)]="this.usuarioTableService.selectEntidad.FechaNacimiento">
+                          <small class="text-warning" *ngIf="entidadForm.submitted && FechaNacimiento.invalid">Campo requerido</small>
+                        </div>                   
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-4">
+                        <label class="bmd-label-static">Estado</label>
+                        <select name="IdStatusUsuario" id="IdStatusUsuario" class="form-control" [(ngModel)]="this.usuarioTableService.selectEntidad.IdStatusUsuario">
+                          <option value="{{status.IdStatusUsuario}}" *ngFor="let status of this.usuarioTableService.status">{{ status.Nombre }}</option>
+                        </select>
                       </div>
                       <div class="form-group col-4">
-                        <label for="apellido" class="bmd-label-floating">Apellido</label>
-                        <input type="text" id="Apellido" name="Apellido" #Apellido="ngModel" class="form-control" required="" [(ngModel)]="this.usuarioTableService.selectEntidad.Apellido">
-                        <small class="text-warning" *ngIf="entidadForm.submitted && Apellido.invalid">Campo requerido</small>
+                        <label class="bmd-label-static">Genero</label>
+                        <select name="IdGenero" id="IdGenero" class="form-control" [(ngModel)]="this.usuarioTableService.selectEntidad.IdGenero">
+                          <option value="{{genero.IdGenero}}" *ngFor="let genero of this.usuarioTableService.generos">{{ genero.Nombre }}</option>
+                        </select>
                       </div>
                       <div class="form-group col-4">
-                        <label for="FechaNacimiento" class="bmd-label-floating">Fecha de Nacimiento</label>
-                        <input type="date" id="FechaNacimiento" name="FechaNacimiento" #FechaNacimiento="ngModel" class="form-control" required [(ngModel)]="this.usuarioTableService.selectEntidad.FechaNacimiento">
-                        <small class="text-warning" *ngIf="entidadForm.submitted && FechaNacimiento.invalid">Campo requerido</small>
-                      </div>                   
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col-4">
-                      <label class="bmd-label-static">Estado</label>
-                      <select name="IdStatusUsuario" id="IdStatusUsuario" class="form-control" [(ngModel)]="this.usuarioTableService.selectEntidad.IdStatusUsuario">
-                        <option value="{{status.IdStatusUsuario}}" *ngFor="let status of this.usuarioTableService.status">{{ status.Nombre }}</option>
-                      </select>
+                        <label class="bmd-label-static">Sucursal</label>
+                        <select name="IdSucursal" id="IdSucursal" class="form-control" [(ngModel)]="this.usuarioTableService.selectEntidad.IdSucursal">
+                          <option value="{{sucursal.IdSucursal}}" *ngFor="let sucursal of this.usuarioTableService.sucursales">{{ sucursal.Nombre }}</option>
+                        </select>
+                      </div>
                     </div>
-                    <div class="form-group col-4">
-                      <label class="bmd-label-static">Genero</label>
-                      <select name="IdGenero" id="IdGenero" class="form-control" [(ngModel)]="this.usuarioTableService.selectEntidad.IdGenero">
-                        <option value="{{genero.IdGenero}}" *ngFor="let genero of this.usuarioTableService.generos">{{ genero.Nombre }}</option>
-                      </select>
-                    </div>
-                    <div class="form-group col-4">
-                      <label class="bmd-label-static">Sucursal</label>
-                      <select name="IdSucursal" id="IdSucursal" class="form-control" [(ngModel)]="this.usuarioTableService.selectEntidad.IdSucursal">
-                        <option value="{{sucursal.IdSucursal}}" *ngFor="let sucursal of this.usuarioTableService.sucursales">{{ sucursal.Nombre }}</option>
-                      </select>
+                    <div class="form-row">
+                      <div class="form-group col-4">
+                        <label for="TelefonoMovil" class="bmd-label-floating">Telefono Movil</label>
+                        <input type="text" id="TelefonoMovil" name="TelefonoMovil" #TelefonoMovil="ngModel" class="form-control" required="" [(ngModel)]="this.usuarioTableService.selectEntidad.TelefonoMovil">
+                        <small class="text-warning" *ngIf="entidadForm.submitted && TelefonoMovil.invalid">Campo requerido</small>
+                      </div>
+                      <div class="form-group col-4">
+                        <label for="CorreoElectronico" class="bmd-label-floating">Correo Electronico</label>
+                        <input type="text" id="CorreoElectronico" name="CorreoElectronico" #CorreoElectronico="ngModel" class="form-control" required="" [(ngModel)]="this.usuarioTableService.selectEntidad.CorreoElectronico">
+                        <small class="text-warning" *ngIf="entidadForm.submitted && CorreoElectronico.invalid">Campo requerido</small>
+                      </div>
                     </div>
                   </div>
-                  <div class="form-row">
-                    <div class="form-group col-4">
-                      <label for="TelefonoMovil" class="bmd-label-floating">Telefono Movil</label>
-                      <input type="text" id="TelefonoMovil" name="TelefonoMovil" #TelefonoMovil="ngModel" class="form-control" required="" [(ngModel)]="this.usuarioTableService.selectEntidad.TelefonoMovil">
-                      <small class="text-warning" *ngIf="entidadForm.submitted && TelefonoMovil.invalid">Campo requerido</small>
+                  <div role="tabpanel" class="tab-pane fade" id="pass">
+                    <div class="alert alert-info" role="alert">
+                      La contraseña debe complir con las siguietes características:
                     </div>
-                    <div class="form-group col-4">
-                      <label for="CorreoElectronico" class="bmd-label-floating">Correo Electronico</label>
-                      <input type="text" id="CorreoElectronico" name="CorreoElectronico" #CorreoElectronico="ngModel" class="form-control" required="" [(ngModel)]="this.usuarioTableService.selectEntidad.CorreoElectronico">
-                      <small class="text-warning" *ngIf="entidadForm.submitted && CorreoElectronico.invalid">Campo requerido</small>
+                    <div class="form-row">
+                      <div class="form-group col-4">
+                        <label for="Password" class="bmd-label-floating">Contraseña</label>
+                        <input type="password" id="Password" name="Password" #Password="ngModel" class="form-control" required="" [(ngModel)]="this.usuarioTableService.selectEntidad.Password">
+                        <small class="text-warning" *ngIf="entidadForm.submitted && Password.invalid">Campo requerido</small>
+                      </div>
                     </div>
                   </div>
-                  
+                  <div role="tabpanel" class="tab-pane fade" id="foto">
+                    <div class="form-row">
+                      <div class="form-group col-4">
+                        <label for="Fotografia" class="bmd-label-floating">Fotografia</label>
+                        <input type="file" id="Fotografia" name="Fotografia" #Fotografia="ngModel" class="form-control-file" (change)="catchFile($event)" required="" [(ngModel)]="this.usuarioTableService.selectEntidad.Fotografia">
+                        <small class="text-warning" *ngIf="entidadForm.submitted && Fotografia.invalid">Campo requerido</small>
+                      </div>
+                    </div>
+                    <div class="form-row" *ngIf="previsualizacion">
+                      <img width="300px" [src]="previsualizacion" alt="">
+                    </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade" id="info">
+                    <div class="form-row">
+                      <div class="form-group col-6">
+                        <label for="UltimaFechaIngreso" class="bmd-label-floating">Ultima Fecha de Ingreso</label>
+                        <input type="text" id="UltimaFechaIngreso" name="UltimaFechaIngreso" #UltimaFechaIngreso="ngModel" class="form-control-file" disabled [(ngModel)]="this.usuarioTableService.selectEntidad.UltimaFechaIngreso">
+                      </div>
+                      <div class="form-group col-6">
+                        <label for="IntentosDeAcceso" class="bmd-label-floating">Intentos De Acceso</label>
+                        <input type="text" id="IntentosDeAcceso" name="IntentosDeAcceso" #IntentosDeAcceso="ngModel" class="form-control-file" disabled [(ngModel)]="this.usuarioTableService.selectEntidad.IntentosDeAcceso">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-6">
+                        <label for="UltimaFechaCambioPassword" class="bmd-label-floating">Ultima Fecha de Cambio de Password</label>
+                        <input type="text" id="UltimaFechaCambioPassword" name="UltimaFechaCambioPassword" #UltimaFechaCambioPassword="ngModel" class="form-control-file" disabled [(ngModel)]="this.usuarioTableService.selectEntidad.UltimaFechaCambioPassword">
+                      </div>
+                      <div class="form-group col-6">
+                        <label for="RequiereCambiarPassword" class="bmd-label-floating">Requiere Cambiar Password</label>
+                        <input type="text" id="RequiereCambiarPassword" name="RequiereCambiarPassword" #RequiereCambiarPassword="ngModel" class="form-control-file" disabled [(ngModel)]="this.usuarioTableService.selectEntidad.RequiereCambiarPassword">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+
                   <div class="modal-footer">
                       <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button> &nbsp;
                       <button type="submit" class="btn btn-raised btn-success">Guardar <i class="fa fa-save"></i></button>

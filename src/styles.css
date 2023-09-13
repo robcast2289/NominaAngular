@@ -16,13 +16,13 @@
     margin: 15rem auto;
 } */
 
-@media(min-width:576px){
+/* @media(min-width:576px){
     .modal-dialog{
-        /* margin: 15rem auto; */
-        /* min-height: calc(100% - 1rem) */
+        margin: 15rem auto;
+        min-height: calc(100% - 1rem);
         margin: calc(20%) auto;
     }
-}
+} */
 
 .operation {
     width: 50px;

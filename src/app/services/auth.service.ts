@@ -12,6 +12,7 @@ declare var require: any;
   providedIn: 'root'
 })
 export class AuthService {
+  key = "analisisdesistemas";
   basepath = URL_SERVICES;
   isLoggedIn = false;
   redirectUrl: string;
@@ -36,7 +37,7 @@ export class AuthService {
 
     const params = {
       IdUsuario: user,
-      Password: password
+      Password: this.vigenereCipher(password,this.key)
     }
 
     const headers = {
@@ -95,5 +96,41 @@ export class AuthService {
     if (localStorage.getItem('accessToken')) this.credenciales.accessToken = localStorage.getItem('accessToken');
     if (localStorage.getItem('expiresAt')) this.credenciales.expiresIn = Number(localStorage.getItem('expiresAt'));
     if (localStorage.getItem('userId')) this.credenciales.userId = localStorage.getItem('userId');
+  }
+
+  vigenereCipher(texto: string, key: string, mode: string = 'encrypt'): string {
+    // Definir el alfabeto
+    const alfabeto: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZzyxwvutsrqponmlkjihgfedcba0123456789$@!#%';
+
+    // Crear una cadena para almacenar el resultado
+    let result: string = '';
+
+    // Inicializar un índice para recorrer la clave
+    let keyIndex: number = 0;
+
+    for (let i: number = 0; i < texto.length; i++) {
+        const letra: string = texto[i];
+        if (alfabeto.includes(letra)) {
+            if (mode === 'encrypt') {
+                // Cifrar: suma el índice del carácter del mensaje con el índice del carácter de la clave
+                const encryptedLetraIndex: number = (alfabeto.indexOf(letra) + alfabeto.indexOf(key[keyIndex])) % alfabeto.length;
+                const encryptedLetra: string = alfabeto.charAt(encryptedLetraIndex);
+                result += encryptedLetra;
+            } else {
+                // Descifrar: resta el índice del carácter de la clave del índice del carácter del mensaje
+                const decryptedLetraIndex: number = (alfabeto.indexOf(letra) - alfabeto.indexOf(key[keyIndex])) % alfabeto.length;
+                const decryptedLetra: string = alfabeto.charAt((decryptedLetraIndex + alfabeto.length) % alfabeto.length);
+                result += decryptedLetra;
+            }
+
+            // Avanzar al siguiente carácter de la clave (cíclicamente)
+            keyIndex = (keyIndex + 1) % key.length;
+        } else {
+            // Si el carácter no está en el alfabeto, simplemente agrégalo al resultado sin cifrarlo/descifrarlo
+            result += letra;
+        }
+    }
+
+    return result;
   }
 }

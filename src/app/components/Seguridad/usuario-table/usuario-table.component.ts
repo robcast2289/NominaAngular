@@ -67,7 +67,13 @@ export class UsuarioTableComponent implements OnInit {
         IdGenero:entidad.IdGenero,
         IdSucursal:entidad.IdSucursal,
         TelefonoMovil:entidad.TelefonoMovil,
-        CorreoElectronico:entidad.CorreoElectronico
+        CorreoElectronico:entidad.CorreoElectronico,
+        Password:entidad.Password,
+        Fotografia:entidad.Fotografia,
+        UltimaFechaIngreso:entidad.UltimaFechaIngreso,
+        IntentosDeAcceso:entidad.IntentosDeAcceso,
+        UltimaFechaCambioPassword:entidad.UltimaFechaCambioPassword,
+        RequiereCambiarPassword:entidad.RequiereCambiarPassword
       };
     }
   
@@ -85,7 +91,13 @@ export class UsuarioTableComponent implements OnInit {
         IdGenero:null,
         IdSucursal:null,
         TelefonoMovil:null,
-        CorreoElectronico:null
+        CorreoElectronico:null,
+        Password:null,
+        Fotografia:null,
+        UltimaFechaIngreso:null,
+        IntentosDeAcceso:null,
+        UltimaFechaCambioPassword:null,
+        RequiereCambiarPassword:null
       };
     }
 

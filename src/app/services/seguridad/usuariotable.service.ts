@@ -23,7 +23,13 @@ export class UsuariotableService {
     IdGenero:null,
     IdSucursal:null,
     TelefonoMovil:null,
-    CorreoElectronico:null
+    CorreoElectronico:null,
+    Password:null,
+    Fotografia:null,
+    UltimaFechaIngreso:null,
+    IntentosDeAcceso:null,
+    UltimaFechaCambioPassword:null,
+    RequiereCambiarPassword:null
   };
 
   status = [];
@@ -58,7 +64,7 @@ export class UsuariotableService {
     const url = `${this.basepath}seguridad/generales/usuarios/${this.authService.credenciales.userId}`;
 
     const params = {
-      UsuarioNuevo:entidadForm.UsuarioNuevo,
+      IdUsuario:entidadForm.UsuarioNuevo,
       Nombre:entidadForm.Nombre,
       Apellido:entidadForm.Apellido,
       FechaNacimiento:entidadForm.FechaNacimiento+"T00:00:00.000Z",
@@ -67,7 +73,12 @@ export class UsuariotableService {
       IdSucursal:entidadForm.IdSucursal,
       TelefonoMovil:entidadForm.TelefonoMovil,
       CorreoElectronico:entidadForm.CorreoElectronico,
-      Password:"!IXQORvSqqv"
+      Password:this.authService.vigenereCipher(entidadForm.Password,this.authService.key),
+      Fotografia:entidadForm.Fotografia,
+      UltimaFechaIngreso:"",
+      IntentosDeAcceso:0,
+      UltimaFechaCambioPassword:"",
+      RequiereCambiarPassword:1
     };
 
     console.log(params);

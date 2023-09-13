@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser'
 
 import { UsuariotableService } from '../../../../services/seguridad/usuariotable.service';
 
@@ -9,9 +10,13 @@ import { UsuariotableService } from '../../../../services/seguridad/usuariotable
   styleUrls: ['./cu-usuario-table.component.css']
 })
 export class CuUsuarioTableComponent implements OnInit {
+  previsualizacion:string;
+  archivos = [];
+
 
   constructor(
-    private usuarioTableService:UsuariotableService
+    private usuarioTableService:UsuariotableService,
+    private sanitizer:DomSanitizer
   ) { }
 
   ngOnInit() {
@@ -34,5 +39,36 @@ export class CuUsuarioTableComponent implements OnInit {
       }
     }
   }
+
+  catchFile(event){
+    const imagen = event.target.files[0];
+    console.log(event.target.files[0]);
+    this.extraerBase64(imagen).then(img => {
+      console.log(img);
+      this.previsualizacion = img.base;
+    });
+    this.archivos.push(imagen);
+  }
+
+  extraerBase64 = async($event:any) => new Promise((resolve,reject) => {
+    try{
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = ()=>{
+        resolve({
+          base:reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base:null
+        });
+      };
+    } catch (e) {
+      return null;
+    }
+  })
 
 }
