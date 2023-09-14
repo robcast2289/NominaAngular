@@ -48,7 +48,6 @@ export class ModuloComponent implements OnInit {
     this.spinner.show();
     this.moduloService.cargar_modulos()
     .subscribe(data => {
-      console.log(data);
       this.spinner.hide();
       this.entidad = data;
       this.entidadTable = this.entidad;
