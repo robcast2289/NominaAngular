@@ -22,7 +22,7 @@
                         <a *ngIf="menu.submenu.length > 0" href="#{{ menu.nombre }}Subsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{ menu.nombre }}</a>
                         <ul class="collapse list-unstyled" [ngClass]="{'show': menu.select}" id="{{ menu.nombre }}Subsubmenu" [attr.data-parent]="'#'+module.nombre+'Submenu'">
                             <li *ngFor="let opt of menu.submenu">
-                                <a routerLink="/{{opt.Ruta}}" routerLinkActive="active-link" (click)="changeOpt(opt.Opcion)" [ngClass]="{'show': opt.select}" data-toggle="tab">{{ opt.Opcion }}</a>
+                                <a routerLink="/{{opt.Ruta}}" routerLinkActive="active-link" (click)="changeOpt(opt.Opcion)" [ngClass]="{'show': opt.select}">{{ opt.Opcion }}</a>
                             </li>
                         </ul>
                     </li>

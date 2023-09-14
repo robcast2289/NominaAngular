@@ -6,7 +6,7 @@
               <button class="btn btn-raised btn-secondary form-control" data-toggle="modal" data-target="#moduloModal" (click)="limpiarForm()">Nuevo <i class="fa fa-plus"></i></button>
           </div>
           <div class="col-9 col-sm-9 col-md-9 col-lg-10">
-              <input type="search" class="form-control" placeholder="Buscar" (ngModelChange)="funcSearch($event)" [(ngModel)]="buscar">
+              <input type="search" class="form-control" placeholder="Buscar" name="Buscar" (ngModelChange)="funcSearch($event)" [(ngModel)]="buscar">
           </div>
       </div>
       <div class="card form-control-rc">
