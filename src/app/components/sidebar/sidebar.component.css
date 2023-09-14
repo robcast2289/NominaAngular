@@ -119,21 +119,30 @@ a:focus {
 }
 
 #sidebar ul li a {
-    color: inherit;
+    /* color: inherit; */
     padding: 10px;
     font-size: 1.1em;
     display: block;
 }
 
 #sidebar ul li a:hover {
-    color: #fff;
-    background: #7386D5;
+    color: #000000;
+    /* background: #7386D5; */
+    background: linear-gradient(to bottom, #c5b685 0%, #c5b086 51%, #d2cd91 100%);
 }
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
     background: #6d7fcc;
+}
+
+#sidebar ul li ul li ul li>a.active-link
+{
+    color: #fff;
+    /*background: #d0ce37;*/
+    background: linear-gradient(to bottom, #c2a440 0%, #c28e26 51%, #dece24 100%);
+    /* border-radius: 10px; */
 }
 
 a[data-toggle="collapse"] {
@@ -148,13 +157,25 @@ a[data-toggle="collapse"] {
     transform: translateY(-50%);
 }
 
+ul a {
+    font-size: 1.0em !important;
+    padding-left: 30px !important;
+    background: #1b1b1b;
+    background: -moz-linear-gradient(left, #000000 0%, #333333 51%, #505050 100%);
+    background: -webkit-linear-gradient(left, #000000 0%, #333333 51%, #505050 100%);
+    /* background: linear-gradient(to right, #000000 0%, #333333 51%, #505050 100%); */
+    background: linear-gradient(to bottom, #7f9cc5 0%, #8293bc 51%, #a9c0e7 100%);
+}
+
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
     background: #1b1b1b;
     background: -moz-linear-gradient(left, #000000 0%, #333333 51%, #505050 100%);
     background: -webkit-linear-gradient(left, #000000 0%, #333333 51%, #505050 100%);
-    background: linear-gradient(to right, #000000 0%, #333333 51%, #505050 100%);
+    /* background: linear-gradient(to right, #000000 0%, #333333 51%, #505050 100%); */
+    /* background: linear-gradient(to bottom, #2a2a2a 0%, #000000 51%, #505050 100%); */
+    background: linear-gradient(to bottom, #878787 0%, #767676 51%, #b1b1b1 100%);
 }
 
 ul ul ul a {
@@ -163,7 +184,10 @@ ul ul ul a {
     background: #1b1b1b;
     background: -moz-linear-gradient(left, #000000 0%, #333333 51%, #505050 100%);
     background: -webkit-linear-gradient(left, #000000 0%, #333333 51%, #505050 100%);
-    background: linear-gradient(to right, #391105 0%, #4e3629 51%, #505050 100%);
+    /* background: linear-gradient(to right, #391105 0%, #4e3629 51%, #505050 100%); */
+    /* background: linear-gradient(to bottom, #878787 0%, #767676 51%, #b1b1b1 100%); */
+    background: linear-gradient(to bottom, #c5c5c5 0%, #d8d7d7 51%, #e6e5e5 100%);
+    color: #000000;
 }
 
 ul.CTAs {

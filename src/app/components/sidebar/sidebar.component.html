@@ -16,13 +16,13 @@
             </li>
             <li *ngFor="let module of this.menuService.menu_all">
                 <a *ngIf="module.submenu.length > 0" href="#{{ module.nombre }}Submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{ module.nombre }}</a>
-                <ul class="collapse list-unstyled" id="{{ module.nombre }}Submenu">
+                <ul class="collapse list-unstyled" [ngClass]="{'show': module.select}" id="{{ module.nombre }}Submenu" data-parent="#sidebar" style="background: azure;">
                     <li *ngFor="let menu of module.submenu">
                         <!-- <a routerLink="/{{menu.ruta}}" routerLinkActive="active-link" (click)="changeOpt(menu.nombre)">{{ menu.nombre }}</a> -->
                         <a *ngIf="menu.submenu.length > 0" href="#{{ menu.nombre }}Subsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{ menu.nombre }}</a>
-                        <ul class="collapse list-unstyled" id="{{ menu.nombre }}Subsubmenu">
+                        <ul class="collapse list-unstyled" [ngClass]="{'show': menu.select}" id="{{ menu.nombre }}Subsubmenu" [attr.data-parent]="'#'+module.nombre+'Submenu'">
                             <li *ngFor="let opt of menu.submenu">
-                                <a routerLink="/{{opt.Ruta}}" routerLinkActive="active-link" (click)="changeOpt(opt.Opcion)">{{ opt.Opcion }}</a>
+                                <a routerLink="/{{opt.Ruta}}" routerLinkActive="active-link" (click)="changeOpt(opt.Opcion)" [ngClass]="{'show': opt.select}" data-toggle="tab">{{ opt.Opcion }}</a>
                             </li>
                         </ul>
                     </li>

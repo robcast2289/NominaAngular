@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -18,15 +19,29 @@ export class ModuloComponent implements OnInit {
   fieldSort: string;
   fieldSortDirection: string;
   entidadDelete = [];
+  Permisos:any = {
+    Alta:0,
+    Baja:0,
+    Cambio:0
+  }
 
   constructor(private spinner: NgxSpinnerService,
               private moduloService: ModuloService,
+              private router: Router,
               private menuService: MenuService) {
                 this.menuService.titleActive = 'Modulos';
                }
 
   ngOnInit() {
+    this.obtenerPermisos();
     this.obtenerModulos();
+  }
+
+  obtenerPermisos(){
+    this.menuService.permisosOpcion(this.moduloService.authService.credenciales.userId,this.router.url)
+    .subscribe(data=>{
+      this.Permisos = data;
+    });
   }
 
   obtenerModulos(){
@@ -70,6 +85,32 @@ export class ModuloComponent implements OnInit {
       Nombre: '',
       OrdenMenu: ''
     };
+  }
+
+
+  // Funcion para buscar
+  funcSearch(ev) {
+    const arrayBuscar = ev.toString().split(' ');
+
+    if (ev.length > 0) {
+      this.entidadTable = this.entidad.filter(proyecto => {
+        let respuesta: boolean;
+        for (const element in proyecto) {
+          if (proyecto[element] != null) {
+            arrayBuscar.forEach(palabra => {
+              if (palabra !== '') {
+                if (proyecto[element].toString().toLowerCase().indexOf(palabra.toString().toLowerCase()) !== -1) {
+                  respuesta = true;
+                }
+              }
+            });
+          }
+        }
+        return respuesta;
+      });
+    } else {
+      this.entidadTable = this.entidad;
+    }
   }
 
 }

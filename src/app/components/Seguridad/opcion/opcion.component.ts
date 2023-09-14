@@ -49,6 +49,9 @@ export class OpcionComponent implements OnInit {
     this.opcionService.eliminar_opciones(id)
     .subscribe(data => {
       this.spinner.hide();
+      if(this.opcionService.errorMessage){
+        this.myAlertTop();
+      }
       this.obtenerOpciones();
     });
   }
@@ -81,6 +84,14 @@ export class OpcionComponent implements OnInit {
     .subscribe(data => {
       this.opcionService.menus = data;
     });
+  }
+
+  myAlertTop(){
+    $(".myAlert-top").show();
+    setTimeout(function(){
+      $(".myAlert-top").hide();   
+      this.opcionService.errorMessage = "";    
+    }, 8000);    
   }
 
 }

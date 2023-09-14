@@ -31,6 +31,19 @@ export class SidebarComponent implements OnInit {
     .subscribe(data => {
       this.spinner.hide();
       if (typeof data.error !== 'undefined' && !data.error) {
+        const actualUrl = this.router.url;
+        let menuTree = data.opciones;
+        menuTree.forEach(modulo => {
+          modulo["submenu"].forEach(menu => {
+            menu["submenu"].forEach(opcion => {              
+              if(actualUrl.includes(opcion["Ruta"])){
+                modulo["select"] = true;
+                menu["select"] = true;
+                opcion["select"] = true;
+              }
+            });
+          });
+        });
         this.menuService.menu_all = data.opciones;
         console.log(data.opciones);
       } else {

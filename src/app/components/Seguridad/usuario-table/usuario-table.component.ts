@@ -23,7 +23,7 @@ export class UsuarioTableComponent implements OnInit {
   constructor(private spinner: NgxSpinnerService,
     private usuariotableService: UsuariotableService,
     private menuService: MenuService) {
-      this.menuService.titleActive = 'Usuario';
+      this.menuService.titleActive = 'Usuarios';
      }
 
      ngOnInit() {
@@ -95,9 +95,9 @@ export class UsuarioTableComponent implements OnInit {
         Password:null,
         Fotografia:null,
         UltimaFechaIngreso:null,
-        IntentosDeAcceso:null,
+        IntentosDeAcceso:0,
         UltimaFechaCambioPassword:null,
-        RequiereCambiarPassword:null
+        RequiereCambiarPassword:1
       };
     }
 

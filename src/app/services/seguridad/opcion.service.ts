@@ -23,6 +23,8 @@ export class OpcionService {
 
   menus = [];
 
+  errorMessage:string;
+
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   cargar_opciones() {    
@@ -37,14 +39,19 @@ export class OpcionService {
   }
 
   eliminar_opciones(id){
+    this.errorMessage = "";
     const url = `${this.basepath}seguridad/generales/opciones/${id}`;
 
     return this.http.delete(url)
-    .pipe(catchError(data => {
-      return of(data).pipe(
-        map(val => data.error)
-      );
-    }));
+    .pipe(
+      catchError(data => {
+        //data.error.mensaje
+        this.errorMessage = "No se pudo eliminar la opcion. \n\t Verifique que no este asociado a un Role"
+        return of(data).pipe(
+          map(val => data.error)
+        );
+      })
+    );
   }
 
   insertar_opciones(entidadForm){

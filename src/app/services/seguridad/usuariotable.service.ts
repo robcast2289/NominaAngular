@@ -35,6 +35,10 @@ export class UsuariotableService {
   status = [];
   generos = [];
   sucursales = [];
+  resetPass = [
+    {RequiereCambiarPassword:0,Nombre:"No"},
+    {RequiereCambiarPassword:1,Nombre:"Si"}
+  ];
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -79,7 +83,7 @@ export class UsuariotableService {
       UltimaFechaIngreso:"",
       IntentosDeAcceso:0,
       UltimaFechaCambioPassword:"",
-      RequiereCambiarPassword:1
+      RequiereCambiarPassword:entidadForm.RequiereCambiarPassword
     };
 
     const formData: FormData = new FormData();
@@ -118,7 +122,7 @@ export class UsuariotableService {
       UltimaFechaIngreso:"",
       IntentosDeAcceso:0,
       UltimaFechaCambioPassword:"",
-      RequiereCambiarPassword:1
+      RequiereCambiarPassword:entidadForm.RequiereCambiarPassword
     };
 
     const formData: FormData = new FormData();
