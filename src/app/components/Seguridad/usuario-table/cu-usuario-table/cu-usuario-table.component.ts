@@ -47,7 +47,7 @@ export class CuUsuarioTableComponent implements OnInit {
     //console.log(event.target.files[0]);
     this.extraerBase64(imagen).then(img => {
       //console.log(img);
-      this.usuarioTableService.selectEntidad.Fotografia = img.base;
+      this.usuarioTableService.selectEntidad.Fotografia = img["base"];
     });
     this.archivos.push(imagen);
     //console.log(this.archivos[0]);
