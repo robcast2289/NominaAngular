@@ -19,6 +19,10 @@ import { RolesComponent } from './components/Seguridad/roles/roles.component'
 import { RolesOpcionComponent } from './components/Seguridad/roles-opcion/roles-opcion.component'
 import { UsuarioTableComponent } from './components/Seguridad/usuario-table/usuario-table.component'
 import { UsuarioRoleComponent } from './components/Seguridad/usuario-role/usuario-role.component';
+import { EmpresaComponent } from './components/Seguridad/empresa/empresa.component';
+import { SucursalComponent } from './components/Seguridad/sucursal/sucursal.component';
+import { GeneroComponent } from './components/Seguridad/genero/genero.component';
+import { StatusUsuarioComponent } from './components/Seguridad/status-usuario/status-usuario.component';
 
 const routes: Routes = [
   {
@@ -47,18 +51,6 @@ const routes: Routes = [
         path: 'home',
         component: HomeComponent
       },
-      /* {
-        path: 'proyectos',
-        component: ProyectosComponent
-      },
-      {
-        path: 'accesos',
-        component: AccesosComponent
-      },
-      {
-        path: 'roles',
-        component: RolesComponent
-      }, */
       {
         path: 'seguridad/generales/modulos',
         component: ModuloComponent,
@@ -86,7 +78,23 @@ const routes: Routes = [
       {
         path: 'seguridad/generales/usuarios/:IdUsuario',
         component: UsuarioRoleComponent,
-      }
+      },
+      {
+        path: 'seguridad/generales/empresas',
+        component: EmpresaComponent,
+      },
+      {
+        path: 'seguridad/generales/sucursal',
+        component: SucursalComponent,
+      },
+      {
+        path: 'seguridad/generales/genero',
+        component: GeneroComponent,
+      },
+      {
+        path: 'seguridad/generales/status-usuario',
+        component: StatusUsuarioComponent,
+      },
     ]
   },  
   {

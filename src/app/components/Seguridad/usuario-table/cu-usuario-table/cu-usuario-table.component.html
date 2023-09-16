@@ -102,7 +102,12 @@
                   </div>
                   <div role="tabpanel" class="tab-pane fade" id="pass">
                     <div class="alert alert-info" role="alert">
-                      La contraseña debe complir con las siguietes características:
+                      La contraseña debe complir con las siguietes características: <br>
+                      Longitud minima: {{ this.usuarioTableService.empresa.PasswordLargo }} <br>
+                      Minimo mayusculas: {{ this.usuarioTableService.empresa.PasswordCantidadMayusculas }} <br>
+                      Minimo minusculas: {{ this.usuarioTableService.empresa.PasswordCantidadMinusculas }} <br>
+                      Minimo numeros: {{ this.usuarioTableService.empresa.PasswordCantidadNumeros }} <br>
+                      Minimo caracteres especiales: {{ this.usuarioTableService.empresa.PasswordCantidadCaracteresEspeciales }}
                     </div>
                     <div class="form-row">
                       <div class="form-group col-4">

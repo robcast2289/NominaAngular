@@ -19,7 +19,7 @@ export class ModuloService {
     OrdenMenu: ''
   };
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, public authService: AuthService) { }
 
   cargar_modulos() {    
     const url = `${this.basepath}seguridad/generales/modulos`;

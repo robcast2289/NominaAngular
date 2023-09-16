@@ -32,6 +32,8 @@ export class UsuariotableService {
     RequiereCambiarPassword:null
   };
 
+  errorMessage:string;
+
   status = [];
   generos = [];
   sucursales = [];
@@ -39,8 +41,9 @@ export class UsuariotableService {
     {RequiereCambiarPassword:0,Nombre:"No"},
     {RequiereCambiarPassword:1,Nombre:"Si"}
   ];
+  empresa = {}
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, public authService: AuthService) { }
 
   cargar_usuarios() {    
     const url = `${this.basepath}seguridad/generales/usuarios`;
@@ -65,7 +68,7 @@ export class UsuariotableService {
   }
 
   insertar_usuarios(entidadForm){
-    
+    this.errorMessage = "";
     const url = `${this.basepath}seguridad/generales/usuarios/${this.authService.credenciales.userId}`;
 
     const params = {
@@ -104,6 +107,7 @@ export class UsuariotableService {
   }
 
   actualizar_usuarios(entidadForm){
+    this.errorMessage = "";
     const id = entidadForm.IdUsuario;
     const url = `${this.basepath}seguridad/generales/usuarios/${this.authService.credenciales.userId}/${id}`;
 
@@ -130,6 +134,7 @@ export class UsuariotableService {
     console.log(params);
     return this.http.post(url, formData)
     .pipe(catchError(data => {
+      this.errorMessage = data.error.mensaje
       return of(data).pipe(
         map(val => data.error)
       );
@@ -160,6 +165,17 @@ export class UsuariotableService {
 
   cargar_sucursales(){
     const url = `${this.basepath}seguridad/generales/sucursal`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_empresa(){
+    const url = `${this.basepath}seguridad/generales/empresausuario/${this.authService.credenciales.userId}`;
 
     return this.http.get(url)
     .pipe(catchError(data => {

@@ -68,7 +68,7 @@ export class UsuarioTableComponent implements OnInit {
         IdSucursal:entidad.IdSucursal,
         TelefonoMovil:entidad.TelefonoMovil,
         CorreoElectronico:entidad.CorreoElectronico,
-        Password:entidad.Password,
+        Password:this.usuariotableService.authService.vigenereCipher(entidad.Password,this.usuariotableService.authService.key,"decrypt"),
         Fotografia:entidad.Fotografia,
         UltimaFechaIngreso:entidad.UltimaFechaIngreso,
         IntentosDeAcceso:entidad.IntentosDeAcceso,
@@ -81,6 +81,7 @@ export class UsuarioTableComponent implements OnInit {
       this.obtenerStatus();
       this.obtenerGeneros();
       this.obtenerSucursales();
+      this.obtenerEmpresa();
       this.usuariotableService.selectEntidad = {
         IdUsuario:null,
         UsuarioNuevo:null,
@@ -101,6 +102,14 @@ export class UsuarioTableComponent implements OnInit {
       };
     }
 
+    myAlertTop(){
+      $(".myAlert-top").show();
+      setTimeout(function(){
+        $(".myAlert-top").hide();   
+        this.opcionService.errorMessage = "";    
+      }, 8000);    
+    }
+
     obtenerStatus(){
       this.usuariotableService.cargar_status()
       .subscribe(data => {
@@ -119,6 +128,13 @@ export class UsuarioTableComponent implements OnInit {
       this.usuariotableService.cargar_sucursales()
       .subscribe(data => {
         this.usuariotableService.sucursales = data;
+      });
+    }
+
+    obtenerEmpresa(){
+      this.usuariotableService.cargar_empresa()
+      .subscribe(data => {
+        this.usuariotableService.empresa = data;
       });
     }
 

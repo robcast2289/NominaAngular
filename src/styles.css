@@ -33,8 +33,9 @@
     top: 5px; 
     left:2%;
     width: 96%;
+    z-index: 1075;
 }
 
-.alert{
+.myAlert-top{
     display: none;
 }

@@ -20,9 +20,9 @@ a:focus {
     transition: all 0.3s;
 }
 
-.navbar {
+.navbar{
     /* padding: 15px 10px; */
-    background: #fff;
+    background-color: #e0e0e0 !important; 
     border: none;
     border-radius: 0;
     /* margin-bottom: 40px; */
@@ -33,6 +33,8 @@ a:focus {
     box-shadow: none;
     outline: none !important;
     border: none;
+    border-radius: 5px;
+    background: linear-gradient(to left, #8a99b9 0%, #ebeff8 100%) !important;
 }
 
 .line {

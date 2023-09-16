@@ -30,13 +30,23 @@ export class CuUsuarioTableComponent implements OnInit {
         //this.usuarioTableService.insertar_usuarios(entidadForm.value,this.archivos)        
         this.usuarioTableService.insertar_usuarios(entidadForm.value)        
         .subscribe(data => {
-          location.reload();
+          if(this.usuarioTableService.errorMessage){
+            this.myAlertTop();
+          }
+          else{
+            location.reload();
+          }
         });
       } else {
         // actualizar
         this.usuarioTableService.actualizar_usuarios(entidadForm.value)        
         .subscribe(data => {
-          location.reload();
+          if(this.usuarioTableService.errorMessage){
+            this.myAlertTop();
+          }
+          else{
+            location.reload();
+          }
         });
       }
     }
@@ -73,5 +83,13 @@ export class CuUsuarioTableComponent implements OnInit {
       return null;
     }
   })
+
+  myAlertTop(){
+    $(".myAlert-top").show();
+    setTimeout(function(){
+      $(".myAlert-top").hide();   
+      this.usuarioTableService.errorMessage = "";    
+    }, 8000);    
+  }
 
 }

@@ -12,7 +12,7 @@
         <ul class="list-unstyled components">
             <!-- <p></p> -->
             <li>
-                <a routerLink="/home" routerLinkActive="active-link" (click)="changeOpt('Control Clientes')">Inicio</a>
+                <a routerLink="/home" routerLinkActive="active-link" (click)="changeOpt('Sistema Nomina')">Inicio</a>
             </li>
             <li *ngFor="let module of this.menuService.menu_all">
                 <a *ngIf="module.submenu.length > 0" href="#{{ module.nombre }}Submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{ module.nombre }}</a>
