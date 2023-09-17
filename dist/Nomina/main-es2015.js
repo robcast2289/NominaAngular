@@ -41,7 +41,7 @@ module.exports = "<div [@routeAnimation]=\"getAnimationData(routerOutlet)\">\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  cu-empresa works!\n</p>\n"
+module.exports = "<p>\n  cu-empresa works! Funciona\n</p>\n"
 
 /***/ }),
 
