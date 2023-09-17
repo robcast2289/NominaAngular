@@ -3130,8 +3130,8 @@ if (_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].produc
 }
 else {
     //URL_SERVER = 'http://localhost:8888/rest2/index.php/';
-    URL_SERVER = 'http://localhost:8080/';
-    //URL_SERVER = 'http://34.71.87.248:80/';
+    //URL_SERVER = 'http://localhost:8080/';
+    URL_SERVER = 'http://34.71.87.248:80/';
 }
 // Rutas
 const URL_SERVICES = URL_SERVER;
