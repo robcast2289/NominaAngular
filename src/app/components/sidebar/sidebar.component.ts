@@ -17,7 +17,7 @@ const $ = require('jquery');
 export class SidebarComponent implements OnInit {
 
   constructor(public menuService: MenuService,
-              private authService: AuthService,
+              public authService: AuthService,
               private router: Router,
               private spinner: NgxSpinnerService) {
     this.spinner.show();

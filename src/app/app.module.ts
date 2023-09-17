@@ -17,10 +17,10 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { ProyectosComponent } from './components/catalogos/proyectos/proyectos.component';
-import { CuProyModalComponent } from './components/catalogos/proyectos/cu-proy-modal/cu-proy-modal.component';
-import { AccesosComponent } from './components/administracion/accesos/accesos.component';
-import { CuAccesModalComponent } from './components/administracion/accesos/cu-acces-modal/cu-acces-modal.component';
+//import { ProyectosComponent } from './components/catalogos/proyectos/proyectos.component';
+//import { CuProyModalComponent } from './components/catalogos/proyectos/cu-proy-modal/cu-proy-modal.component';
+//import { AccesosComponent } from './components/administracion/accesos/accesos.component';
+//import { CuAccesModalComponent } from './components/administracion/accesos/cu-acces-modal/cu-acces-modal.component';
 //import { RolesComponent } from './components/administracion/roles/roles.component';
 
 import { Error404notFoundComponent } from './components/error404not-found/error404not-found.component';
@@ -55,19 +55,15 @@ import { CuEmpresaComponent } from './components/Seguridad/empresa/cu-empresa/cu
     LoginComponent,
     HomeComponent,
     SidebarComponent,
-    ProyectosComponent,
     Error404notFoundComponent,
     Error403forbiddenComponent,
-    CuProyModalComponent,
-    AccesosComponent,
-    CuAccesModalComponent,
-    RolesComponent,
     ModuloComponent,
     CuModuloComponent,
     MenusComponent,
     CuMenuComponent,
     OpcionComponent,
     CuOpcionComponent,
+    RolesComponent,
     CuRolesComponent,
     RolesOpcionComponent,
     CuRolesOpcionComponent,
