@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -19,15 +20,29 @@ export class UsuarioTableComponent implements OnInit {
   fieldSort: string;
   fieldSortDirection: string;
   entidadDelete = [];
+  Permisos:any = {
+    Alta:0,
+    Baja:0,
+    Cambio:0
+  }
 
   constructor(private spinner: NgxSpinnerService,
     private usuariotableService: UsuariotableService,
+    private router: Router,
     private menuService: MenuService) {
       this.menuService.titleActive = 'Usuarios';
      }
 
      ngOnInit() {
+      this.obtenerPermisos();
       this.obtenerUsuario()
+    }
+
+    obtenerPermisos(){
+      this.menuService.permisosOpcion(this.usuariotableService.authService.credenciales.userId,this.router.url)
+      .subscribe(data=>{
+        this.Permisos = data;
+      });
     }
   
     obtenerUsuario(){

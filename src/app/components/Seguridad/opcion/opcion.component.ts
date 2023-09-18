@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -18,15 +19,29 @@ export class OpcionComponent implements OnInit {
   fieldSort: string;
   fieldSortDirection: string;
   entidadDelete = [];
+  Permisos:any = {
+    Alta:0,
+    Baja:0,
+    Cambio:0
+  }
 
   constructor(private spinner: NgxSpinnerService,
     private opcionService: OpcionService,
+    private router: Router,
     private menuService: MenuService) {
       this.menuService.titleActive = 'Opciones';
      }
 
   ngOnInit() {
+    this.obtenerPermisos();
     this.obtenerOpciones();
+  }
+
+  obtenerPermisos(){
+    this.menuService.permisosOpcion(this.opcionService.authService.credenciales.userId,this.router.url)
+    .subscribe(data=>{
+      this.Permisos = data;
+    });
   }
 
   obtenerOpciones(){

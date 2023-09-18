@@ -1,3 +1,89 @@
-<p>
-  cu-empresa works! Funciona
-</p>
+<div class="modal fade" id="empresaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog  modal-xl" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel" class="text-success">{{ this.empresaService.selectEntidad.IdEmpresa ? 'Editar Empresa '+this.empresaService.selectEntidad.IdEmpresa : 'Nuevo Empresa' }}</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form action="" #entidadForm="ngForm" (ngSubmit)="guardarEntidad(entidadForm)">
+                  <input type="hidden" id="IdEmpresa" name="IdEmpresa" class="form-control" [(ngModel)]="this.empresaService.selectEntidad.IdEmpresa">
+                  <!-- <strong><label for="" class="form-control text-primary subtitle">Información General</label></strong> -->
+
+                  <div class="form-row">
+                    <div class="form-group col-4">
+                        <label for="nombre" class="bmd-label-floating">Nombre Empresa</label>
+                        <input type="text" id="Nombre" name="Nombre" #Nombre="ngModel" class="form-control" required="" [(ngModel)]="this.empresaService.selectEntidad.Nombre">
+                        <small class="text-warning" *ngIf="entidadForm.submitted && Nombre.invalid">Campo requerido</small>
+                    </div>   
+                    <div class="form-group col-4">
+                      <label for="Direccion" class="bmd-label-floating">Direccion</label>
+                      <input type="text" id="Direccion" name="Direccion" #Direccion="ngModel" class="form-control" required="" [(ngModel)]="this.empresaService.selectEntidad.Direccion">
+                      <small class="text-warning" *ngIf="entidadForm.submitted && Direccion.invalid">Campo requerido</small>
+                    </div> 
+                    <div class="form-group col-4">
+                      <label for="Nit" class="bmd-label-floating">Nit</label>
+                      <input type="text" id="Nit" name="Nit" #Nit="ngModel" class="form-control" required="" [(ngModel)]="this.empresaService.selectEntidad.Nit">
+                      <small class="text-warning" *ngIf="entidadForm.submitted && Nit.invalid">Campo requerido</small>
+                    </div>                 
+                  </div>
+                  <br>
+                  <strong><label for="" class="form-control text-primary subtitle">Validación de caracteres para Contraseña</label></strong>
+                  <div class="form-row">
+                    <div class="form-group col-2">
+                        <label for="PasswordLargo" class="bmd-label-floating">Longitud</label>
+                        <input type="number" id="PasswordLargo" name="PasswordLargo" #PasswordLargo="ngModel" class="form-control" required="" [(ngModel)]="this.empresaService.selectEntidad.PasswordLargo">
+                        <small class="text-warning" *ngIf="entidadForm.submitted && PasswordLargo.invalid">Campo requerido</small>
+                    </div>   
+                    <div class="form-group col-2">
+                      <label for="PasswordCantidadMayusculas" class="bmd-label-floating">Mayusculas</label>
+                      <input type="number" id="PasswordCantidadMayusculas" name="PasswordCantidadMayusculas" #PasswordCantidadMayusculas="ngModel" class="form-control" required="" [(ngModel)]="this.empresaService.selectEntidad.PasswordCantidadMayusculas">
+                      <small class="text-warning" *ngIf="entidadForm.submitted && PasswordCantidadMayusculas.invalid">Campo requerido</small>
+                    </div> 
+                    <div class="form-group col-2">
+                      <label for="PasswordCantidadMinusculas" class="bmd-label-floating">Minusculas</label>
+                      <input type="number" id="PasswordCantidadMinusculas" name="PasswordCantidadMinusculas" #PasswordCantidadMinusculas="ngModel" class="form-control" required="" [(ngModel)]="this.empresaService.selectEntidad.PasswordCantidadMinusculas">
+                      <small class="text-warning" *ngIf="entidadForm.submitted && PasswordCantidadMinusculas.invalid">Campo requerido</small>
+                    </div>    
+                    <div class="form-group col-2">
+                      <label for="PasswordCantidadNumeros" class="bmd-label-floating">Números</label>
+                      <input type="number" id="PasswordCantidadNumeros" name="PasswordCantidadNumeros" #PasswordCantidadNumeros="ngModel" class="form-control" required="" [(ngModel)]="this.empresaService.selectEntidad.PasswordCantidadNumeros">
+                      <small class="text-warning" *ngIf="entidadForm.submitted && PasswordCantidadNumeros.invalid">Campo requerido</small>
+                    </div>
+                    <div class="form-group col-2">
+                      <label for="PasswordCantidadCaracteresEspeciales" class="bmd-label-floating">Epeciales</label>
+                      <input type="number" id="PasswordCantidadCaracteresEspeciales" name="PasswordCantidadCaracteresEspeciales" #PasswordCantidadCaracteresEspeciales="ngModel" class="form-control" required="" [(ngModel)]="this.empresaService.selectEntidad.PasswordCantidadCaracteresEspeciales">
+                      <small class="text-warning" *ngIf="entidadForm.submitted && PasswordCantidadCaracteresEspeciales.invalid">Campo requerido</small>
+                    </div>             
+                  </div>
+                  <br>
+                  <strong><label for="" class="form-control text-primary subtitle">Bloqueo y restablecimiento de Contraseña</label></strong>
+                  <div class="form-row">
+                    <div class="form-group col-2">
+                        <label for="PasswordIntentosAntesDeBloquear" class="bmd-label-floating">Fallidos permitidos para bloquear</label>
+                        <input type="number" id="PasswordIntentosAntesDeBloquear" name="PasswordIntentosAntesDeBloquear" #PasswordIntentosAntesDeBloquear="ngModel" class="form-control" required="" [(ngModel)]="this.empresaService.selectEntidad.PasswordIntentosAntesDeBloquear">
+                        <small class="text-warning" *ngIf="entidadForm.submitted && PasswordIntentosAntesDeBloquear.invalid">Campo requerido</small>
+                    </div>   
+                    <div class="form-group col-2">
+                      <label for="PasswordCantidadCaducidadDias" class="bmd-label-floating">Dias para cambiar contraseña</label>
+                      <input type="number" id="PasswordCantidadCaducidadDias" name="PasswordCantidadCaducidadDias" #PasswordCantidadCaducidadDias="ngModel" class="form-control" required="" [(ngModel)]="this.empresaService.selectEntidad.PasswordCantidadCaducidadDias">
+                      <small class="text-warning" *ngIf="entidadForm.submitted && PasswordCantidadCaducidadDias.invalid">Campo requerido</small>
+                    </div> 
+                    <div class="form-group col-2">
+                      <label for="PasswordCantidadPreguntasValidar" class="bmd-label-floating">Cantidad de preguntas de verificación</label>
+                      <input type="number" id="PasswordCantidadPreguntasValidar" name="PasswordCantidadPreguntasValidar" #PasswordCantidadPreguntasValidar="ngModel" class="form-control" required="" [(ngModel)]="this.empresaService.selectEntidad.PasswordCantidadPreguntasValidar">
+                      <small class="text-warning" *ngIf="entidadForm.submitted && PasswordCantidadPreguntasValidar.invalid">Campo requerido</small>
+                    </div>                                    
+                  </div>
+                  
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button> &nbsp;
+                      <button type="submit" class="btn btn-raised btn-success">Guardar <i class="fa fa-save"></i></button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

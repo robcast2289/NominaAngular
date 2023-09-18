@@ -25,7 +25,7 @@ export class OpcionService {
 
   errorMessage:string;
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, public authService: AuthService) { }
 
   cargar_opciones() {    
     const url = `${this.basepath}seguridad/generales/opciones`;

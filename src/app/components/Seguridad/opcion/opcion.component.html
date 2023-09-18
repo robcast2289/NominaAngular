@@ -2,7 +2,7 @@
   <div class="container">
       <div class="col-sx-12 col-sm-6 col-md-4"></div>      
       <div class="row" style="margin-top: 20px">
-          <div class="col-3 col-sm-3 col-md-3 col-lg-2">
+          <div class="col-3 col-sm-3 col-md-3 col-lg-2" *ngIf="Permisos.Alta == 1">
               <button class="btn btn-raised btn-secondary form-control" data-toggle="modal" data-target="#opcionModal" (click)="limpiarForm()">Nuevo <i class="fa fa-plus"></i></button>
           </div>
           <div class="col-9 col-sm-9 col-md-9 col-lg-10">
@@ -18,8 +18,8 @@
                       <th scope="col" data-toggle="nombre" (click)="funcSort($event)">Nombre <i class="{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
                       <th scope="col" data-toggle="orden" (click)="funcSort($event)">Orden <i class="{{ 'valortipocambio' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
                       <th scope="col" data-toggle="pagina" (click)="funcSort($event)">Pagina <i class="{{ 'valortipocambio' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
-                      <th scope="col">&nbsp;</th>
-                      <th scope="col">&nbsp;</th>
+                      <th scope="col" *ngIf="this.Permisos.Cambio == 1">&nbsp;</th>
+                      <th scope="col" *ngIf="this.Permisos.Baja == 1">&nbsp;</th>
                   </tr>
               </thead>
               <tbody>
@@ -30,10 +30,10 @@
                       <td>{{ entidad.Nombre }}</td>
                       <td>{{ entidad.OrdenMenu }}</td>
                       <td>{{ entidad.Pagina }}</td>
-                      <td data-toggle="modal" data-target="#opcionModal" (click)="preActualizarEntidad(entidad)">
+                      <td data-toggle="modal" data-target="#opcionModal" (click)="preActualizarEntidad(entidad)" *ngIf="this.Permisos.Cambio == 1">
                           <i class="fa fa-edit text-primary"></i>
                       </td>
-                      <td data-toggle="modal" data-target="#alertModal" (click)="setEntidadDel(entidad)">
+                      <td data-toggle="modal" data-target="#alertModal" (click)="setEntidadDel(entidad)" *ngIf="this.Permisos.Baja == 1">
                           <i class="fa fa-trash text-danger"></i>
                       </td>
                   </tr>

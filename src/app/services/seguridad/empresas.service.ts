@@ -78,7 +78,7 @@ export class EmpresasService {
   }
 
   actualizar_empresa(empresaForm){
-    const id = empresaForm.Idempresa;
+    const id = empresaForm.IdEmpresa;
     const url = `${this.basepath}seguridad/generales/empresa/${this.authService.credenciales.userId}/${id}`;
 
     const params = {

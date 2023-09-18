@@ -22,7 +22,7 @@ export class MenuTableService {
 
   modulos = [];
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, public authService: AuthService) { }
 
   cargar_menus() {    
     const url = `${this.basepath}seguridad/generales/menus`;
