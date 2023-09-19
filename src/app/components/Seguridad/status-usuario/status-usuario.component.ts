@@ -58,4 +58,29 @@ export class StatusUsuarioComponent implements OnInit {
     this.entidadDelete = entidad;
   }
 
+  eliminarEntidad(id: string) {
+    this.entidadDelete = [];
+    this.spinner.show();
+    this.statusUsuarioService.eliminar_status_usuario(id)
+    .subscribe(data => {
+      this.spinner.hide();
+      this.obtenerStatusUsuario();
+    });
+  }
+
+  preActualizarEntidad(entidad) {
+    this.limpiarForm();
+    this.statusUsuarioService.selectEntidad = {
+      IdStatusUsuario: entidad.IdStatusUsuario,
+      Nombre: entidad.Nombre
+    };
+  }
+
+  limpiarForm() {
+    this.statusUsuarioService.selectEntidad = {
+      IdStatusUsuario: null,
+      Nombre: ''
+    };
+  }
+
 }

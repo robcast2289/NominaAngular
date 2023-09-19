@@ -30,4 +30,46 @@ export class EstadousuarioService {
       );
     }));
   }
+
+  eliminar_status_usuario(id){
+    const url = `${this.basepath}seguridad/generales/statususuario/${id}`;
+
+    return this.http.delete(url)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  insertar_status_usuario(entidadForm){
+    const url = `${this.basepath}seguridad/generales/statususuario/${this.authService.credenciales.userId}`;
+
+    const params = {
+      Nombre: entidadForm.Nombre
+    };
+
+    return this.http.put(url, params)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  actualizar_status_usuario(entidadForm){
+    const id = entidadForm.IdStatusUsuario;
+    const url = `${this.basepath}seguridad/generales/statususuario/${this.authService.credenciales.userId}/${id}`;
+
+    const params = {
+      Nombre: entidadForm.Nombre
+    };
+
+    return this.http.post(url, params)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
 }
