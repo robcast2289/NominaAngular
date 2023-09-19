@@ -3200,8 +3200,8 @@ if (_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].produc
 }
 else {
     //URL_SERVER = 'http://localhost:8888/rest2/index.php/';
-    URL_SERVER = 'http://localhost:8080/';
-    //URL_SERVER = 'http://34.71.87.248:80/';
+    //URL_SERVER = 'http://localhost:8080/';
+    URL_SERVER = 'http://34.71.87.248:80/';
 }
 // Rutas
 const URL_SERVICES = URL_SERVER;
@@ -4481,7 +4481,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/robertocastro/myreposotories/NominaAngular/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/roberto/Projects/angular/NominaAngular/src/main.ts */"./src/main.ts");
 
 
 /***/ })
