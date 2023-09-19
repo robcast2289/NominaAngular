@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Location } from '@angular/common';
+
+import { GenerosService } from '../../../../services/seguridad/generos.service';
 
 @Component({
   selector: 'app-cu-genero',
@@ -7,9 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CuGeneroComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private generoService:GenerosService
+  ) { }
 
   ngOnInit() {
+  }
+
+  guardarEntidad(entidadForm: NgForm) {
+    if (entidadForm.valid) {
+      if (entidadForm.value.IdGenero == null) {
+        // Nuevo
+        this.generoService.insertar_generos(entidadForm.value)        
+        .subscribe(data => {
+          location.reload();
+        });
+      } else {
+        // actualizar
+        this.generoService.actualizar_generos(entidadForm.value)        
+        .subscribe(data => {
+          location.reload();
+        });
+      }
+    }
   }
 
 }
