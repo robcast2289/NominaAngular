@@ -58,4 +58,42 @@ export class SucursalComponent implements OnInit {
     this.entidadDelete = entidad;
   }
 
+  eliminarEntidad(id: string) {
+    this.entidadDelete = [];
+    this.spinner.show();
+    this.sucursalService.eliminar_sucursal(id)
+    .subscribe(data => {
+      this.spinner.hide();
+      this.obtenerSucursales();
+    });
+  }
+
+  preActualizarEntidad(entidad) {
+    //this.proyService.selectProyecto = Object.assign(proyecto);
+    this.limpiarForm();
+    this.sucursalService.selectEntidad = {
+      IdSucursal:entidad.IdSucursal,
+      Nombre:entidad.Nombre,
+      Direccion:entidad.Direccion,
+      IdEmpresa:entidad.IdEmpresa
+    };
+  }
+
+  limpiarForm() {
+    this.obtenerEmpresas();
+    this.sucursalService.selectEntidad = {
+      IdSucursal:null,
+      Nombre:null,
+      Direccion:null,
+      IdEmpresa:null
+    };
+  }
+
+  obtenerEmpresas(){
+    this.sucursalService.cargar_empresas()
+    .subscribe(data => {
+      this.sucursalService.empresas = data;
+    });
+  }
+
 }
