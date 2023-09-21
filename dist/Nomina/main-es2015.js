@@ -63,7 +63,7 @@ module.exports = "<section id=\"empresas\">\n  <div class=\"container\">\n      
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  cu-genero works!\n</p>\n"
+module.exports = "<div class=\"modal fade\" id=\"generoModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\" data-backdrop=\"false\">\n  <div class=\"modal-dialog  modal-xl\" role=\"document\">\n      <div class=\"modal-content\">\n          <div class=\"modal-header\">\n              <h3 class=\"modal-title\" id=\"exampleModalLabel\" class=\"text-success\">{{ this.generoService.selectEntidad.IdGenero ? 'Editar Genero '+this.generoService.selectEntidad.IdGenero : 'Nuevo Genero' }}</h3>\n              <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                <span aria-hidden=\"true\">&times;</span>\n              </button>\n          </div>\n          <div class=\"modal-body\">\n              <form action=\"\" #entidadForm=\"ngForm\" (ngSubmit)=\"guardarEntidad(entidadForm)\">\n                  <input type=\"hidden\" id=\"IdGenero\" name=\"IdGenero\" class=\"form-control\" [(ngModel)]=\"this.generoService.selectEntidad.IdGenero\">\n                  <!-- <strong><label for=\"\" class=\"form-control text-primary subtitle\">Información General</label></strong> -->\n\n                  <div class=\"form-row\">\n                      <div class=\"form-group col-12\">\n                          <label for=\"Nombre\" class=\"bmd-label-floating\">Nombre Genero</label>\n                          <input type=\"text\" id=\"Nombre\" name=\"Nombre\" #Nombre=\"ngModel\" class=\"form-control\" required=\"\" [(ngModel)]=\"this.generoService.selectEntidad.Nombre\">\n                          <small class=\"text-warning\" *ngIf=\"entidadForm.submitted && Nombre.invalid\">Campo requerido</small>\n                      </div>                   \n                  </div>\n                  \n                  <div class=\"modal-footer\">\n                      <button type=\"button\" class=\"btn btn-raised btn-danger\" data-dismiss=\"modal\">Cancelar <i class=\"fa fa-times\"></i></button> &nbsp;\n                      <button type=\"submit\" class=\"btn btn-raised btn-success\">Guardar <i class=\"fa fa-save\"></i></button>\n                  </div>\n              </form>\n          </div>\n      </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -74,7 +74,7 @@ module.exports = "<p>\n  cu-genero works!\n</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<section id=\"generos\">\n  <div class=\"container\">\n      <div class=\"col-sx-12 col-sm-6 col-md-4\"></div>\n      <div class=\"row\" style=\"margin-top: 20px\">\n          <div class=\"col-3 col-sm-3 col-md-3 col-lg-2\" *ngIf=\"Permisos.Alta == 1\">\n              <button class=\"btn btn-raised btn-secondary form-control\" data-toggle=\"modal\" data-target=\"#moduloModal\" (click)=\"limpiarForm()\">Nuevo <i class=\"fa fa-plus\"></i></button>\n          </div>\n          <div class=\"col-9 col-sm-9 col-md-9 col-lg-10\">\n              <input type=\"search\" class=\"form-control\" placeholder=\"Buscar\" name=\"Buscar\" (ngModelChange)=\"funcSearch($event)\" [(ngModel)]=\"buscar\">\n          </div>\n      </div>\n      <div class=\"card form-control-rc\">\n          <table class=\"table table-hover table-striped\">\n              <thead>\n                  <tr>\n                      <th scope=\"col\" data-toggle=\"IdGenero\" (click)=\"funcSort($event)\">Código <i class=\"{{ 'idproyecto' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}\"></i></th>\n                      <th scope=\"col\" data-toggle=\"Nombre\" (click)=\"funcSort($event)\">Nombre <i class=\"{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}\"></i></th>            \n                      <th scope=\"col\" *ngIf=\"this.Permisos.Cambio == 1\">&nbsp;</th>\n                      <th scope=\"col\" *ngIf=\"this.Permisos.Baja == 1\">&nbsp;</th>\n                  </tr>\n              </thead>\n              <tbody>\n                  <tr *ngFor=\"let entidad of entidadTable | paginate: { itemsPerPage: 10, currentPage: page }\">\n                      <td>{{ entidad.IdGenero }}</td>\n                      <td>{{ entidad.Nombre }}</td>\n                      <td data-toggle=\"modal\" data-target=\"#moduloModal\" (click)=\"preActualizarEntidad(entidad)\" *ngIf=\"this.Permisos.Cambio == 1\">\n                          <i class=\"fa fa-edit text-primary\"></i>\n                      </td>\n                      <td data-toggle=\"modal\" data-target=\"#alertModal\" (click)=\"setEntidadDel(entidad)\" *ngIf=\"this.Permisos.Baja == 1\">\n                          <i class=\"fa fa-trash text-danger\"></i>\n                      </td>\n                  </tr>\n              </tbody>\n          </table>\n          <pagination-controls (pageChange)=\"page = $event\" previousLabel=\"Anterior\" nextLabel=\"Siguiente\" autoHide=\"true\">\n          </pagination-controls>\n      </div>\n  </div>\n</section>\n\n<!-- Modal Alert -->\n<div class=\"modal fade\" id=\"alertModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\" data-backdrop=\"false\">\n  <div class=\"modal-dialog  modal-md\" role=\"document\">\n      <div class=\"modal-content modal-alert\">\n          <div class=\"modal-body\">\n              Confirma que desea eliminar el modulo {{ this.entidadDelete.Nombre }}?\n              <hr>\n              <div class=\"row text-center\">\n                  <button type=\"button\" class=\"btn btn-secondary btn-sm col-4 offset-1\" data-dismiss=\"modal\">Cancelar <i class=\"fa fa-times\"></i></button>\n                  <button type=\"button\" class=\"btn btn-danger btn-sm col-4 offset-2\" data-dismiss=\"modal\" (click)=\"eliminarEntidad(this.entidadDelete.IdGenero)\">Eliminar <i class=\"fa fa-trash\"></i></button>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>\n\n<app-cu-genero></app-cu-genero>"
+module.exports = "<section id=\"generos\">\n  <div class=\"container\">\n      <div class=\"col-sx-12 col-sm-6 col-md-4\"></div>\n      <div class=\"row\" style=\"margin-top: 20px\">\n          <div class=\"col-3 col-sm-3 col-md-3 col-lg-2\" *ngIf=\"Permisos.Alta == 1\">\n              <button class=\"btn btn-raised btn-secondary form-control\" data-toggle=\"modal\" data-target=\"#generoModal\" (click)=\"limpiarForm()\">Nuevo <i class=\"fa fa-plus\"></i></button>\n          </div>\n          <div class=\"col-9 col-sm-9 col-md-9 col-lg-10\">\n              <input type=\"search\" class=\"form-control\" placeholder=\"Buscar\" name=\"Buscar\" (ngModelChange)=\"funcSearch($event)\" [(ngModel)]=\"buscar\">\n          </div>\n      </div>\n      <div class=\"card form-control-rc\">\n          <table class=\"table table-hover table-striped\">\n              <thead>\n                  <tr>\n                      <th scope=\"col\" data-toggle=\"IdGenero\" (click)=\"funcSort($event)\">Código <i class=\"{{ 'idproyecto' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}\"></i></th>\n                      <th scope=\"col\" data-toggle=\"Nombre\" (click)=\"funcSort($event)\">Nombre <i class=\"{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}\"></i></th>            \n                      <th scope=\"col\" *ngIf=\"this.Permisos.Cambio == 1\">&nbsp;</th>\n                      <th scope=\"col\" *ngIf=\"this.Permisos.Baja == 1\">&nbsp;</th>\n                  </tr>\n              </thead>\n              <tbody>\n                  <tr *ngFor=\"let entidad of entidadTable | paginate: { itemsPerPage: 10, currentPage: page }\">\n                      <td>{{ entidad.IdGenero }}</td>\n                      <td>{{ entidad.Nombre }}</td>\n                      <td data-toggle=\"modal\" data-target=\"#generoModal\" (click)=\"preActualizarEntidad(entidad)\" *ngIf=\"this.Permisos.Cambio == 1\">\n                          <i class=\"fa fa-edit text-primary\"></i>\n                      </td>\n                      <td data-toggle=\"modal\" data-target=\"#alertModal\" (click)=\"setEntidadDel(entidad)\" *ngIf=\"this.Permisos.Baja == 1\">\n                          <i class=\"fa fa-trash text-danger\"></i>\n                      </td>\n                  </tr>\n              </tbody>\n          </table>\n          <pagination-controls (pageChange)=\"page = $event\" previousLabel=\"Anterior\" nextLabel=\"Siguiente\" autoHide=\"true\">\n          </pagination-controls>\n      </div>\n  </div>\n</section>\n\n<!-- Modal Alert -->\n<div class=\"modal fade\" id=\"alertModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\" data-backdrop=\"false\">\n  <div class=\"modal-dialog  modal-md\" role=\"document\">\n      <div class=\"modal-content modal-alert\">\n          <div class=\"modal-body\">\n              Confirma que desea eliminar el modulo {{ this.entidadDelete.Nombre }}?\n              <hr>\n              <div class=\"row text-center\">\n                  <button type=\"button\" class=\"btn btn-secondary btn-sm col-4 offset-1\" data-dismiss=\"modal\">Cancelar <i class=\"fa fa-times\"></i></button>\n                  <button type=\"button\" class=\"btn btn-danger btn-sm col-4 offset-2\" data-dismiss=\"modal\" (click)=\"eliminarEntidad(this.entidadDelete.IdGenero)\">Eliminar <i class=\"fa fa-trash\"></i></button>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>\n\n<app-cu-genero></app-cu-genero>"
 
 /***/ }),
 
@@ -195,7 +195,7 @@ module.exports = "<section id=\"opciones\">\n  <div class=\"container\">\n      
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  cu-status-usuario works!\n</p>\n"
+module.exports = "<div class=\"modal fade\" id=\"statusUsuarioModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\" data-backdrop=\"false\">\n  <div class=\"modal-dialog  modal-xl\" role=\"document\">\n      <div class=\"modal-content\">\n          <div class=\"modal-header\">\n              <h3 class=\"modal-title\" id=\"exampleModalLabel\" class=\"text-success\">{{ this.statusUsuarioService.selectEntidad.IdStatusUsuario ? 'Editar Estado de Usuario '+this.statusUsuarioService.selectEntidad.IdStatusUsuario : 'Nuevo Estado de Usuario' }}</h3>\n              <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                <span aria-hidden=\"true\">&times;</span>\n              </button>\n          </div>\n          <div class=\"modal-body\">\n              <form action=\"\" #entidadForm=\"ngForm\" (ngSubmit)=\"guardarEntidad(entidadForm)\">\n                  <input type=\"hidden\" id=\"IdStatusUsuario\" name=\"IdStatusUsuario\" class=\"form-control\" [(ngModel)]=\"this.statusUsuarioService.selectEntidad.IdStatusUsuario\">\n                  <!-- <strong><label for=\"\" class=\"form-control text-primary subtitle\">Información General</label></strong> -->\n\n                  <div class=\"form-row\">\n                      <div class=\"form-group col-12\">\n                          <label for=\"Nombre\" class=\"bmd-label-floating\">Nombre Estado de Usuario</label>\n                          <input type=\"text\" id=\"Nombre\" name=\"Nombre\" #Nombre=\"ngModel\" class=\"form-control\" required=\"\" [(ngModel)]=\"this.statusUsuarioService.selectEntidad.Nombre\">\n                          <small class=\"text-warning\" *ngIf=\"entidadForm.submitted && Nombre.invalid\">Campo requerido</small>\n                      </div>                   \n                  </div>\n                  \n                  <div class=\"modal-footer\">\n                      <button type=\"button\" class=\"btn btn-raised btn-danger\" data-dismiss=\"modal\">Cancelar <i class=\"fa fa-times\"></i></button> &nbsp;\n                      <button type=\"submit\" class=\"btn btn-raised btn-success\">Guardar <i class=\"fa fa-save\"></i></button>\n                  </div>\n              </form>\n          </div>\n      </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -206,7 +206,7 @@ module.exports = "<p>\n  cu-status-usuario works!\n</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<section id=\"empresas\">\n  <div class=\"container\">\n      <div class=\"col-sx-12 col-sm-6 col-md-4\"></div>\n      <div class=\"row\" style=\"margin-top: 20px\">\n          <div class=\"col-3 col-sm-3 col-md-3 col-lg-2\" *ngIf=\"Permisos.Alta == 1\">\n              <button class=\"btn btn-raised btn-secondary form-control\" data-toggle=\"modal\" data-target=\"#moduloModal\" (click)=\"limpiarForm()\">Nuevo <i class=\"fa fa-plus\"></i></button>\n          </div>\n          <div class=\"col-9 col-sm-9 col-md-9 col-lg-10\">\n              <input type=\"search\" class=\"form-control\" placeholder=\"Buscar\" name=\"Buscar\" (ngModelChange)=\"funcSearch($event)\" [(ngModel)]=\"buscar\">\n          </div>\n      </div>\n      <div class=\"card form-control-rc\">\n          <table class=\"table table-hover table-striped\">\n              <thead>\n                  <tr>\n                      <th scope=\"col\" data-toggle=\"IdStatusUsuario\" (click)=\"funcSort($event)\">Código <i class=\"{{ 'idproyecto' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}\"></i></th>\n                      <th scope=\"col\" data-toggle=\"Nombre\" (click)=\"funcSort($event)\">Nombre <i class=\"{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}\"></i></th>                      \n                      <th scope=\"col\" *ngIf=\"this.Permisos.Cambio == 1\">&nbsp;</th>\n                      <th scope=\"col\" *ngIf=\"this.Permisos.Baja == 1\">&nbsp;</th>\n                  </tr>\n              </thead>\n              <tbody>\n                  <tr *ngFor=\"let entidad of entidadTable | paginate: { itemsPerPage: 10, currentPage: page }\">\n                      <td>{{ entidad.IdStatusUsuario }}</td>\n                      <td>{{ entidad.Nombre }}</td>\n                      <td data-toggle=\"modal\" data-target=\"#moduloModal\" (click)=\"preActualizarEntidad(entidad)\" *ngIf=\"this.Permisos.Cambio == 1\">\n                          <i class=\"fa fa-edit text-primary\"></i>\n                      </td>\n                      <td data-toggle=\"modal\" data-target=\"#alertModal\" (click)=\"setEntidadDel(entidad)\" *ngIf=\"this.Permisos.Baja == 1\">\n                          <i class=\"fa fa-trash text-danger\"></i>\n                      </td>\n                  </tr>\n              </tbody>\n          </table>\n          <pagination-controls (pageChange)=\"page = $event\" previousLabel=\"Anterior\" nextLabel=\"Siguiente\" autoHide=\"true\">\n          </pagination-controls>\n      </div>\n  </div>\n</section>\n\n<!-- Modal Alert -->\n<div class=\"modal fade\" id=\"alertModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\" data-backdrop=\"false\">\n  <div class=\"modal-dialog  modal-md\" role=\"document\">\n      <div class=\"modal-content modal-alert\">\n          <div class=\"modal-body\">\n              Confirma que desea eliminar el modulo {{ this.entidadDelete.Nombre }}?\n              <hr>\n              <div class=\"row text-center\">\n                  <button type=\"button\" class=\"btn btn-secondary btn-sm col-4 offset-1\" data-dismiss=\"modal\">Cancelar <i class=\"fa fa-times\"></i></button>\n                  <button type=\"button\" class=\"btn btn-danger btn-sm col-4 offset-2\" data-dismiss=\"modal\" (click)=\"eliminarEntidad(this.entidadDelete.IdStatusUsuario)\">Eliminar <i class=\"fa fa-trash\"></i></button>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>\n\n<app-cu-status-usuario></app-cu-status-usuario>"
+module.exports = "<section id=\"statususuario\">\n  <div class=\"container\">\n      <div class=\"col-sx-12 col-sm-6 col-md-4\"></div>\n      <div class=\"row\" style=\"margin-top: 20px\">\n          <div class=\"col-3 col-sm-3 col-md-3 col-lg-2\" *ngIf=\"Permisos.Alta == 1\">\n              <button class=\"btn btn-raised btn-secondary form-control\" data-toggle=\"modal\" data-target=\"#statusUsuarioModal\" (click)=\"limpiarForm()\">Nuevo <i class=\"fa fa-plus\"></i></button>\n          </div>\n          <div class=\"col-9 col-sm-9 col-md-9 col-lg-10\">\n              <input type=\"search\" class=\"form-control\" placeholder=\"Buscar\" name=\"Buscar\" (ngModelChange)=\"funcSearch($event)\" [(ngModel)]=\"buscar\">\n          </div>\n      </div>\n      <div class=\"card form-control-rc\">\n          <table class=\"table table-hover table-striped\">\n              <thead>\n                  <tr>\n                      <th scope=\"col\" data-toggle=\"IdStatusUsuario\" (click)=\"funcSort($event)\">Código <i class=\"{{ 'idproyecto' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}\"></i></th>\n                      <th scope=\"col\" data-toggle=\"Nombre\" (click)=\"funcSort($event)\">Nombre <i class=\"{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}\"></i></th>                      \n                      <th scope=\"col\" *ngIf=\"this.Permisos.Cambio == 1\">&nbsp;</th>\n                      <th scope=\"col\" *ngIf=\"this.Permisos.Baja == 1\">&nbsp;</th>\n                  </tr>\n              </thead>\n              <tbody>\n                  <tr *ngFor=\"let entidad of entidadTable | paginate: { itemsPerPage: 10, currentPage: page }\">\n                      <td>{{ entidad.IdStatusUsuario }}</td>\n                      <td>{{ entidad.Nombre }}</td>\n                      <td data-toggle=\"modal\" data-target=\"#statusUsuarioModal\" (click)=\"preActualizarEntidad(entidad)\" *ngIf=\"this.Permisos.Cambio == 1\">\n                          <i class=\"fa fa-edit text-primary\"></i>\n                      </td>\n                      <td data-toggle=\"modal\" data-target=\"#alertModal\" (click)=\"setEntidadDel(entidad)\" *ngIf=\"this.Permisos.Baja == 1\">\n                          <i class=\"fa fa-trash text-danger\"></i>\n                      </td>\n                  </tr>\n              </tbody>\n          </table>\n          <pagination-controls (pageChange)=\"page = $event\" previousLabel=\"Anterior\" nextLabel=\"Siguiente\" autoHide=\"true\">\n          </pagination-controls>\n      </div>\n  </div>\n</section>\n\n<!-- Modal Alert -->\n<div class=\"modal fade\" id=\"alertModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\" data-backdrop=\"false\">\n  <div class=\"modal-dialog  modal-md\" role=\"document\">\n      <div class=\"modal-content modal-alert\">\n          <div class=\"modal-body\">\n              Confirma que desea eliminar el modulo {{ this.entidadDelete.Nombre }}?\n              <hr>\n              <div class=\"row text-center\">\n                  <button type=\"button\" class=\"btn btn-secondary btn-sm col-4 offset-1\" data-dismiss=\"modal\">Cancelar <i class=\"fa fa-times\"></i></button>\n                  <button type=\"button\" class=\"btn btn-danger btn-sm col-4 offset-2\" data-dismiss=\"modal\" (click)=\"eliminarEntidad(this.entidadDelete.IdStatusUsuario)\">Eliminar <i class=\"fa fa-trash\"></i></button>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>\n\n<app-cu-status-usuario></app-cu-status-usuario>"
 
 /***/ }),
 
@@ -217,7 +217,7 @@ module.exports = "<section id=\"empresas\">\n  <div class=\"container\">\n      
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  cu-sucursal works!\n</p>\n"
+module.exports = "<div class=\"modal fade\" id=\"sucursalModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\" data-backdrop=\"false\">\n  <div class=\"modal-dialog  modal-xl\" role=\"document\">\n      <div class=\"modal-content\">\n          <div class=\"modal-header\">\n              <h3 class=\"modal-title\" id=\"exampleModalLabel\" class=\"text-success\">{{ this.sucursalService.selectEntidad.IdSucursal ? 'Editar Sucursal '+this.sucursalService.selectEntidad.IdSucursal : 'Nuevo Sucursal' }}</h3>\n              <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                <span aria-hidden=\"true\">&times;</span>\n              </button>\n          </div>\n          <div class=\"modal-body\">\n              <form action=\"\" #entidadForm=\"ngForm\" (ngSubmit)=\"guardarEntidad(entidadForm)\">\n                  <input type=\"hidden\" id=\"IdSucursal\" name=\"IdSucursal\" class=\"form-control\" [(ngModel)]=\"this.sucursalService.selectEntidad.IdSucursal\">\n                  <!-- <strong><label for=\"\" class=\"form-control text-primary subtitle\">Información General</label></strong> -->\n                  <div class=\"form-row\">\n                    <div class=\"form-group col-12\">\n                        <label class=\"bmd-label-static\">Empresa</label>\n                        <select name=\"IdEmpresa\" id=\"IdEmpresa\" class=\"form-control\" [(ngModel)]=\"this.sucursalService.selectEntidad.IdEmpresa\">\n                          <option value=\"{{empresa.IdEmpresa}}\" *ngFor=\"let empresa of this.sucursalService.empresas\">{{ empresa.Nombre }}</option>\n                      </select>\n                    </div>\n                </div>\n                  <div class=\"form-row\">\n                      <div class=\"form-group col-6\">\n                          <label for=\"Nombre\" class=\"bmd-label-floating\">Nombre Sucursal</label>\n                          <input type=\"text\" id=\"Nombre\" name=\"Nombre\" #Nombre=\"ngModel\" class=\"form-control\" required=\"\" [(ngModel)]=\"this.sucursalService.selectEntidad.Nombre\">\n                          <small class=\"text-warning\" *ngIf=\"entidadForm.submitted && Nombre.invalid\">Campo requerido</small>\n                      </div>\n                      <div class=\"form-group col-6\">\n                          <label for=\"Direccion\" class=\"bmd-label-floating\">Dirección</label>\n                          <input type=\"text\" id=\"Direccion\" name=\"Direccion\" #Direccion=\"ngModel\" class=\"form-control\" required [(ngModel)]=\"this.sucursalService.selectEntidad.Direccion\">\n                          <small class=\"text-warning\" *ngIf=\"entidadForm.submitted && Direccion.invalid\">Campo requerido</small>\n                      </div>                      \n                  </div>\n                  \n                  <div class=\"modal-footer\">\n                      <button type=\"button\" class=\"btn btn-raised btn-danger\" data-dismiss=\"modal\">Cancelar <i class=\"fa fa-times\"></i></button> &nbsp;\n                      <button type=\"submit\" class=\"btn btn-raised btn-success\">Guardar <i class=\"fa fa-save\"></i></button>\n                  </div>\n              </form>\n          </div>\n          <!-- <div class=\"modal-footer\">\n              <button type=\"button\" class=\"btn btn-raised btn-danger\" data-dismiss=\"modal\">Cancelar <i class=\"fa fa-times\"></i></button> &nbsp;\n              <button type=\"button\" class=\"btn btn-raised btn-success\">Save changes <i class=\"fa fa-save\"></i></button>\n          </div> -->\n      </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -228,7 +228,7 @@ module.exports = "<p>\n  cu-sucursal works!\n</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<section id=\"sucursales\">\n  <div class=\"container\">\n      <div class=\"col-sx-12 col-sm-6 col-md-4\"></div>\n      <div class=\"row\" style=\"margin-top: 20px\">\n          <div class=\"col-3 col-sm-3 col-md-3 col-lg-2\" *ngIf=\"Permisos.Alta == 1\">\n              <button class=\"btn btn-raised btn-secondary form-control\" data-toggle=\"modal\" data-target=\"#moduloModal\" (click)=\"limpiarForm()\">Nuevo <i class=\"fa fa-plus\"></i></button>\n          </div>\n          <div class=\"col-9 col-sm-9 col-md-9 col-lg-10\">\n              <input type=\"search\" class=\"form-control\" placeholder=\"Buscar\" name=\"Buscar\" (ngModelChange)=\"funcSearch($event)\" [(ngModel)]=\"buscar\">\n          </div>\n      </div>\n      <div class=\"card form-control-rc\">\n          <table class=\"table table-hover table-striped\">\n              <thead>\n                  <tr>\n                      <th scope=\"col\" data-toggle=\"IdSucursal\" (click)=\"funcSort($event)\">Código <i class=\"{{ 'idproyecto' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}\"></i></th>\n                      <th scope=\"col\" data-toggle=\"Nombre\" (click)=\"funcSort($event)\">Nombre <i class=\"{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}\"></i></th>\n                      <th scope=\"col\" data-toggle=\"Direccion\" (click)=\"funcSort($event)\">Direccion <i class=\"{{ 'valortipocambio' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}\"></i></th>                      \n                      <th scope=\"col\" data-toggle=\"Empresa\" (click)=\"funcSort($event)\">Empresa <i class=\"{{ 'valortipocambio' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}\"></i></th>\n                      <th scope=\"col\" *ngIf=\"this.Permisos.Cambio == 1\">&nbsp;</th>\n                      <th scope=\"col\" *ngIf=\"this.Permisos.Baja == 1\">&nbsp;</th>\n                  </tr>\n              </thead>\n              <tbody>\n                  <tr *ngFor=\"let entidad of entidadTable | paginate: { itemsPerPage: 10, currentPage: page }\">\n                      <td>{{ entidad.IdSucursal }}</td>\n                      <td>{{ entidad.Nombre }}</td>\n                      <td>{{ entidad.Direccion }}</td>\n                      <td>{{ entidad.Empresa }}</td>\n                      <td data-toggle=\"modal\" data-target=\"#moduloModal\" (click)=\"preActualizarEntidad(entidad)\" *ngIf=\"this.Permisos.Cambio == 1\">\n                          <i class=\"fa fa-edit text-primary\"></i>\n                      </td>\n                      <td data-toggle=\"modal\" data-target=\"#alertModal\" (click)=\"setEntidadDel(entidad)\" *ngIf=\"this.Permisos.Baja == 1\">\n                          <i class=\"fa fa-trash text-danger\"></i>\n                      </td>\n                  </tr>\n              </tbody>\n          </table>\n          <pagination-controls (pageChange)=\"page = $event\" previousLabel=\"Anterior\" nextLabel=\"Siguiente\" autoHide=\"true\">\n          </pagination-controls>\n      </div>\n  </div>\n</section>\n\n<!-- Modal Alert -->\n<div class=\"modal fade\" id=\"alertModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\" data-backdrop=\"false\">\n  <div class=\"modal-dialog  modal-md\" role=\"document\">\n      <div class=\"modal-content modal-alert\">\n          <div class=\"modal-body\">\n              Confirma que desea eliminar el modulo {{ this.entidadDelete.Nombre }}?\n              <hr>\n              <div class=\"row text-center\">\n                  <button type=\"button\" class=\"btn btn-secondary btn-sm col-4 offset-1\" data-dismiss=\"modal\">Cancelar <i class=\"fa fa-times\"></i></button>\n                  <button type=\"button\" class=\"btn btn-danger btn-sm col-4 offset-2\" data-dismiss=\"modal\" (click)=\"eliminarEntidad(this.entidadDelete.IdSucursal)\">Eliminar <i class=\"fa fa-trash\"></i></button>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>\n\n<app-cu-sucursal></app-cu-sucursal>"
+module.exports = "<section id=\"sucursales\">\n  <div class=\"container\">\n      <div class=\"col-sx-12 col-sm-6 col-md-4\"></div>\n      <div class=\"row\" style=\"margin-top: 20px\">\n          <div class=\"col-3 col-sm-3 col-md-3 col-lg-2\" *ngIf=\"Permisos.Alta == 1\">\n              <button class=\"btn btn-raised btn-secondary form-control\" data-toggle=\"modal\" data-target=\"#sucursalModal\" (click)=\"limpiarForm()\">Nuevo <i class=\"fa fa-plus\"></i></button>\n          </div>\n          <div class=\"col-9 col-sm-9 col-md-9 col-lg-10\">\n              <input type=\"search\" class=\"form-control\" placeholder=\"Buscar\" name=\"Buscar\" (ngModelChange)=\"funcSearch($event)\" [(ngModel)]=\"buscar\">\n          </div>\n      </div>\n      <div class=\"card form-control-rc\">\n          <table class=\"table table-hover table-striped\">\n              <thead>\n                  <tr>\n                      <th scope=\"col\" data-toggle=\"IdSucursal\" (click)=\"funcSort($event)\">Código <i class=\"{{ 'idproyecto' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}\"></i></th>\n                      <th scope=\"col\" data-toggle=\"Nombre\" (click)=\"funcSort($event)\">Nombre <i class=\"{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}\"></i></th>\n                      <th scope=\"col\" data-toggle=\"Direccion\" (click)=\"funcSort($event)\">Direccion <i class=\"{{ 'valortipocambio' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}\"></i></th>                      \n                      <th scope=\"col\" data-toggle=\"Empresa\" (click)=\"funcSort($event)\">Empresa <i class=\"{{ 'valortipocambio' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}\"></i></th>\n                      <th scope=\"col\" *ngIf=\"this.Permisos.Cambio == 1\">&nbsp;</th>\n                      <th scope=\"col\" *ngIf=\"this.Permisos.Baja == 1\">&nbsp;</th>\n                  </tr>\n              </thead>\n              <tbody>\n                  <tr *ngFor=\"let entidad of entidadTable | paginate: { itemsPerPage: 10, currentPage: page }\">\n                      <td>{{ entidad.IdSucursal }}</td>\n                      <td>{{ entidad.Nombre }}</td>\n                      <td>{{ entidad.Direccion }}</td>\n                      <td>{{ entidad.Empresa }}</td>\n                      <td data-toggle=\"modal\" data-target=\"#sucursalModal\" (click)=\"preActualizarEntidad(entidad)\" *ngIf=\"this.Permisos.Cambio == 1\">\n                          <i class=\"fa fa-edit text-primary\"></i>\n                      </td>\n                      <td data-toggle=\"modal\" data-target=\"#alertModal\" (click)=\"setEntidadDel(entidad)\" *ngIf=\"this.Permisos.Baja == 1\">\n                          <i class=\"fa fa-trash text-danger\"></i>\n                      </td>\n                  </tr>\n              </tbody>\n          </table>\n          <pagination-controls (pageChange)=\"page = $event\" previousLabel=\"Anterior\" nextLabel=\"Siguiente\" autoHide=\"true\">\n          </pagination-controls>\n      </div>\n  </div>\n</section>\n\n<!-- Modal Alert -->\n<div class=\"modal fade\" id=\"alertModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\" data-backdrop=\"false\">\n  <div class=\"modal-dialog  modal-md\" role=\"document\">\n      <div class=\"modal-content modal-alert\">\n          <div class=\"modal-body\">\n              Confirma que desea eliminar el modulo {{ this.entidadDelete.Nombre }}?\n              <hr>\n              <div class=\"row text-center\">\n                  <button type=\"button\" class=\"btn btn-secondary btn-sm col-4 offset-1\" data-dismiss=\"modal\">Cancelar <i class=\"fa fa-times\"></i></button>\n                  <button type=\"button\" class=\"btn btn-danger btn-sm col-4 offset-2\" data-dismiss=\"modal\" (click)=\"eliminarEntidad(this.entidadDelete.IdSucursal)\">Eliminar <i class=\"fa fa-trash\"></i></button>\n              </div>\n          </div>\n      </div>\n  </div>\n</div>\n\n<app-cu-sucursal></app-cu-sucursal>"
 
 /***/ }),
 
@@ -305,7 +305,7 @@ module.exports = "<div class=\"fullscreen_bg\">\n    <div class=\"container\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n    home works!\n</p>"
+module.exports = "<p>\n    \n</p>\n\n<div class=\"container my-content\">\n    <h1>Proyecto del Curso: Analisis de Sistemas II</h1>\n    <img src=\"../../../assets/img/FastApi_Angular-2.png\" alt=\"\" style=\"max-width: 60%; height: auto;\">\n    <br><br>\n    <p>Este es un proyecto de Nomina, para el curso de Analisis de Sistemas II, de la carrera de Ingenniera en Sistemas de la Universidad Mariano Galvez de Guatemala.</p>\n    <p>Este proyecto esta consutrido con tecnologia de FastAPI, con lenguaje de programación Python (BackEnd), el cual se conecta a una base de datos MySQL de la cual se extraen los datos y se expone la información para ser servida al FrontEnd. \n        Esta aplicacioin es la que contiene la logica del negocio ya que es la encargada de validad los datos y mostrarlos en la estrucura necesaria.</p>\n    <p>Tambien se tiene la tecnologia Angular (FrontEnd), el cual es un framework de JavaScript que se encarga de la construcción de las vistas HTML, CSS y JAVASCRIPT.\n        Se encarga de manejar las rutas, obtener los datos proporcionados por el usuario y guardarlos en la base de datos a travez de llamadas ApiRest al BackEnd.</p>\n</div>"
 
 /***/ }),
 
@@ -937,11 +937,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CuGeneroComponent", function() { return CuGeneroComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _services_seguridad_generos_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../services/seguridad/generos.service */ "./src/app/services/seguridad/generos.service.ts");
+
 
 
 let CuGeneroComponent = class CuGeneroComponent {
-    constructor() { }
+    constructor(generoService) {
+        this.generoService = generoService;
+    }
     ngOnInit() {
+    }
+    guardarEntidad(entidadForm) {
+        if (entidadForm.valid) {
+            if (entidadForm.value.IdGenero == null) {
+                // Nuevo
+                this.generoService.insertar_generos(entidadForm.value)
+                    .subscribe(data => {
+                    location.reload();
+                });
+            }
+            else {
+                // actualizar
+                this.generoService.actualizar_generos(entidadForm.value)
+                    .subscribe(data => {
+                    location.reload();
+                });
+            }
+        }
     }
 };
 CuGeneroComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -950,7 +972,7 @@ CuGeneroComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./cu-genero.component.html */ "./node_modules/raw-loader/index.js!./src/app/components/Seguridad/genero/cu-genero/cu-genero.component.html"),
         styles: [__webpack_require__(/*! ./cu-genero.component.css */ "./src/app/components/Seguridad/genero/cu-genero/cu-genero.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_seguridad_generos_service__WEBPACK_IMPORTED_MODULE_2__["GenerosService"]])
 ], CuGeneroComponent);
 
 
@@ -1008,16 +1030,16 @@ let GeneroComponent = class GeneroComponent {
         this.menuService.titleActive = 'Generos';
     }
     ngOnInit() {
+        this.obtenerPermisos();
         this.obtenerGeneros();
-        this.obtenerEmpresas();
     }
-    obtenerGeneros() {
+    obtenerPermisos() {
         this.menuService.permisosOpcion(this.generoService.authService.credenciales.userId, this.router.url)
             .subscribe(data => {
             this.Permisos = data;
         });
     }
-    obtenerEmpresas() {
+    obtenerGeneros() {
         this.spinner.show();
         this.generoService.cargar_generos()
             .subscribe(data => {
@@ -1028,6 +1050,27 @@ let GeneroComponent = class GeneroComponent {
     }
     setEntidadDel(entidad) {
         this.entidadDelete = entidad;
+    }
+    eliminarEntidad(id) {
+        this.entidadDelete = [];
+        this.spinner.show();
+        this.generoService.eliminar_generos(id)
+            .subscribe(data => {
+            this.spinner.hide();
+            this.obtenerGeneros();
+        });
+    }
+    preActualizarEntidad(entidad) {
+        this.generoService.selectEntidad = {
+            IdGenero: entidad.IdGenero,
+            Nombre: entidad.Nombre,
+        };
+    }
+    limpiarForm() {
+        this.generoService.selectEntidad = {
+            IdGenero: null,
+            Nombre: null,
+        };
     }
 };
 GeneroComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -2043,11 +2086,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CuStatusUsuarioComponent", function() { return CuStatusUsuarioComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _services_seguridad_estadousuario_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../services/seguridad/estadousuario.service */ "./src/app/services/seguridad/estadousuario.service.ts");
+
 
 
 let CuStatusUsuarioComponent = class CuStatusUsuarioComponent {
-    constructor() { }
+    constructor(statusUsuarioService) {
+        this.statusUsuarioService = statusUsuarioService;
+    }
     ngOnInit() {
+    }
+    guardarEntidad(entidadForm) {
+        if (entidadForm.valid) {
+            if (entidadForm.value.IdStatusUsuario == null) {
+                // Nuevo
+                this.statusUsuarioService.insertar_status_usuario(entidadForm.value)
+                    .subscribe(data => {
+                    location.reload();
+                });
+            }
+            else {
+                // actualizar
+                this.statusUsuarioService.actualizar_status_usuario(entidadForm.value)
+                    .subscribe(data => {
+                    location.reload();
+                });
+            }
+        }
     }
 };
 CuStatusUsuarioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -2056,7 +2121,7 @@ CuStatusUsuarioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./cu-status-usuario.component.html */ "./node_modules/raw-loader/index.js!./src/app/components/Seguridad/status-usuario/cu-status-usuario/cu-status-usuario.component.html"),
         styles: [__webpack_require__(/*! ./cu-status-usuario.component.css */ "./src/app/components/Seguridad/status-usuario/cu-status-usuario/cu-status-usuario.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_seguridad_estadousuario_service__WEBPACK_IMPORTED_MODULE_2__["EstadousuarioService"]])
 ], CuStatusUsuarioComponent);
 
 
@@ -2135,6 +2200,28 @@ let StatusUsuarioComponent = class StatusUsuarioComponent {
     setEntidadDel(entidad) {
         this.entidadDelete = entidad;
     }
+    eliminarEntidad(id) {
+        this.entidadDelete = [];
+        this.spinner.show();
+        this.statusUsuarioService.eliminar_status_usuario(id)
+            .subscribe(data => {
+            this.spinner.hide();
+            this.obtenerStatusUsuario();
+        });
+    }
+    preActualizarEntidad(entidad) {
+        this.limpiarForm();
+        this.statusUsuarioService.selectEntidad = {
+            IdStatusUsuario: entidad.IdStatusUsuario,
+            Nombre: entidad.Nombre
+        };
+    }
+    limpiarForm() {
+        this.statusUsuarioService.selectEntidad = {
+            IdStatusUsuario: null,
+            Nombre: ''
+        };
+    }
 };
 StatusUsuarioComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2175,11 +2262,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CuSucursalComponent", function() { return CuSucursalComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _services_seguridad_sucursales_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../services/seguridad/sucursales.service */ "./src/app/services/seguridad/sucursales.service.ts");
+
 
 
 let CuSucursalComponent = class CuSucursalComponent {
-    constructor() { }
+    constructor(sucursalService) {
+        this.sucursalService = sucursalService;
+    }
     ngOnInit() {
+    }
+    guardarEntidad(entidadForm) {
+        if (entidadForm.valid) {
+            if (entidadForm.value.IdSucursal == null) {
+                // Nuevo
+                this.sucursalService.insertar_sucursal(entidadForm.value)
+                    .subscribe(data => {
+                    location.reload();
+                });
+            }
+            else {
+                // actualizar
+                this.sucursalService.actualizar_sucursal(entidadForm.value)
+                    .subscribe(data => {
+                    location.reload();
+                });
+            }
+        }
     }
 };
 CuSucursalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -2188,7 +2297,7 @@ CuSucursalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./cu-sucursal.component.html */ "./node_modules/raw-loader/index.js!./src/app/components/Seguridad/sucursal/cu-sucursal/cu-sucursal.component.html"),
         styles: [__webpack_require__(/*! ./cu-sucursal.component.css */ "./src/app/components/Seguridad/sucursal/cu-sucursal/cu-sucursal.component.css")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_seguridad_sucursales_service__WEBPACK_IMPORTED_MODULE_2__["SucursalesService"]])
 ], CuSucursalComponent);
 
 
@@ -2266,6 +2375,40 @@ let SucursalComponent = class SucursalComponent {
     }
     setEntidadDel(entidad) {
         this.entidadDelete = entidad;
+    }
+    eliminarEntidad(id) {
+        this.entidadDelete = [];
+        this.spinner.show();
+        this.sucursalService.eliminar_sucursal(id)
+            .subscribe(data => {
+            this.spinner.hide();
+            this.obtenerSucursales();
+        });
+    }
+    preActualizarEntidad(entidad) {
+        //this.proyService.selectProyecto = Object.assign(proyecto);
+        this.limpiarForm();
+        this.sucursalService.selectEntidad = {
+            IdSucursal: entidad.IdSucursal,
+            Nombre: entidad.Nombre,
+            Direccion: entidad.Direccion,
+            IdEmpresa: entidad.IdEmpresa
+        };
+    }
+    limpiarForm() {
+        this.obtenerEmpresas();
+        this.sucursalService.selectEntidad = {
+            IdSucursal: null,
+            Nombre: null,
+            Direccion: null,
+            IdEmpresa: null
+        };
+    }
+    obtenerEmpresas() {
+        this.sucursalService.cargar_empresas()
+            .subscribe(data => {
+            this.sucursalService.empresas = data;
+        });
     }
 };
 SucursalComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -2859,7 +3002,7 @@ Error404notFoundComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = ".logo {\n    width: 1200px;\n    height: 1200px;\n    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,0a0a0a+46,600f0f+54,ba0101+100 */\n    background: linear-gradient(135deg,  #000000 0%,#0a0a0a 46%,#600f0f 54%,#ba0101 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n}\n\n.my-content {\n    display: flex;\n    justify-content: center;\n    flex-direction: column;\n    align-items: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9ob21lL2hvbWUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixjQUFjO0lBQ2QscUlBQXFJO0lBQ3JJLHFGQUFxRixFQUFFLHFEQUFxRDtBQUNoSjs7QUFFQTtJQUNJLGFBQWE7SUFDYix1QkFBdUI7SUFDdkIsc0JBQXNCO0lBQ3RCLG1CQUFtQjtBQUN2QiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubG9nbyB7XG4gICAgd2lkdGg6IDEyMDBweDtcbiAgICBoZWlnaHQ6IDEyMDBweDtcbiAgICAvKiBQZXJtYWxpbmsgLSB1c2UgdG8gZWRpdCBhbmQgc2hhcmUgdGhpcyBncmFkaWVudDogaHR0cHM6Ly9jb2xvcnppbGxhLmNvbS9ncmFkaWVudC1lZGl0b3IvIzAwMDAwMCswLDBhMGEwYSs0Niw2MDBmMGYrNTQsYmEwMTAxKzEwMCAqL1xuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCgxMzVkZWcsICAjMDAwMDAwIDAlLCMwYTBhMGEgNDYlLCM2MDBmMGYgNTQlLCNiYTAxMDEgMTAwJSk7IC8qIFczQywgSUUxMCssIEZGMTYrLCBDaHJvbWUyNissIE9wZXJhMTIrLCBTYWZhcmk3KyAqL1xufVxuXG4ubXktY29udGVudCB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59Il19 */"
 
 /***/ }),
 
@@ -3557,6 +3700,34 @@ let EstadousuarioService = class EstadousuarioService {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(val => data.error));
         }));
     }
+    eliminar_status_usuario(id) {
+        const url = `${this.basepath}seguridad/generales/statususuario/${id}`;
+        return this.http.delete(url)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(data => {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(val => data.error));
+        }));
+    }
+    insertar_status_usuario(entidadForm) {
+        const url = `${this.basepath}seguridad/generales/statususuario/${this.authService.credenciales.userId}`;
+        const params = {
+            Nombre: entidadForm.Nombre
+        };
+        return this.http.put(url, params)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(data => {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(val => data.error));
+        }));
+    }
+    actualizar_status_usuario(entidadForm) {
+        const id = entidadForm.IdStatusUsuario;
+        const url = `${this.basepath}seguridad/generales/statususuario/${this.authService.credenciales.userId}/${id}`;
+        const params = {
+            Nombre: entidadForm.Nombre
+        };
+        return this.http.post(url, params)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(data => {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(val => data.error));
+        }));
+    }
 };
 EstadousuarioService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -3599,13 +3770,41 @@ let GenerosService = class GenerosService {
         this.authService = authService;
         this.basepath = _config_urlserver_config__WEBPACK_IMPORTED_MODULE_3__["URL_SERVICES"];
         this.selectEntidad = {
-            IdSucursal: null,
+            IdGenero: null,
             Nombre: null
         };
     }
     cargar_generos() {
         const url = `${this.basepath}seguridad/generales/genero`;
         return this.http.get(url)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(data => {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(val => data.error));
+        }));
+    }
+    eliminar_generos(id) {
+        const url = `${this.basepath}seguridad/generales/genero/${id}`;
+        return this.http.delete(url)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(data => {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(val => data.error));
+        }));
+    }
+    insertar_generos(entidadForm) {
+        const url = `${this.basepath}seguridad/generales/genero/${this.authService.credenciales.userId}`;
+        const params = {
+            Nombre: entidadForm.Nombre
+        };
+        return this.http.put(url, params)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(data => {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(val => data.error));
+        }));
+    }
+    actualizar_generos(entidadForm) {
+        const id = entidadForm.IdGenero;
+        const url = `${this.basepath}seguridad/generales/genero/${this.authService.credenciales.userId}/${id}`;
+        const params = {
+            Nombre: entidadForm.Nombre
+        };
+        return this.http.post(url, params)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(data => {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(val => data.error));
         }));
@@ -4131,14 +4330,54 @@ let SucursalesService = class SucursalesService {
         this.authService = authService;
         this.basepath = _config_urlserver_config__WEBPACK_IMPORTED_MODULE_3__["URL_SERVICES"];
         this.selectEntidad = {
-            IdGenero: null,
+            IdSucursal: null,
             Nombre: null,
             Direccion: null,
             IdEmpresa: null
         };
+        this.empresas = [];
     }
     cargar_sucursales() {
         const url = `${this.basepath}seguridad/generales/sucursal`;
+        return this.http.get(url)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(data => {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(val => data.error));
+        }));
+    }
+    eliminar_sucursal(id) {
+        const url = `${this.basepath}seguridad/generales/sucursal/${id}`;
+        return this.http.delete(url)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(data => {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(val => data.error));
+        }));
+    }
+    insertar_sucursal(entidadForm) {
+        const url = `${this.basepath}seguridad/generales/sucursal/${this.authService.credenciales.userId}`;
+        const params = {
+            Nombre: entidadForm.Nombre,
+            Direccion: entidadForm.Direccion,
+            IdEmpresa: entidadForm.IdEmpresa
+        };
+        return this.http.put(url, params)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(data => {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(val => data.error));
+        }));
+    }
+    actualizar_sucursal(entidadForm) {
+        const id = entidadForm.IdSucursal;
+        const url = `${this.basepath}seguridad/generales/sucursal/${this.authService.credenciales.userId}/${id}`;
+        const params = {
+            Nombre: entidadForm.Nombre,
+            Direccion: entidadForm.Direccion,
+            IdEmpresa: entidadForm.IdEmpresa
+        };
+        return this.http.post(url, params)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(data => {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(val => data.error));
+        }));
+    }
+    cargar_empresas() {
+        const url = `${this.basepath}seguridad/generales/empresa`;
         return this.http.get(url)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(data => {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(data).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(val => data.error));
@@ -4481,7 +4720,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/roberto/Projects/angular/NominaAngular/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/robertocastro/myreposotories/NominaAngular/src/main.ts */"./src/main.ts");
 
 
 /***/ })
