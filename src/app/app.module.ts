@@ -48,6 +48,7 @@ import { CuSucursalComponent } from './components/Seguridad/sucursal/cu-sucursal
 import { CuStatusUsuarioComponent } from './components/Seguridad/status-usuario/cu-status-usuario/cu-status-usuario.component';
 import { CuGeneroComponent } from './components/Seguridad/genero/cu-genero/cu-genero.component';
 import { CuEmpresaComponent } from './components/Seguridad/empresa/cu-empresa/cu-empresa.component';
+import { PerfilComponent } from './components/Seguridad/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { CuEmpresaComponent } from './components/Seguridad/empresa/cu-empresa/cu
     CuStatusUsuarioComponent,
     CuGeneroComponent,
     CuEmpresaComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,

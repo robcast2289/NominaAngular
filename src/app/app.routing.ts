@@ -12,6 +12,7 @@ import { AccesosComponent } from './components/administracion/accesos/accesos.co
 import { RolesComponent } from './components/administracion/roles/roles.component';
  */
 
+import { PerfilComponent } from './components/Seguridad/perfil/perfil.component'
 import { ModuloComponent } from './components/Seguridad/modulo/modulo.component'
 import { MenusComponent } from './components/Seguridad/menus/menus.component'
 import { OpcionComponent } from './components/Seguridad/opcion/opcion.component'
@@ -50,6 +51,10 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent
+      },
+      {
+        path: 'seguridad/perfil',
+        component: PerfilComponent,
       },
       {
         path: 'seguridad/generales/modulos',

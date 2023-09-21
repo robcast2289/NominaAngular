@@ -22,16 +22,6 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(user, password) {
-    /* npm install crypto-js */
-    /*const CryptoJS = require('crypto-js');
-    const key = CryptoJS.enc.Hex.parse('0123456789abcdef0123456789abcdef');
-    const iv =  CryptoJS.enc.Hex.parse('abcdef9876543210abcdef9876543210');
-
-    
-    const params = {
-      correo: CryptoJS.AES.encrypt(user, key, {iv}).toString(),
-      contrasena: CryptoJS.AES.encrypt(password, key, {iv}).toString()
-    };*/
     
     const url = `${this.basepath}User/login`;
 
