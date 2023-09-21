@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxEditorModule } from 'ngx-editor';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
+
 import * as $ from 'jquery';
 
 import { AppRoutingModule } from './app.routing';
@@ -49,6 +50,7 @@ import { CuStatusUsuarioComponent } from './components/Seguridad/status-usuario/
 import { CuGeneroComponent } from './components/Seguridad/genero/cu-genero/cu-genero.component';
 import { CuEmpresaComponent } from './components/Seguridad/empresa/cu-empresa/cu-empresa.component';
 import { PerfilComponent } from './components/Seguridad/perfil/perfil.component';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @NgModule({
   declarations: [
@@ -92,9 +94,9 @@ import { PerfilComponent } from './components/Seguridad/perfil/perfil.component'
     NgxPaginationModule,
     BrowserAnimationsModule,
     NgxEditorModule,
-    AngularEditorModule
+    AngularEditorModule,
   ],
-  providers: [],
+  providers: [DeviceDetectorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

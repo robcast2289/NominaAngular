@@ -6,6 +6,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { URL_SERVICES } from '../config/urlserver.config';
 import { Credenciales } from '../config/credenciales.interface';
 
+import { DeviceDetectorService } from 'ngx-device-detector';
+import { browser } from 'protractor';
+
 declare var require: any;
 
 @Injectable({
@@ -18,8 +21,15 @@ export class AuthService {
   redirectUrl: string;
   userId: string;
   credenciales: Credenciales = {};
+  deviceInfo = {
+    os:null,
+    device:null,
+    browser:null
+  }
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private deviceService:DeviceDetectorService) {
+    this.deviceInfoFunction();
+   }
 
   login(user, password) {
     
@@ -30,12 +40,17 @@ export class AuthService {
       Password: this.vigenereCipher(password,this.key)
     }
 
+    const formData: FormData = new FormData();
+
+    formData.append("data",JSON.stringify(params));
+    formData.append("log",JSON.stringify(this.deviceInfo));
+
     const headers = {
       "Accept":"*/*",
       "User-Agent":"Angular"
     }
 
-    return this.http.post(url, params,{headers} );
+    return this.http.post(url, formData,{headers} );
   }
 
 
@@ -127,5 +142,17 @@ export class AuthService {
     }
 
     return result;
+  }
+
+  deviceInfoFunction() {
+    let Info = this.deviceService.getDeviceInfo();
+    const isMobile = this.deviceService.isMobile();
+    const isTablet = this.deviceService.isTablet();
+    const isDesktopDevice = this.deviceService.isDesktop();
+
+    this.deviceInfo.os = `${Info["os"]}(${Info["os_version"]})`;
+    this.deviceInfo.browser = `${Info["browser"]}(${Info["browser_version"]})`;
+    this.deviceInfo.device = (isMobile ? "Movile" : (isTablet ? "Tablet" : "Desktop"));
+
   }
 }

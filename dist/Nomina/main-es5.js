@@ -144,6 +144,17 @@ module.exports = "<section id=\"opciones\">\n  <div class=\"container\">\n      
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/components/Seguridad/perfil/perfil.component.html":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/components/Seguridad/perfil/perfil.component.html ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  perfil works!\n</p>\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/components/Seguridad/roles-opcion/cu-roles-opcion/cu-roles-opcion.component.html":
 /*!****************************************************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/components/Seguridad/roles-opcion/cu-roles-opcion/cu-roles-opcion.component.html ***!
@@ -327,7 +338,7 @@ module.exports = "<div id=\"fullscreen_bg\" class=\"fullscreen_bg\">\n    <div c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n    <!-- Sidebar Holder -->\n    <nav id=\"sidebar\">\n        <div class=\"sidebar-header\">\n            <div *ngIf=\"this.authService.credenciales.foto\" class=\"text-center\">\n                <img width=\"80px\" [src]=\"this.authService.credenciales.foto\" class=\"rounded img-thumbnail\" alt=\"\">\n            </div>\n            <h3>{{ this.authService.credenciales.nombre }}</h3>\n            {{ this.authService.credenciales.usuario }}\n        </div>\n\n        <ul class=\"list-unstyled components\">\n            <!-- <p></p> -->\n            <li>\n                <a routerLink=\"/home\" routerLinkActive=\"active-link\" (click)=\"changeOpt('Sistema Nomina')\">Inicio</a>\n            </li>\n            <li *ngFor=\"let module of this.menuService.menu_all\">\n                <a *ngIf=\"module.submenu.length > 0\" href=\"#{{ module.nombre }}Submenu\" data-toggle=\"collapse\" aria-expanded=\"false\" class=\"dropdown-toggle\">{{ module.nombre }}</a>\n                <ul class=\"collapse list-unstyled\" [ngClass]=\"{'show': module.select}\" id=\"{{ module.nombre }}Submenu\" data-parent=\"#sidebar\" style=\"background: azure;\">\n                    <li *ngFor=\"let menu of module.submenu\">\n                        <!-- <a routerLink=\"/{{menu.ruta}}\" routerLinkActive=\"active-link\" (click)=\"changeOpt(menu.nombre)\">{{ menu.nombre }}</a> -->\n                        <a *ngIf=\"menu.submenu.length > 0\" href=\"#{{ menu.nombre }}Subsubmenu\" data-toggle=\"collapse\" aria-expanded=\"false\" class=\"dropdown-toggle\">{{ menu.nombre }}</a>\n                        <ul class=\"collapse list-unstyled\" [ngClass]=\"{'show': menu.select}\" id=\"{{ menu.nombre }}Subsubmenu\" [attr.data-parent]=\"'#'+module.nombre+'Submenu'\">\n                            <li *ngFor=\"let opt of menu.submenu\">\n                                <a routerLink=\"/{{opt.Ruta}}\" routerLinkActive=\"active-link\" (click)=\"changeOpt(opt.Opcion)\" [ngClass]=\"{'show': opt.select}\">{{ opt.Opcion }}</a>\n                            </li>\n                        </ul>\n                    </li>\n                </ul>\n            </li>\n            <li>\n                <a (click)=\"logOut()\">Salir</a>\n            </li>\n        </ul>\n    </nav>\n\n    <div id=\"content\">\n        <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n            <div class=\"container-fluid\">\n                <button type=\"button\" id=\"sidebarCollapse\" class=\"navbar-btn\" (click)=\"sidebarCollapse()\">\n                <span></span>\n                <span></span>\n                <span></span>\n              </button>\n                <div class=\"col text-center\">\n                    <h3>{{ this.menuService.titleActive }}</h3>\n                </div>\n            </div>\n        </nav>\n\n        <router-outlet></router-outlet>\n\n        <!-- <nav class=\"navbar navbar-expand-lg navbar-light bg-light footer\">\n            <div class=\"container-fluid\">\n                <p>\n                    <strong>Todos los derechos reservados</strong>\n                </p>\n            </div>\n        </nav> -->\n    </div>\n</div>"
+module.exports = "<div class=\"wrapper\">\n    <!-- Sidebar Holder -->\n    <nav id=\"sidebar\">\n        <div class=\"sidebar-header\">\n            <a [routerLink]=\"['/seguridad/perfil']\" routerLinkActive=\"router-link-active\" >\n                <div *ngIf=\"this.authService.credenciales.foto\" class=\"text-center\">\n                    <img width=\"80px\" [src]=\"this.authService.credenciales.foto\" class=\"rounded img-thumbnail\" alt=\"\">\n                </div>\n                <h3>{{ this.authService.credenciales.nombre }}</h3>\n                {{ this.authService.credenciales.usuario }}\n            </a>\n        </div>\n\n        <ul class=\"list-unstyled components\">\n            <!-- <p></p> -->\n            <li>\n                <a routerLink=\"/home\" routerLinkActive=\"active-link\" (click)=\"changeOpt('Sistema Nomina')\">Inicio</a>\n            </li>\n            <li *ngFor=\"let module of this.menuService.menu_all\">\n                <a *ngIf=\"module.submenu.length > 0\" href=\"#{{ module.nombre }}Submenu\" data-toggle=\"collapse\" aria-expanded=\"false\" class=\"dropdown-toggle\">{{ module.nombre }}</a>\n                <ul class=\"collapse list-unstyled\" [ngClass]=\"{'show': module.select}\" id=\"{{ module.nombre }}Submenu\" data-parent=\"#sidebar\" style=\"background: azure;\">\n                    <li *ngFor=\"let menu of module.submenu\">\n                        <!-- <a routerLink=\"/{{menu.ruta}}\" routerLinkActive=\"active-link\" (click)=\"changeOpt(menu.nombre)\">{{ menu.nombre }}</a> -->\n                        <a *ngIf=\"menu.submenu.length > 0\" href=\"#{{ menu.nombre }}Subsubmenu\" data-toggle=\"collapse\" aria-expanded=\"false\" class=\"dropdown-toggle\">{{ menu.nombre }}</a>\n                        <ul class=\"collapse list-unstyled\" [ngClass]=\"{'show': menu.select}\" id=\"{{ menu.nombre }}Subsubmenu\" [attr.data-parent]=\"'#'+module.nombre+'Submenu'\">\n                            <li *ngFor=\"let opt of menu.submenu\">\n                                <a routerLink=\"/{{opt.Ruta}}\" routerLinkActive=\"active-link\" (click)=\"changeOpt(opt.Opcion)\" [ngClass]=\"{'show': opt.select}\">{{ opt.Opcion }}</a>\n                            </li>\n                        </ul>\n                    </li>\n                </ul>\n            </li>\n            <li>\n                <a (click)=\"logOut()\">Salir</a>\n            </li>\n        </ul>\n    </nav>\n\n    <div id=\"content\">\n        <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n            <div class=\"container-fluid\">\n                <button type=\"button\" id=\"sidebarCollapse\" class=\"navbar-btn\" (click)=\"sidebarCollapse()\">\n                <span></span>\n                <span></span>\n                <span></span>\n              </button>\n                <div class=\"col text-center\">\n                    <h3>{{ this.menuService.titleActive }}</h3>\n                </div>\n            </div>\n        </nav>\n\n        <router-outlet></router-outlet>\n\n        <!-- <nav class=\"navbar navbar-expand-lg navbar-light bg-light footer\">\n            <div class=\"container-fluid\">\n                <p>\n                    <strong>Todos los derechos reservados</strong>\n                </p>\n            </div>\n        </nav> -->\n    </div>\n</div>"
 
 /***/ }),
 
@@ -473,6 +484,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Seguridad_status_usuario_cu_status_usuario_cu_status_usuario_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/Seguridad/status-usuario/cu-status-usuario/cu-status-usuario.component */ "./src/app/components/Seguridad/status-usuario/cu-status-usuario/cu-status-usuario.component.ts");
 /* harmony import */ var _components_Seguridad_genero_cu_genero_cu_genero_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/Seguridad/genero/cu-genero/cu-genero.component */ "./src/app/components/Seguridad/genero/cu-genero/cu-genero.component.ts");
 /* harmony import */ var _components_Seguridad_empresa_cu_empresa_cu_empresa_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/Seguridad/empresa/cu-empresa/cu-empresa.component */ "./src/app/components/Seguridad/empresa/cu-empresa/cu-empresa.component.ts");
+/* harmony import */ var _components_Seguridad_perfil_perfil_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/Seguridad/perfil/perfil.component */ "./src/app/components/Seguridad/perfil/perfil.component.ts");
+/* harmony import */ var ngx_device_detector__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ngx-device-detector */ "./node_modules/ngx-device-detector/fesm2015/ngx-device-detector.js");
 
 
 
@@ -494,6 +507,8 @@ __webpack_require__.r(__webpack_exports__);
 //import { AccesosComponent } from './components/administracion/accesos/accesos.component';
 //import { CuAccesModalComponent } from './components/administracion/accesos/cu-acces-modal/cu-acces-modal.component';
 //import { RolesComponent } from './components/administracion/roles/roles.component';
+
+
 
 
 
@@ -552,6 +567,7 @@ var AppModule = /** @class */ (function () {
                 _components_Seguridad_status_usuario_cu_status_usuario_cu_status_usuario_component__WEBPACK_IMPORTED_MODULE_37__["CuStatusUsuarioComponent"],
                 _components_Seguridad_genero_cu_genero_cu_genero_component__WEBPACK_IMPORTED_MODULE_38__["CuGeneroComponent"],
                 _components_Seguridad_empresa_cu_empresa_cu_empresa_component__WEBPACK_IMPORTED_MODULE_39__["CuEmpresaComponent"],
+                _components_Seguridad_perfil_perfil_component__WEBPACK_IMPORTED_MODULE_40__["PerfilComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
@@ -563,9 +579,9 @@ var AppModule = /** @class */ (function () {
                 ngx_pagination__WEBPACK_IMPORTED_MODULE_7__["NgxPaginationModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["BrowserAnimationsModule"],
                 ngx_editor__WEBPACK_IMPORTED_MODULE_9__["NgxEditorModule"],
-                _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_10__["AngularEditorModule"]
+                _kolkov_angular_editor__WEBPACK_IMPORTED_MODULE_10__["AngularEditorModule"],
             ],
-            providers: [],
+            providers: [ngx_device_detector__WEBPACK_IMPORTED_MODULE_41__["DeviceDetectorService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_12__["AppComponent"]]
         })
     ], AppModule);
@@ -595,17 +611,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_login_auth_guard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/login/auth.guard */ "./src/app/components/login/auth.guard.ts");
 /* harmony import */ var _components_error404not_found_error404not_found_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/error404not-found/error404not-found.component */ "./src/app/components/error404not-found/error404not-found.component.ts");
 /* harmony import */ var _components_error403forbidden_error403forbidden_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/error403forbidden/error403forbidden.component */ "./src/app/components/error403forbidden/error403forbidden.component.ts");
-/* harmony import */ var _components_Seguridad_modulo_modulo_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Seguridad/modulo/modulo.component */ "./src/app/components/Seguridad/modulo/modulo.component.ts");
-/* harmony import */ var _components_Seguridad_menus_menus_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Seguridad/menus/menus.component */ "./src/app/components/Seguridad/menus/menus.component.ts");
-/* harmony import */ var _components_Seguridad_opcion_opcion_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Seguridad/opcion/opcion.component */ "./src/app/components/Seguridad/opcion/opcion.component.ts");
-/* harmony import */ var _components_Seguridad_roles_roles_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/Seguridad/roles/roles.component */ "./src/app/components/Seguridad/roles/roles.component.ts");
-/* harmony import */ var _components_Seguridad_roles_opcion_roles_opcion_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/Seguridad/roles-opcion/roles-opcion.component */ "./src/app/components/Seguridad/roles-opcion/roles-opcion.component.ts");
-/* harmony import */ var _components_Seguridad_usuario_table_usuario_table_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/Seguridad/usuario-table/usuario-table.component */ "./src/app/components/Seguridad/usuario-table/usuario-table.component.ts");
-/* harmony import */ var _components_Seguridad_usuario_role_usuario_role_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/Seguridad/usuario-role/usuario-role.component */ "./src/app/components/Seguridad/usuario-role/usuario-role.component.ts");
-/* harmony import */ var _components_Seguridad_empresa_empresa_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/Seguridad/empresa/empresa.component */ "./src/app/components/Seguridad/empresa/empresa.component.ts");
-/* harmony import */ var _components_Seguridad_sucursal_sucursal_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/Seguridad/sucursal/sucursal.component */ "./src/app/components/Seguridad/sucursal/sucursal.component.ts");
-/* harmony import */ var _components_Seguridad_genero_genero_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/Seguridad/genero/genero.component */ "./src/app/components/Seguridad/genero/genero.component.ts");
-/* harmony import */ var _components_Seguridad_status_usuario_status_usuario_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/Seguridad/status-usuario/status-usuario.component */ "./src/app/components/Seguridad/status-usuario/status-usuario.component.ts");
+/* harmony import */ var _components_Seguridad_perfil_perfil_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Seguridad/perfil/perfil.component */ "./src/app/components/Seguridad/perfil/perfil.component.ts");
+/* harmony import */ var _components_Seguridad_modulo_modulo_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Seguridad/modulo/modulo.component */ "./src/app/components/Seguridad/modulo/modulo.component.ts");
+/* harmony import */ var _components_Seguridad_menus_menus_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Seguridad/menus/menus.component */ "./src/app/components/Seguridad/menus/menus.component.ts");
+/* harmony import */ var _components_Seguridad_opcion_opcion_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/Seguridad/opcion/opcion.component */ "./src/app/components/Seguridad/opcion/opcion.component.ts");
+/* harmony import */ var _components_Seguridad_roles_roles_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/Seguridad/roles/roles.component */ "./src/app/components/Seguridad/roles/roles.component.ts");
+/* harmony import */ var _components_Seguridad_roles_opcion_roles_opcion_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/Seguridad/roles-opcion/roles-opcion.component */ "./src/app/components/Seguridad/roles-opcion/roles-opcion.component.ts");
+/* harmony import */ var _components_Seguridad_usuario_table_usuario_table_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/Seguridad/usuario-table/usuario-table.component */ "./src/app/components/Seguridad/usuario-table/usuario-table.component.ts");
+/* harmony import */ var _components_Seguridad_usuario_role_usuario_role_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/Seguridad/usuario-role/usuario-role.component */ "./src/app/components/Seguridad/usuario-role/usuario-role.component.ts");
+/* harmony import */ var _components_Seguridad_empresa_empresa_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/Seguridad/empresa/empresa.component */ "./src/app/components/Seguridad/empresa/empresa.component.ts");
+/* harmony import */ var _components_Seguridad_sucursal_sucursal_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/Seguridad/sucursal/sucursal.component */ "./src/app/components/Seguridad/sucursal/sucursal.component.ts");
+/* harmony import */ var _components_Seguridad_genero_genero_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/Seguridad/genero/genero.component */ "./src/app/components/Seguridad/genero/genero.component.ts");
+/* harmony import */ var _components_Seguridad_status_usuario_status_usuario_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/Seguridad/status-usuario/status-usuario.component */ "./src/app/components/Seguridad/status-usuario/status-usuario.component.ts");
 
 
 
@@ -619,6 +636,7 @@ __webpack_require__.r(__webpack_exports__);
 import { AccesosComponent } from './components/administracion/accesos/accesos.component';
 import { RolesComponent } from './components/administracion/roles/roles.component';
  */
+
 
 
 
@@ -658,48 +676,52 @@ var routes = [
                 component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_4__["HomeComponent"]
             },
             {
+                path: 'seguridad/perfil',
+                component: _components_Seguridad_perfil_perfil_component__WEBPACK_IMPORTED_MODULE_9__["PerfilComponent"],
+            },
+            {
                 path: 'seguridad/generales/modulos',
-                component: _components_Seguridad_modulo_modulo_component__WEBPACK_IMPORTED_MODULE_9__["ModuloComponent"],
+                component: _components_Seguridad_modulo_modulo_component__WEBPACK_IMPORTED_MODULE_10__["ModuloComponent"],
             },
             {
                 path: 'seguridad/generales/menus',
-                component: _components_Seguridad_menus_menus_component__WEBPACK_IMPORTED_MODULE_10__["MenusComponent"],
+                component: _components_Seguridad_menus_menus_component__WEBPACK_IMPORTED_MODULE_11__["MenusComponent"],
             },
             {
                 path: 'seguridad/generales/opciones',
-                component: _components_Seguridad_opcion_opcion_component__WEBPACK_IMPORTED_MODULE_11__["OpcionComponent"],
+                component: _components_Seguridad_opcion_opcion_component__WEBPACK_IMPORTED_MODULE_12__["OpcionComponent"],
             },
             {
                 path: 'seguridad/generales/roles',
-                component: _components_Seguridad_roles_roles_component__WEBPACK_IMPORTED_MODULE_12__["RolesComponent"],
+                component: _components_Seguridad_roles_roles_component__WEBPACK_IMPORTED_MODULE_13__["RolesComponent"],
             },
             {
                 path: 'seguridad/generales/roles/:IdRole',
-                component: _components_Seguridad_roles_opcion_roles_opcion_component__WEBPACK_IMPORTED_MODULE_13__["RolesOpcionComponent"],
+                component: _components_Seguridad_roles_opcion_roles_opcion_component__WEBPACK_IMPORTED_MODULE_14__["RolesOpcionComponent"],
             },
             {
                 path: 'seguridad/generales/usuarios',
-                component: _components_Seguridad_usuario_table_usuario_table_component__WEBPACK_IMPORTED_MODULE_14__["UsuarioTableComponent"],
+                component: _components_Seguridad_usuario_table_usuario_table_component__WEBPACK_IMPORTED_MODULE_15__["UsuarioTableComponent"],
             },
             {
                 path: 'seguridad/generales/usuarios/:IdUsuario',
-                component: _components_Seguridad_usuario_role_usuario_role_component__WEBPACK_IMPORTED_MODULE_15__["UsuarioRoleComponent"],
+                component: _components_Seguridad_usuario_role_usuario_role_component__WEBPACK_IMPORTED_MODULE_16__["UsuarioRoleComponent"],
             },
             {
                 path: 'seguridad/generales/empresas',
-                component: _components_Seguridad_empresa_empresa_component__WEBPACK_IMPORTED_MODULE_16__["EmpresaComponent"],
+                component: _components_Seguridad_empresa_empresa_component__WEBPACK_IMPORTED_MODULE_17__["EmpresaComponent"],
             },
             {
                 path: 'seguridad/generales/sucursal',
-                component: _components_Seguridad_sucursal_sucursal_component__WEBPACK_IMPORTED_MODULE_17__["SucursalComponent"],
+                component: _components_Seguridad_sucursal_sucursal_component__WEBPACK_IMPORTED_MODULE_18__["SucursalComponent"],
             },
             {
                 path: 'seguridad/generales/genero',
-                component: _components_Seguridad_genero_genero_component__WEBPACK_IMPORTED_MODULE_18__["GeneroComponent"],
+                component: _components_Seguridad_genero_genero_component__WEBPACK_IMPORTED_MODULE_19__["GeneroComponent"],
             },
             {
                 path: 'seguridad/generales/status-usuario',
-                component: _components_Seguridad_status_usuario_status_usuario_component__WEBPACK_IMPORTED_MODULE_19__["StatusUsuarioComponent"],
+                component: _components_Seguridad_status_usuario_status_usuario_component__WEBPACK_IMPORTED_MODULE_20__["StatusUsuarioComponent"],
             },
         ]
     },
@@ -1735,6 +1757,61 @@ var OpcionComponent = /** @class */ (function () {
             _services_menu_service__WEBPACK_IMPORTED_MODULE_4__["MenuService"]])
     ], OpcionComponent);
     return OpcionComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/Seguridad/perfil/perfil.component.css":
+/*!******************************************************************!*\
+  !*** ./src/app/components/Seguridad/perfil/perfil.component.css ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvU2VndXJpZGFkL3BlcmZpbC9wZXJmaWwuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/components/Seguridad/perfil/perfil.component.ts":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/Seguridad/perfil/perfil.component.ts ***!
+  \*****************************************************************/
+/*! exports provided: PerfilComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PerfilComponent", function() { return PerfilComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm5/ngx-spinner.js");
+/* harmony import */ var _services_menu_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/menu.service */ "./src/app/services/menu.service.ts");
+
+
+
+
+var PerfilComponent = /** @class */ (function () {
+    function PerfilComponent(spinner, 
+    //private rolesService: RolesService,
+    menuService) {
+        this.spinner = spinner;
+        this.menuService = menuService;
+        this.menuService.titleActive = 'Perfil';
+    }
+    PerfilComponent.prototype.ngOnInit = function () {
+    };
+    PerfilComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-perfil',
+            template: __webpack_require__(/*! raw-loader!./perfil.component.html */ "./node_modules/raw-loader/index.js!./src/app/components/Seguridad/perfil/perfil.component.html"),
+            styles: [__webpack_require__(/*! ./perfil.component.css */ "./src/app/components/Seguridad/perfil/perfil.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [ngx_spinner__WEBPACK_IMPORTED_MODULE_2__["NgxSpinnerService"],
+            _services_menu_service__WEBPACK_IMPORTED_MODULE_3__["MenuService"]])
+    ], PerfilComponent);
+    return PerfilComponent;
 }());
 
 
@@ -3106,6 +3183,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var HomeComponent = /** @class */ (function () {
     function HomeComponent() {
+        this.deviceInfo = null;
     }
     HomeComponent.prototype.ngOnInit = function () {
     };
@@ -3466,39 +3544,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _config_urlserver_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config/urlserver.config */ "./src/app/config/urlserver.config.ts");
+/* harmony import */ var ngx_device_detector__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-device-detector */ "./node_modules/ngx-device-detector/fesm2015/ngx-device-detector.js");
+
 
 
 
 
 var AuthService = /** @class */ (function () {
-    function AuthService(http) {
+    function AuthService(http, deviceService) {
         this.http = http;
+        this.deviceService = deviceService;
         this.key = "analisisdesistemas";
         this.basepath = _config_urlserver_config__WEBPACK_IMPORTED_MODULE_3__["URL_SERVICES"];
         this.isLoggedIn = false;
         this.credenciales = {};
+        this.deviceInfo = {
+            os: null,
+            device: null,
+            browser: null
+        };
+        this.deviceInfoFunction();
     }
     AuthService.prototype.login = function (user, password) {
-        /* npm install crypto-js */
-        /*const CryptoJS = require('crypto-js');
-        const key = CryptoJS.enc.Hex.parse('0123456789abcdef0123456789abcdef');
-        const iv =  CryptoJS.enc.Hex.parse('abcdef9876543210abcdef9876543210');
-    
-        
-        const params = {
-          correo: CryptoJS.AES.encrypt(user, key, {iv}).toString(),
-          contrasena: CryptoJS.AES.encrypt(password, key, {iv}).toString()
-        };*/
         var url = this.basepath + "User/login";
         var params = {
             IdUsuario: user,
             Password: this.vigenereCipher(password, this.key)
         };
+        var formData = new FormData();
+        formData.append("data", JSON.stringify(params));
+        formData.append("log", JSON.stringify(this.deviceInfo));
         var headers = {
             "Accept": "*/*",
             "User-Agent": "Angular"
         };
-        return this.http.post(url, params, { headers: headers });
+        return this.http.post(url, formData, { headers: headers });
     };
     AuthService.prototype.tieneAccesoOpcion = function (buscarUrl) {
         buscarUrl = buscarUrl.substring(1);
@@ -3584,11 +3664,20 @@ var AuthService = /** @class */ (function () {
         }
         return result;
     };
+    AuthService.prototype.deviceInfoFunction = function () {
+        var Info = this.deviceService.getDeviceInfo();
+        var isMobile = this.deviceService.isMobile();
+        var isTablet = this.deviceService.isTablet();
+        var isDesktopDevice = this.deviceService.isDesktop();
+        this.deviceInfo.os = Info["os"] + "(" + Info["os_version"] + ")";
+        this.deviceInfo.browser = Info["browser"] + "(" + Info["browser_version"] + ")";
+        this.deviceInfo.device = (isMobile ? "Movile" : (isTablet ? "Tablet" : "Desktop"));
+    };
     AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], ngx_device_detector__WEBPACK_IMPORTED_MODULE_4__["DeviceDetectorService"]])
     ], AuthService);
     return AuthService;
 }());
