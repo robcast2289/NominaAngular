@@ -61,6 +61,14 @@ body {
     text-align: center;
 }
 
+.recover {
+    text-align: center;
+}
+
+.recover a {
+    color: #fff;
+}
+
 .form-signin .form-signin-heading,
 .form-signin {
     margin-bottom: 10px;

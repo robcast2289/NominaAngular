@@ -51,6 +51,7 @@ import { CuGeneroComponent } from './components/Seguridad/genero/cu-genero/cu-ge
 import { CuEmpresaComponent } from './components/Seguridad/empresa/cu-empresa/cu-empresa.component';
 import { PerfilComponent } from './components/Seguridad/perfil/perfil.component';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
     CuGeneroComponent,
     CuEmpresaComponent,
     PerfilComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,

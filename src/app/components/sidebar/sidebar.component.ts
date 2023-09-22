@@ -45,7 +45,6 @@ export class SidebarComponent implements OnInit {
           });
         });
         this.menuService.menu_all = data.opciones;
-        console.log(data.opciones);
       } else {
         this.menuService.menu_all = [];
         console.log(data.mensaje);
@@ -65,8 +64,6 @@ export class SidebarComponent implements OnInit {
           this.router.navigate(["403forbidden"]);
         }
       });
-    
-    console.log(this.router.url);
   }
 
   sidebarCollapse() {

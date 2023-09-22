@@ -215,6 +215,17 @@ a.article:hover {
     color: #fff !important;
 }
 
+.img-thumbnail {
+    width: 80px;
+    transition: width  1s ease 0s;
+    /* transition: transform  1.5s ease 0s; */
+}
+
+.img-thumbnail:hover {
+    width: 120px;
+    /* transform: rotateX(0deg) rotateY(300deg) rotateZ(0deg) translate(2px,2px); */
+}
+
 
 /* ---------------------------------------------------
     CONTENT STYLE

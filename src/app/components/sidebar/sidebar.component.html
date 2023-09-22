@@ -3,7 +3,7 @@
     <nav id="sidebar">
         <div class="sidebar-header">
             <a [routerLink]="['/seguridad/perfil']" routerLinkActive="router-link-active" >
-                <div *ngIf="this.authService.credenciales.foto" class="text-center">
+                <div *ngIf="this.authService.credenciales.foto" class="text-center img-perfil">
                     <img width="80px" [src]="this.authService.credenciales.foto" class="rounded img-thumbnail" alt="">
                 </div>
                 <h3>{{ this.authService.credenciales.nombre }}</h3>

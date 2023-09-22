@@ -9,6 +9,9 @@
             <input class="btn btn-lg btn-dark btn-block" type="submit" name="submit" [disabled]="form1.invalid">
 
         </form>
+        <div class="recover">
+            <a [routerLink]="['/recover-pass']" routerLinkActive="router-link-active">¿Has olvidado tu contraseña?</a>
+        </div>
         <div class="alert alert-danger" role="alert" *ngIf="errorLogin.mensaje.length != 0">
             <button type="button" class="close" (click)="errorLogin.mensaje = ''" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
