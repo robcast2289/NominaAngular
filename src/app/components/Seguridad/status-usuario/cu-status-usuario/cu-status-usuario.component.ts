@@ -12,7 +12,7 @@ import { EstadousuarioService } from '../../../../services/seguridad/estadousuar
 export class CuStatusUsuarioComponent implements OnInit {
 
   constructor(
-    private statusUsuarioService:EstadousuarioService
+    public statusUsuarioService:EstadousuarioService
   ) { }
 
   ngOnInit() {

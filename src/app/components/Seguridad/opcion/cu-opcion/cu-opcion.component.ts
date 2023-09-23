@@ -12,7 +12,7 @@ import { OpcionService } from '../../../../services/seguridad/opcion.service';
 export class CuOpcionComponent implements OnInit {
 
   constructor(
-    private opcionService:OpcionService
+    public opcionService:OpcionService
   ) { }
 
   ngOnInit() {

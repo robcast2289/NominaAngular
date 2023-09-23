@@ -12,7 +12,7 @@ import { SucursalesService } from '../../../../services/seguridad/sucursales.ser
 export class CuSucursalComponent implements OnInit {
 
   constructor(
-    private sucursalService:SucursalesService
+    public sucursalService:SucursalesService
   ) { }
 
   ngOnInit() {

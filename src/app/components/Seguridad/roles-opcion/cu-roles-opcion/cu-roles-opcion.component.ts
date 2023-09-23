@@ -13,7 +13,7 @@ export class CuRolesOpcionComponent implements OnInit {
   @Input() IdRoleParent: number;
 
   constructor(
-    private roleopcionesService:RolesopcionService
+    public roleopcionesService:RolesopcionService
   ) { }
 
   ngOnInit() {

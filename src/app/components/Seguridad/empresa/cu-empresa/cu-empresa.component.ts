@@ -12,7 +12,7 @@ import { EmpresasService } from '../../../../services/seguridad/empresas.service
 export class CuEmpresaComponent implements OnInit {
 
   constructor(
-    private empresaService:EmpresasService
+    public empresaService:EmpresasService
   ) { }
 
   ngOnInit() {

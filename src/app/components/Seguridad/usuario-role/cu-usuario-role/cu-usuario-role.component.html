@@ -15,7 +15,7 @@
                   <div class="form-row">
                       <div class="form-group col-12">
                         <label class="bmd-label-static">Role</label>
-                        <select name="IdRole" id="IdRole" class="form-control" [(ngModel)]="this.usuarioroleService.selectEntidad.IdRole">
+                        <select name="IdRole" id="IdRole" #IdRole="ngModel" class="form-control" [(ngModel)]="this.usuarioroleService.selectEntidad.IdRole">
                           <option value="{{role.IdRole}}" *ngFor="let role of this.usuarioroleService.roles">{{ role.Nombre }}</option>
                         </select>
                           <!-- <label for="nombre" class="bmd-label-floating">Opcion</label>

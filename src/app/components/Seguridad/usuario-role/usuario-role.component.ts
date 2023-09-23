@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { TablaBase } from '../../../services/base/tabla.model';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 import { MenuService } from '../../../services/menu.service';
@@ -11,22 +11,15 @@ import { UsuarioroleService } from '../../../services/seguridad/usuariorole.serv
   templateUrl: './usuario-role.component.html',
   styleUrls: ['./usuario-role.component.css']
 })
-export class UsuarioRoleComponent implements OnInit {
+export class UsuarioRoleComponent extends TablaBase implements OnInit {
   id:number;
   usuario;
-
-  entidad = [];
-  entidadTable = [];
-  buscar: string;
-  page = 1;
-  fieldSort: string;
-  fieldSortDirection: string;
-  entidadDelete = [];
 
   constructor(private _Activatedroute:ActivatedRoute,
     private spinner: NgxSpinnerService,
     private usuarioroleService: UsuarioroleService,
     private menuService: MenuService) { 
+      super();
       this.menuService.titleActive = 'Configurar Usuario';
     }
 

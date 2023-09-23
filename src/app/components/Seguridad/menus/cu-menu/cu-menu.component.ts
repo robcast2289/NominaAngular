@@ -12,7 +12,7 @@ import { MenuTableService } from '../../../../services/seguridad/menutable.servi
 export class CuMenuComponent implements OnInit {
 
   constructor(
-    private menuTableService:MenuTableService,
+    public menuTableService:MenuTableService,
   ) { }
 
   ngOnInit() {

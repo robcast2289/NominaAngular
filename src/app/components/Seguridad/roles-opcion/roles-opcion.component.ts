@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { TablaBase } from '../../../services/base/tabla.model';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 import { MenuService } from '../../../services/menu.service';
@@ -11,22 +11,15 @@ import { RolesopcionService } from '../../../services/seguridad/rolesopcion.serv
   templateUrl: './roles-opcion.component.html',
   styleUrls: ['./roles-opcion.component.css']
 })
-export class RolesOpcionComponent implements OnInit {
+export class RolesOpcionComponent extends TablaBase implements OnInit {
   id:number;
   role;
-
-  entidad = [];
-  entidadTable = [];
-  buscar: string;
-  page = 1;
-  fieldSort: string;
-  fieldSortDirection: string;
-  entidadDelete = [];
 
   constructor(private _Activatedroute:ActivatedRoute,
     private spinner: NgxSpinnerService,
     private rolesopcionService: RolesopcionService,
     private menuService: MenuService) { 
+      super();
       this.menuService.titleActive = 'Configurar opciones por role';
     }
 

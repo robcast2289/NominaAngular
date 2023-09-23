@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { TablaBase } from '../../../services/base/tabla.model';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 import { MenuService } from '../../../services/menu.service';
 import { ModuloService } from '../../../services/seguridad/modulo.service';
+
 
 @Component({
   selector: 'app-modulo',
   templateUrl: './modulo.component.html',
   styleUrls: ['./modulo.component.css']
 })
-export class ModuloComponent implements OnInit {
-  entidad = [];
+export class ModuloComponent extends TablaBase implements OnInit {
+  /* entidad = [];
   entidadTable = [];
   buscar: string;
   page = 1;
@@ -23,12 +24,13 @@ export class ModuloComponent implements OnInit {
     Alta:0,
     Baja:0,
     Cambio:0
-  }
+  } */
 
   constructor(private spinner: NgxSpinnerService,
               private moduloService: ModuloService,
               private router: Router,
               private menuService: MenuService) {
+                super();
                 this.menuService.titleActive = 'Modulos';
                }
 
@@ -86,30 +88,5 @@ export class ModuloComponent implements OnInit {
     };
   }
 
-
-  // Funcion para buscar
-  funcSearch(ev) {
-    const arrayBuscar = ev.toString().split(' ');
-
-    if (ev.length > 0) {
-      this.entidadTable = this.entidad.filter(proyecto => {
-        let respuesta: boolean;
-        for (const element in proyecto) {
-          if (proyecto[element] != null) {
-            arrayBuscar.forEach(palabra => {
-              if (palabra !== '') {
-                if (proyecto[element].toString().toLowerCase().indexOf(palabra.toString().toLowerCase()) !== -1) {
-                  respuesta = true;
-                }
-              }
-            });
-          }
-        }
-        return respuesta;
-      });
-    } else {
-      this.entidadTable = this.entidad;
-    }
-  }
 
 }

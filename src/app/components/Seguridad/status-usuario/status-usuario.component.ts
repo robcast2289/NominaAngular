@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { TablaBase } from '../../../services/base/tabla.model';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 import { MenuService } from '../../../services/menu.service';
@@ -11,24 +11,13 @@ import { EstadousuarioService } from '../../../services/seguridad/estadousuario.
   templateUrl: './status-usuario.component.html',
   styleUrls: ['./status-usuario.component.css']
 })
-export class StatusUsuarioComponent implements OnInit {
-  entidad = [];
-  entidadTable = [];
-  buscar: string;
-  page = 1;
-  fieldSort: string;
-  fieldSortDirection: string;
-  entidadDelete = [];
-  Permisos:any = {
-    Alta:0,
-    Baja:0,
-    Cambio:0
-  }
+export class StatusUsuarioComponent extends TablaBase implements OnInit {
 
   constructor(private spinner: NgxSpinnerService,
     private statusUsuarioService: EstadousuarioService,
     private router: Router,
     private menuService: MenuService) {
+      super();
       this.menuService.titleActive = 'Estados del Usurio';
      }
 

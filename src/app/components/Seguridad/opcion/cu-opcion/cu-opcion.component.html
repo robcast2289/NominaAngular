@@ -21,20 +21,20 @@
                 </div>
                   <div class="form-row">
                       <div class="form-group col-6">
-                          <label for="nombre" class="bmd-label-floating">Nombre Opcion</label>
-                          <input type="text" id="Nombre" name="Nombre" #nombre="ngModel" class="form-control" required="" [(ngModel)]="this.opcionService.selectEntidad.Nombre">
+                          <label for="Nombre" class="bmd-label-floating">Nombre Opcion</label>
+                          <input type="text" id="Nombre" name="Nombre" #Nombre="ngModel" class="form-control" required="" [(ngModel)]="this.opcionService.selectEntidad.Nombre">
                           <small class="text-warning" *ngIf="entidadForm.submitted && Nombre.invalid">Campo requerido</small>
                       </div>
                       <div class="form-group col-6">
-                          <label for="entidadvendedora" class="bmd-label-floating">Orden en Menu</label>
-                          <input type="text" id="OrdenMenu" name="OrdenMenu" #oden="ngModel" class="form-control" required [(ngModel)]="this.opcionService.selectEntidad.OrdenMenu">
+                          <label for="OrdenMenu" class="bmd-label-floating">Orden en Menu</label>
+                          <input type="text" id="OrdenMenu" name="OrdenMenu" #OrdenMenu="ngModel" class="form-control" required [(ngModel)]="this.opcionService.selectEntidad.OrdenMenu">
                           <small class="text-warning" *ngIf="entidadForm.submitted && OrdenMenu.invalid">Campo requerido</small>
                       </div>                      
                   </div>
                   <div class="form-row">
                     <div class="form-group col-12">
-                        <label for="nombre" class="bmd-label-floating">Pagina</label>
-                        <input type="text" id="Pagina" name="Pagina" #nombre="ngModel" class="form-control" required="" [(ngModel)]="this.opcionService.selectEntidad.Pagina">
+                        <label for="Pagina" class="bmd-label-floating">Pagina</label>
+                        <input type="text" id="Pagina" name="Pagina" #Pagina="ngModel" class="form-control" required="" [(ngModel)]="this.opcionService.selectEntidad.Pagina">
                         <small class="text-warning" *ngIf="entidadForm.submitted && Pagina.invalid">Campo requerido</small>
                     </div>                     
                 </div>

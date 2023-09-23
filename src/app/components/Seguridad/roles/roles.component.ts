@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { TablaBase } from '../../../services/base/tabla.model';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 import { MenuService } from '../../../services/menu.service';
@@ -10,18 +10,12 @@ import { RolesService } from '../../../services/seguridad/roles.service';
   templateUrl: './roles.component.html',
   styleUrls: ['./roles.component.css']
 })
-export class RolesComponent implements OnInit {
-  entidad = [];
-  entidadTable = [];
-  buscar: string;
-  page = 1;
-  fieldSort: string;
-  fieldSortDirection: string;
-  entidadDelete = [];
+export class RolesComponent extends TablaBase implements OnInit {
   
   constructor(private spinner: NgxSpinnerService,
     private rolesService: RolesService,
     private menuService: MenuService) {
+      super();
       this.menuService.titleActive = 'Roles';
      }
 

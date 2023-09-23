@@ -21,13 +21,13 @@
                 </div>
                   <div class="form-row">
                       <div class="form-group col-6">
-                          <label for="nombre" class="bmd-label-floating">Nombre Menu</label>
-                          <input type="text" id="Nombre" name="Nombre" #nombre="ngModel" class="form-control" required="" [(ngModel)]="this.menuTableService.selectEntidad.Nombre">
+                          <label for="Nombre" class="bmd-label-floating">Nombre Menu</label>
+                          <input type="text" id="Nombre" name="Nombre" #Nombre="ngModel" class="form-control" required="" [(ngModel)]="this.menuTableService.selectEntidad.Nombre">
                           <small class="text-warning" *ngIf="moduloForm.submitted && Nombre.invalid">Campo requerido</small>
                       </div>
                       <div class="form-group col-6">
-                          <label for="entidadvendedora" class="bmd-label-floating">Orden en Menu</label>
-                          <input type="text" id="OrdenMenu" name="OrdenMenu" #oden="ngModel" class="form-control" required [(ngModel)]="this.menuTableService.selectEntidad.OrdenMenu">
+                          <label for="OrdenMenu" class="bmd-label-floating">Orden en Menu</label>
+                          <input type="text" id="OrdenMenu" name="OrdenMenu" #OrdenMenu="ngModel" class="form-control" required [(ngModel)]="this.menuTableService.selectEntidad.OrdenMenu">
                           <small class="text-warning" *ngIf="moduloForm.submitted && OrdenMenu.invalid">Campo requerido</small>
                       </div>                      
                   </div>

@@ -15,7 +15,7 @@
                   <div class="form-row">
                       <div class="form-group col-12">
                         <label class="bmd-label-static">Opcion</label>
-                        <select name="IdOpcion" id="IdOpcion" class="form-control" [(ngModel)]="this.roleopcionesService.selectEntidad.IdOpcion">
+                        <select name="IdOpcion" id="IdOpcion" #IdOpcion="ngModel" class="form-control" [(ngModel)]="this.roleopcionesService.selectEntidad.IdOpcion">
                           <option value="{{opcion.IdOpcion}}" *ngFor="let opcion of this.roleopcionesService.opciones">{{ opcion.Nombre }}</option>
                         </select>
                           <!-- <label for="nombre" class="bmd-label-floating">Opcion</label>

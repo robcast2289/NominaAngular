@@ -19,12 +19,12 @@
           <table class="table table-hover table-striped">
               <thead>
                   <tr>
-                      <th scope="col" data-toggle="idrole" (click)="funcSort($event)">Opcion <i class="{{ 'idproyecto' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
-                      <th scope="col" data-toggle="nombre" (click)="funcSort($event)">Alta <i class="{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
-                      <th scope="col" data-toggle="nombre" (click)="funcSort($event)">Baja <i class="{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
-                      <th scope="col" data-toggle="nombre" (click)="funcSort($event)">Cambio <i class="{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
-                      <th scope="col" data-toggle="nombre" (click)="funcSort($event)">Imprimir <i class="{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
-                      <th scope="col" data-toggle="nombre" (click)="funcSort($event)">Exportar <i class="{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="Opcion" (click)="funcSort($event)">Opcion <i class="{{ 'Opcion' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="Alta" (click)="funcSort($event)">Alta <i class="{{ 'Alta' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="Baja" (click)="funcSort($event)">Baja <i class="{{ 'Baja' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="Cambio" (click)="funcSort($event)">Cambio <i class="{{ 'Cambio' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="Imprimir" (click)="funcSort($event)">Imprimir <i class="{{ 'Imprimir' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="Exportar" (click)="funcSort($event)">Exportar <i class="{{ 'Exportar' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
                       <th scope="col">&nbsp;</th>
                       <th scope="col">&nbsp;</th>
                   </tr>
@@ -61,11 +61,11 @@
   <div class="modal-dialog  modal-md" role="document">
       <div class="modal-content modal-alert">
           <div class="modal-body">
-              Confirma que desea eliminar el modulo {{ this.entidadDelete.Nombre }}?
+              Confirma que desea eliminar el modulo {{ this.entidadDelete['Nombre'] }}?
               <hr>
               <div class="row text-center">
                   <button type="button" class="btn btn-secondary btn-sm col-4 offset-1" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button>
-                  <button type="button" class="btn btn-danger btn-sm col-4 offset-2" data-dismiss="modal" (click)="eliminarEntidad(this.entidadDelete.IdRole,this.entidadDelete.IdOpcion)">Eliminar <i class="fa fa-trash"></i></button>
+                  <button type="button" class="btn btn-danger btn-sm col-4 offset-2" data-dismiss="modal" (click)="eliminarEntidad(this.entidadDelete['IdRole'],this.entidadDelete['IdOpcion'])">Eliminar <i class="fa fa-trash"></i></button>
               </div>
           </div>
       </div>

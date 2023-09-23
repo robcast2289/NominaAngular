@@ -13,8 +13,8 @@
           <table class="table table-hover table-striped">
               <thead>
                   <tr>
-                      <th scope="col" data-toggle="IdStatusUsuario" (click)="funcSort($event)">Código <i class="{{ 'idproyecto' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
-                      <th scope="col" data-toggle="Nombre" (click)="funcSort($event)">Nombre <i class="{{ 'nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>                      
+                      <th scope="col" data-toggle="IdStatusUsuario" (click)="funcSort($event)">Código <i class="{{ 'IdStatusUsuario' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="Nombre" (click)="funcSort($event)">Nombre <i class="{{ 'Nombre' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>                      
                       <th scope="col" *ngIf="this.Permisos.Cambio == 1">&nbsp;</th>
                       <th scope="col" *ngIf="this.Permisos.Baja == 1">&nbsp;</th>
                   </tr>
@@ -43,11 +43,11 @@
   <div class="modal-dialog  modal-md" role="document">
       <div class="modal-content modal-alert">
           <div class="modal-body">
-              Confirma que desea eliminar el modulo {{ this.entidadDelete.Nombre }}?
+              Confirma que desea eliminar el modulo {{ this.entidadDelete['Nombre'] }}?
               <hr>
               <div class="row text-center">
                   <button type="button" class="btn btn-secondary btn-sm col-4 offset-1" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button>
-                  <button type="button" class="btn btn-danger btn-sm col-4 offset-2" data-dismiss="modal" (click)="eliminarEntidad(this.entidadDelete.IdStatusUsuario)">Eliminar <i class="fa fa-trash"></i></button>
+                  <button type="button" class="btn btn-danger btn-sm col-4 offset-2" data-dismiss="modal" (click)="eliminarEntidad(this.entidadDelete['IdStatusUsuario'])">Eliminar <i class="fa fa-trash"></i></button>
               </div>
           </div>
       </div>

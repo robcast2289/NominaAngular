@@ -12,7 +12,7 @@ import { GenerosService } from '../../../../services/seguridad/generos.service';
 export class CuGeneroComponent implements OnInit {
 
   constructor(
-    private generoService:GenerosService
+    public generoService:GenerosService
   ) { }
 
   ngOnInit() {

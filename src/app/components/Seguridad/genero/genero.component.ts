@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { TablaBase } from '../../../services/base/tabla.model';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 import { MenuService } from '../../../services/menu.service';
@@ -11,24 +11,13 @@ import { GenerosService } from '../../../services/seguridad/generos.service';
   templateUrl: './genero.component.html',
   styleUrls: ['./genero.component.css']
 })
-export class GeneroComponent implements OnInit {
-  entidad = [];
-  entidadTable = [];
-  buscar: string;
-  page = 1;
-  fieldSort: string;
-  fieldSortDirection: string;
-  entidadDelete = [];
-  Permisos:any = {
-    Alta:0,
-    Baja:0,
-    Cambio:0
-  }
+export class GeneroComponent extends TablaBase implements OnInit {
 
   constructor(private spinner: NgxSpinnerService,
     private generoService: GenerosService,
     private router: Router,
     private menuService: MenuService) {
+      super();
       this.menuService.titleActive = 'Generos';
      }
 

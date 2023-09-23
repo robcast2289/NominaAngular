@@ -16,7 +16,7 @@ export class CuUsuarioTableComponent implements OnInit {
 
 
   constructor(
-    private usuarioTableService:UsuariotableService,
+    public usuarioTableService:UsuariotableService,
     private sanitizer:DomSanitizer
   ) { }
 

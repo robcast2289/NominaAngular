@@ -12,7 +12,7 @@ import { RolesService } from '../../../../services/seguridad/roles.service';
 export class CuRolesComponent implements OnInit {
 
   constructor(
-    private rolesService:RolesService
+    public rolesService:RolesService
   ) { }
 
   ngOnInit() {

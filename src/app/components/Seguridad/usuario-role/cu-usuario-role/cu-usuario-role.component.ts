@@ -13,7 +13,7 @@ export class CuUsuarioRoleComponent implements OnInit {
   @Input() IdUsuarioParent: number;
 
   constructor(
-    private usuarioroleService:UsuarioroleService
+    public usuarioroleService:UsuarioroleService
   ) { }
 
   ngOnInit() {

@@ -12,7 +12,7 @@ import { ModuloService } from '../../../../services/seguridad/modulo.service';
 export class CuModuloComponent implements OnInit {
 
   constructor(
-    private moduloService:ModuloService
+    public moduloService:ModuloService
   ) { }
 
   ngOnInit() {
