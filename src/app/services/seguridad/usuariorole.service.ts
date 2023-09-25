@@ -18,7 +18,12 @@ export class UsuarioroleService {
     IdUsuario: null,
     IdRole: null,
   };
-
+  selectEntidadPregunta = {
+    IdPregunta: null,
+    Pregunta: null,
+    Respuesta: null,
+  };
+  
   roles = [];
 
   constructor(private http: HttpClient, private authService: AuthService, private router:Router) { }
@@ -78,6 +83,17 @@ export class UsuarioroleService {
 
   cargar_roles() {    
     const url = `${this.basepath}seguridad/generales/roles`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_usuariopregunta(id) {    
+    const url = `${this.basepath}seguridad/generales/usuariopregunta/${id}`;
 
     return this.http.get(url)
     .pipe(catchError(data => {

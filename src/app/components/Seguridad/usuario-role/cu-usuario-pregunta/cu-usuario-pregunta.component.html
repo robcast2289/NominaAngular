@@ -1,0 +1,39 @@
+<div class="modal fade" id="usuariopreguntaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog  modal-xl" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel" class="text-success">{{ this.usuarioroleService.selectEntidadPregunta.IdPregunta ? 'Editar Registro ' : 'Nuevo Registro' }}</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form action="" #entidadForm="ngForm" (ngSubmit)="guardarEntidad(entidadForm)">
+                  <input type="hidden" id="IdRole" name="IdRole" class="form-control" [(ngModel)]="this.usuarioroleService.selectEntidadPregunta.IdPregunta">
+                  <!-- <strong><label for="" class="form-control text-primary subtitle">Información General</label></strong> -->
+
+                  <div class="form-row">
+                    <div class="form-group col-12">
+                      <label for="Pregunta" class="bmd-label-floating">Pregunta</label>
+                      <input type="text" id="Pregunta" name="Pregunta" #Pregunta="ngModel" class="form-control" required="" [(ngModel)]="this.usuarioroleService.selectEntidadPregunta.Pregunta">
+                      <small class="text-warning" *ngIf="entidadForm.submitted && Pregunta.invalid">Campo requerido</small>
+                    </div>                  
+                  </div>   
+                  
+                  <div class="form-row">
+                    <div class="form-group col-12">
+                      <label for="Respuesta" class="bmd-label-floating">Respuesta</label>
+                      <input type="text" id="Respuesta" name="Respuesta" #Respuesta="ngModel" class="form-control" required="" [(ngModel)]="this.usuarioroleService.selectEntidadPregunta.Respuesta">
+                      <small class="text-warning" *ngIf="entidadForm.submitted && Respuesta.invalid">Campo requerido</small>
+                    </div>                  
+                  </div>
+                  
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button> &nbsp;
+                      <button type="submit" class="btn btn-raised btn-success">Guardar <i class="fa fa-save"></i></button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

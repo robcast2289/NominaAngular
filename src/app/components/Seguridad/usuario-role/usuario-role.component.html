@@ -54,6 +54,39 @@
 
                     </div>
                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                        
+                        <div class="row" style="margin-top: 20px">
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-2">
+                                <button class="btn btn-raised btn-secondary form-control" data-toggle="modal" data-target="#usuariopreguntaModal" (click)="limpiarForm()">Nuevo <i class="fa fa-plus"></i></button>
+                            </div>
+                            <!-- <div class="col-9 col-sm-9 col-md-9 col-lg-10">
+                                <input type="search" class="form-control" placeholder="Buscar" (ngModelChange)="funcSearch($event)" [(ngModel)]="buscar">
+                            </div> -->
+                        </div>
+                        <div class="card form-control-rc">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" data-toggle="IdPregunta" (click)="funcSort($event)">Código <i class="{{ 'IdPregunta' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>                      
+                                        <th scope="col" data-toggle="Pregunta" (click)="funcSort($event)">Pregunta <i class="{{ 'Pregunta' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>                      
+                                        <th scope="col" data-toggle="OrdenPregunta" (click)="funcSort($event)">Orden <i class="{{ 'OrdenPregunta' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>                      
+                                        <th scope="col">&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let entidad of entidadTablePregunta | paginate: { itemsPerPage: 10, currentPage: pagePregunta }">
+                                        <td>{{ entidad.IdPregunta }}</td>                      
+                                        <td>{{ entidad.Pregunta }}</td>                      
+                                        <td>{{ entidad.OrdenPregunta }}</td>                      
+                                        <td data-toggle="modal" data-target="#alertModal" (click)="setEntidadDel(entidad)">
+                                            <i class="fa fa-trash text-danger"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true">
+                            </pagination-controls>
+                        </div>
 
                     </div>
                 </div>
@@ -83,3 +116,4 @@
 </div>
 
 <app-cu-usuario-role [IdUsuarioParent]="this.id"></app-cu-usuario-role>
+<app-cu-usuario-pregunta [IdUsuarioParent]="this.id"></app-cu-usuario-pregunta>
