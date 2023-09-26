@@ -4,8 +4,8 @@
         <form class="form-signin" (ngSubmit)="onSubmit(form1)" #form1="ngForm">
             <img src="../../../assets/svg/ios-lock.svg" alt="" class="svg">
             <h1 class="form-signin-heading text-white">Inicia sesión</h1>
-            <input type="text" name="email" class="form-control" placeholder="Email address" required="" autofocus="" [(ngModel)]="login.email" #email="ngModel">
-            <input type="password" name="password" class="form-control" placeholder="Password" required="" [(ngModel)]="login.password" #password="ngModel">
+            <input type="text" name="email" class="form-control" placeholder="Usuario" required="" autofocus="" [(ngModel)]="login.email" #email="ngModel">
+            <input type="password" name="password" class="form-control" placeholder="Contraseña" required="" [(ngModel)]="login.password" #password="ngModel">
             <input class="btn btn-lg btn-dark btn-block" type="submit" name="submit" [disabled]="form1.invalid">
 
         </form>

@@ -24,6 +24,7 @@ import { EmpresaComponent } from './components/Seguridad/empresa/empresa.compone
 import { SucursalComponent } from './components/Seguridad/sucursal/sucursal.component';
 import { GeneroComponent } from './components/Seguridad/genero/genero.component';
 import { StatusUsuarioComponent } from './components/Seguridad/status-usuario/status-usuario.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'recover-pass',
+    component: ForgotPasswordComponent
   },
   {
     path: '404notfound',

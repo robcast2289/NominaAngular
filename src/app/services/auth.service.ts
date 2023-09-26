@@ -53,6 +53,37 @@ export class AuthService {
     return this.http.post(url, formData,{headers} );
   }
 
+  recoverUser(user)
+  {
+    const url = `${this.basepath}User/recover`;
+
+    const params = {
+      IdUsuario: user
+    }
+
+    const formData: FormData = new FormData();
+
+    formData.append("data",JSON.stringify(params));
+
+    return this.http.post(url, formData);
+  }
+
+  validQuestions(questions,user){
+    const url = `${this.basepath}User/valida_pregunta`;
+
+    const params = {
+      IdUsuario: user
+    }
+
+    const formData: FormData = new FormData();
+
+    formData.append("data",JSON.stringify(params));
+    formData.append("question",JSON.stringify(questions));
+
+    return this.http.post(url, formData);
+
+  }
+
 
   tieneAccesoOpcion(buscarUrl){
     buscarUrl = buscarUrl.substring(1);
