@@ -71,8 +71,6 @@ export class ModuloComponent extends TablaBase implements OnInit {
   }
 
   preActualizarEntidad(entidad) {
-    //this.proyService.selectProyecto = Object.assign(proyecto);
-    console.log(entidad);
     this.moduloService.selectEntidad = {
       IdModulo: entidad.IdModulo,
       Nombre: entidad.Nombre,

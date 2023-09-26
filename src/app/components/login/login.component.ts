@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit {
     }))
     .subscribe(data => {
       this.spinner.hide();
-      console.log(data);
       if (typeof data.error !== 'undefined' && !data.error) {
         this.authService.isLoggedIn = true;
         this.authService.cargar_credenciales(

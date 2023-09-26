@@ -96,7 +96,6 @@ export class UsuariotableService {
       console.log(file);
     }); */
     formData.append("data",JSON.stringify(params));
-    console.log(params);
 
     return this.http.put(url, formData)
     .pipe(catchError(data => {
@@ -131,7 +130,7 @@ export class UsuariotableService {
 
     const formData: FormData = new FormData();
     formData.append("data",JSON.stringify(params));
-    console.log(params);
+
     return this.http.post(url, formData)
     .pipe(catchError(data => {
       this.errorMessage = data.error.mensaje

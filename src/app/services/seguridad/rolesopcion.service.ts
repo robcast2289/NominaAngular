@@ -75,8 +75,6 @@ export class RolesopcionService {
       Exportar: entidadForm.Exportar  == true ? 1 : 0,
     };
 
-    console.log(params);
-
     return this.http.put(url, params)
     .pipe(catchError(data => {
       return of(data).pipe(

@@ -70,8 +70,6 @@ export class UsuarioroleService {
       IdRole: entidadForm.IdRole,
     };
 
-    console.log(params);
-
     return this.http.put(url, params)
     .pipe(catchError(data => {
       return of(data).pipe(

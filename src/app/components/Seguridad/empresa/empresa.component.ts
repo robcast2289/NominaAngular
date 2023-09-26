@@ -58,8 +58,6 @@ export class EmpresaComponent extends TablaBase implements OnInit {
   }
 
   preActualizarEntidad(entidad) {
-    //this.proyService.selectProyecto = Object.assign(proyecto);
-    console.log(entidad);
     this.empresaService.selectEntidad = {
       IdEmpresa: entidad.IdEmpresa,
       Nombre: entidad.Nombre,

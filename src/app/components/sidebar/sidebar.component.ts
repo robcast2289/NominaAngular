@@ -47,7 +47,6 @@ export class SidebarComponent implements OnInit {
         this.menuService.menu_all = data.opciones;
       } else {
         this.menuService.menu_all = [];
-        console.log(data.mensaje);
       }
     });
   }

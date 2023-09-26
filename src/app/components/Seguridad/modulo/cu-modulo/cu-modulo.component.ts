@@ -25,36 +25,12 @@ export class CuModuloComponent implements OnInit {
         this.moduloService.insertar_modulo(moduloForm.value)        
         .subscribe(data => {
           location.reload();
-          /* if (typeof data.error !== 'undefined' && !data.error) {
-            location.reload();
-          } else if (typeof data.error !== 'undefined' && data.error) {
-            if (data.mensaje === 'Token inválido') {
-              this.authService.logout();
-              this.router.navigate(['login']);
-            } else {
-              console.log(data.mensaje);
-            }
-          } else {
-            console.log(data);
-          } */
         });
       } else {
         // actualizar
         this.moduloService.actualizar_modulo(moduloForm.value)        
         .subscribe(data => {
           location.reload();
-          /* if (typeof data.error !== 'undefined' && !data.error) {
-            location.reload();
-          } else if (typeof data.error !== 'undefined' && data.error) {
-            if (data.mensaje === 'Token inválido') {
-              this.authService.logout();
-              this.router.navigate(['login']);
-            } else {
-              console.log(data.mensaje);
-            }
-          } else {
-            console.log(data);
-          } */
         });
       }
     }

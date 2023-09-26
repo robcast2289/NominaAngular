@@ -54,13 +54,10 @@ export class CuUsuarioTableComponent implements OnInit {
 
   catchFile(event){
     const imagen = event.target.files[0];
-    //console.log(event.target.files[0]);
     this.extraerBase64(imagen).then(img => {
-      //console.log(img);
       this.usuarioTableService.selectEntidad.Fotografia = img["base"];
     });
     this.archivos.push(imagen);
-    //console.log(this.archivos[0]);
   }
 
   extraerBase64 = async($event:any) => new Promise((resolve,reject) => {
