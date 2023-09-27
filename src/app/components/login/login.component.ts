@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit {
     this.spinner.show();
     this.authService.login(e.value.email, e.value.password)
     .pipe(catchError(data => {
+      this.login.password = "";
+      this.errorLogin.mensaje = "Error desconocido";
       return of(data).pipe(
         map(val => data.error)
       );

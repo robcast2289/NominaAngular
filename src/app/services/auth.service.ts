@@ -204,7 +204,7 @@ export class AuthService {
 
     this.deviceInfo.os = `${Info["os"]}(${Info["os_version"]})`;
     this.deviceInfo.browser = `${Info["browser"]}(${Info["browser_version"]})`;
-    this.deviceInfo.device = (isMobile ? "Movile" : (isTablet ? "Tablet" : "Desktop"));
+    this.deviceInfo.device = `${(isMobile ? "Mobile" : (isTablet ? "Tablet" : "Desktop"))}(${Info["device"]})`;
 
   }
 }
