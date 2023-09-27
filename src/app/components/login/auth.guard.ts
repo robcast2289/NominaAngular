@@ -41,14 +41,27 @@ export class AuthGuard implements CanActivate  {
   }
 
   checkLogin(url) {
-    if (this.autService.isLoggedIn) {
-      return true;
+    if (this.autService.isLoggedIn && this.autService.credenciales.expiresIn) {
+      if(new Date(this.autService.credenciales.expiresIn) > new Date()){
+        return true;
+      }
+      else{
+        this.autService.logout();
+        return false;
+      }
     }
 
     this.autService.cargar_storage();
-    if (this.autService.credenciales.userId) {
-      this.autService.isLoggedIn = true;
-      return true;
+    if (this.autService.credenciales.userId && this.autService.credenciales.expiresIn) {
+      if(new Date(this.autService.credenciales.expiresIn) > new Date()){
+        this.autService.isLoggedIn = true;
+        return true;
+      }
+      else{
+        this.autService.logout();
+        return false;
+      }
+      
     }
 
     this.autService.redirectUrl = url;

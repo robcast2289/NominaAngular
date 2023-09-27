@@ -19,6 +19,11 @@ export class ForgotPasswordComponent implements OnInit {
 
   preguntas = [];
 
+  newPassword = {
+    Password:'',
+    ConfirmPassword:''
+  }
+
   errorRecover = {
     mensaje: ''
   };
@@ -88,7 +93,44 @@ export class ForgotPasswordComponent implements OnInit {
         console.log(e);
         this.errorRecover.mensaje = "";
         
-        //this.fase=3;
+        this.fase=3;
+      }),
+      catchError(data => {
+      this.errorRecover.mensaje = data.error.mensaje;
+      this.preguntas.forEach(element => {
+        element['Respuesta'] = "";
+      });
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }))
+    .subscribe(data => {
+      this.spinner.hide();
+    });
+  }
+
+  onSubmitNewPassword(form: NgForm) {
+    console.log(form.value);
+    this.spinner.show();
+    this.authService.changePassword(form.value,this.recover.email)
+    .pipe(
+      map(e=>{
+        console.log(e);
+        this.errorRecover.mensaje = "";
+        
+        this.authService.isLoggedIn = true;
+        this.authService.cargar_credenciales(
+          e["user"].Nombre + ' ' + e["user"].Apellido,
+          e["user"].CorreoElectronico,
+          e["token"],
+          e["expires_at"],
+          e["user"].IdUsuario,
+          e["user"].Fotografia
+        );
+        this.authService.guardar_storage();
+
+        const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : 'home';
+        this.router.navigate([redirect]);
       }),
       catchError(data => {
       this.errorRecover.mensaje = data.error.mensaje;

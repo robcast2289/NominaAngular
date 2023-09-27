@@ -84,6 +84,27 @@ export class AuthService {
 
   }
 
+  changePassword(passwords,user){
+    const url = `${this.basepath}User/cambiar_contrasena`;
+
+    const params = {
+      IdUsuario: user
+    }
+
+    const pass = {
+      Password: this.vigenereCipher(passwords['Password'],this.key),
+      ConfirmPassword: this.vigenereCipher(passwords['ConfirmPassword'],this.key) 
+    }
+
+    const formData: FormData = new FormData();
+
+    formData.append("data",JSON.stringify(params));
+    formData.append("pass",JSON.stringify(pass));
+
+    return this.http.post(url, formData);
+
+  }
+
 
   tieneAccesoOpcion(buscarUrl){
     buscarUrl = buscarUrl.substring(1);
