@@ -15,7 +15,7 @@
                     <div class="form-group col-12">
                         <label class="bmd-label-static">Menu</label>
                         <select name="IdMenu" id="IdMenu" class="form-control" [(ngModel)]="this.opcionService.selectEntidad.IdMenu">
-                          <option value="{{modulo.IdMenu}}" *ngFor="let modulo of this.opcionService.menus">{{ modulo.Nombre }}</option>
+                          <option value="{{menu.IdMenu}}" *ngFor="let menu of this.opcionService.menus">{{ menu.Modulo }} - {{ menu.Nombre }}</option>
                       </select>
                     </div>
                 </div>
