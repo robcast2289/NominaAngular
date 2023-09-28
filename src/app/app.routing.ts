@@ -38,6 +38,7 @@ import { EstadoCivilComponent } from './components/rrhh/estado-civil/estado-civi
 import { TipoDocumentoComponent } from './components/rrhh/tipo-documento/tipo-documento.component';
 
 import { BancoComponent } from './components/banco/banco/banco.component';
+import { BitacoraAccesoComponent } from './components/Seguridad/bitacora-acceso/bitacora-acceso.component';
 
 const routes: Routes = [
   {
@@ -118,6 +119,10 @@ const routes: Routes = [
       {
         path: 'seguridad/generales/status-usuario',
         component: StatusUsuarioComponent,
+      },
+      {
+        path: 'seguridad/generales/bitacora-acceso',
+        component: BitacoraAccesoComponent,
       },
       // MODULO NOMINA
       {

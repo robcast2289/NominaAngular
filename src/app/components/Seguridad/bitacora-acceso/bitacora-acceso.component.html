@@ -1,0 +1,38 @@
+<section id="bitacora">
+  <div class="container">
+      <div class="col-sx-12 col-sm-6 col-md-4"></div>
+      <div class="row" style="margin-top: 20px">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+              <input type="search" class="form-control" placeholder="Buscar" name="Buscar" (ngModelChange)="funcSearch($event)" [(ngModel)]="buscar">
+          </div>
+      </div>
+      <div class="card form-control-rc">
+          <table class="table table-hover table-striped">
+              <thead>
+                  <tr>
+                      <th scope="col" data-toggle="IdUsuario" (click)="funcSort($event)">Usuario <i class="{{ 'IdUsuario' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="TipoAcceso" (click)="funcSort($event)">Tipo de Acceso <i class="{{ 'TipoAcceso' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="FechaAcceso" (click)="funcSort($event)">Fecha <i class="{{ 'FechaAcceso' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="DireccionIp" (click)="funcSort($event)">Direccion IP <i class="{{ 'DireccionIp' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="SistemaOperativo" (click)="funcSort($event)">Sistema Operativo<i class="{{ 'SistemaOperativo' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="Dispositivo" (click)="funcSort($event)">Dispositivo<i class="{{ 'Dispositivo' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="Browser" (click)="funcSort($event)">Browser<i class="{{ 'Browser' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let entidad of entidadTable | paginate: { itemsPerPage: 10, currentPage: page }">
+                      <td>{{ entidad.IdUsuario }}</td>
+                      <td>{{ entidad.TipoAcceso }}</td>
+                      <td>{{ entidad.FechaAcceso }}</td>
+                      <td>{{ entidad.DireccionIp }}</td>
+                      <td>{{ entidad.SistemaOperativo }}</td>
+                      <td>{{ entidad.Dispositivo }}</td>
+                      <td>{{ entidad.Browser }}</td>
+                  </tr>
+              </tbody>
+          </table>
+          <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true">
+          </pagination-controls>
+      </div>
+  </div>
+</section>

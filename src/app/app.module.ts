@@ -75,6 +75,7 @@ import { CuInasistenciaComponent } from './components/nomina/inasistencia/cu-ina
 
 import { BancoComponent } from './components/banco/banco/banco.component';
 import { CuBancoComponent } from './components/banco/banco/cu-banco/cu-banco.component';
+import { BitacoraAccesoComponent } from './components/Seguridad/bitacora-acceso/bitacora-acceso.component';
 
 @NgModule({
   declarations: [
@@ -127,7 +128,8 @@ import { CuBancoComponent } from './components/banco/banco/cu-banco/cu-banco.com
     CuFlujoStatusEmpleadoComponent,
     InasistenciaComponent,
     CuInasistenciaComponent,
-    EmpleadoComponent
+    EmpleadoComponent,
+    BitacoraAccesoComponent
   ],
   imports: [
     BrowserModule,
