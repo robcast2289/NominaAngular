@@ -54,6 +54,28 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { CuUsuarioPreguntaComponent } from './components/Seguridad/usuario-role/cu-usuario-pregunta/cu-usuario-pregunta.component';
 
+import { DepartamentoComponent } from './components/rrhh/departamento/departamento.component';
+import { CuDepartamentoComponent } from './components/rrhh/departamento/cu-departamento/cu-departamento.component';
+import { PuestoComponent } from './components/rrhh/puesto/puesto.component';
+import { CuPuestoComponent } from './components/rrhh/puesto/cu-puesto/cu-puesto.component';
+import { EstadoCivilComponent } from './components/rrhh/estado-civil/estado-civil.component';
+import { CuEstadoCivilComponent } from './components/rrhh/estado-civil/cu-estado-civil/cu-estado-civil.component';
+import { TipoDocumentoComponent } from './components/rrhh/tipo-documento/tipo-documento.component';
+import { CuTipoDocumentoComponent } from './components/rrhh/tipo-documento/cu-tipo-documento/cu-tipo-documento.component';
+
+import { EmpleadoComponent } from './components/nomina/empleado/empleado.component';
+import { PeriodoComponent } from './components/nomina/periodo/periodo.component';
+import { CuPeriodoComponent } from './components/nomina/periodo/cu-periodo/cu-periodo.component';
+import { StatusEmpleadoComponent } from './components/nomina/status-empleado/status-empleado.component';
+import { CuStatusEmpleadoComponent } from './components/nomina/status-empleado/cu-status-empleado/cu-status-empleado.component';
+import { FlujoStatusEmpleadoComponent } from './components/nomina/flujo-status-empleado/flujo-status-empleado.component';
+import { CuFlujoStatusEmpleadoComponent } from './components/nomina/flujo-status-empleado/cu-flujo-status-empleado/cu-flujo-status-empleado.component';
+import { InasistenciaComponent } from './components/nomina/inasistencia/inasistencia.component';
+import { CuInasistenciaComponent } from './components/nomina/inasistencia/cu-inasistencia/cu-inasistencia.component';
+
+import { BancoComponent } from './components/banco/banco/banco.component';
+import { CuBancoComponent } from './components/banco/banco/cu-banco/cu-banco.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,6 +109,25 @@ import { CuUsuarioPreguntaComponent } from './components/Seguridad/usuario-role/
     PerfilComponent,
     ForgotPasswordComponent,
     CuUsuarioPreguntaComponent,
+    BancoComponent,
+    CuBancoComponent,
+    DepartamentoComponent,
+    CuDepartamentoComponent,
+    PuestoComponent,
+    CuPuestoComponent,
+    EstadoCivilComponent,
+    CuEstadoCivilComponent,
+    TipoDocumentoComponent,
+    CuTipoDocumentoComponent,
+    PeriodoComponent,
+    CuPeriodoComponent,
+    StatusEmpleadoComponent,
+    CuStatusEmpleadoComponent,
+    FlujoStatusEmpleadoComponent,
+    CuFlujoStatusEmpleadoComponent,
+    InasistenciaComponent,
+    CuInasistenciaComponent,
+    EmpleadoComponent
   ],
   imports: [
     BrowserModule,

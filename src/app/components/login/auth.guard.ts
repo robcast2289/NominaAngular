@@ -47,7 +47,6 @@ export class AuthGuard implements CanActivate  {
       }
       else{
         this.autService.logout();
-        return false;
       }
     }
 
@@ -59,7 +58,6 @@ export class AuthGuard implements CanActivate  {
       }
       else{
         this.autService.logout();
-        return false;
       }
       
     }

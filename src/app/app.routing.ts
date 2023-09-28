@@ -6,13 +6,13 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AuthGuard } from './components/login/auth.guard';
 import { Error404notFoundComponent } from './components/error404not-found/error404not-found.component';
 import { Error403forbiddenComponent } from './components/error403forbidden/error403forbidden.component';
+import { PerfilComponent } from './components/Seguridad/perfil/perfil.component'
 
 /* import { ProyectosComponent } from './components/catalogos/proyectos/proyectos.component';
 import { AccesosComponent } from './components/administracion/accesos/accesos.component';
 import { RolesComponent } from './components/administracion/roles/roles.component';
  */
 
-import { PerfilComponent } from './components/Seguridad/perfil/perfil.component'
 import { ModuloComponent } from './components/Seguridad/modulo/modulo.component'
 import { MenusComponent } from './components/Seguridad/menus/menus.component'
 import { OpcionComponent } from './components/Seguridad/opcion/opcion.component'
@@ -25,6 +25,19 @@ import { SucursalComponent } from './components/Seguridad/sucursal/sucursal.comp
 import { GeneroComponent } from './components/Seguridad/genero/genero.component';
 import { StatusUsuarioComponent } from './components/Seguridad/status-usuario/status-usuario.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+
+import { EmpleadoComponent } from './components/nomina/empleado/empleado.component';
+import { PeriodoComponent } from './components/nomina/periodo/periodo.component';
+import { StatusEmpleadoComponent } from './components/nomina/status-empleado/status-empleado.component';
+import { FlujoStatusEmpleadoComponent } from './components/nomina/flujo-status-empleado/flujo-status-empleado.component';
+import { InasistenciaComponent } from './components/nomina/inasistencia/inasistencia.component';
+
+import { DepartamentoComponent } from './components/rrhh/departamento/departamento.component';
+import { PuestoComponent } from './components/rrhh/puesto/puesto.component';
+import { EstadoCivilComponent } from './components/rrhh/estado-civil/estado-civil.component';
+import { TipoDocumentoComponent } from './components/rrhh/tipo-documento/tipo-documento.component';
+
+import { BancoComponent } from './components/banco/banco/banco.component';
 
 const routes: Routes = [
   {
@@ -61,6 +74,7 @@ const routes: Routes = [
         path: 'seguridad/perfil',
         component: PerfilComponent,
       },
+      // MODULO CONFIGURACION
       {
         path: 'seguridad/generales/modulos',
         component: ModuloComponent,
@@ -104,6 +118,49 @@ const routes: Routes = [
       {
         path: 'seguridad/generales/status-usuario',
         component: StatusUsuarioComponent,
+      },
+      // MODULO NOMINA
+      {
+        path: 'nomina/empleados',
+        component: EmpleadoComponent,
+      },
+      {
+        path: 'nomina/periodos',
+        component: PeriodoComponent,
+      },
+      {
+        path: 'nomina/inasistencias',
+        component: InasistenciaComponent,
+      },
+      {
+        path: 'nomina/status-empleado',
+        component: StatusEmpleadoComponent,
+      },
+      {
+        path: 'nomina/flujo-status-empleado',
+        component: FlujoStatusEmpleadoComponent,
+      },
+      // MODULO RRHH
+      {
+        path: 'rrhh/departamentos',
+        component: DepartamentoComponent,
+      },
+      {
+        path: 'rrhh/puestos',
+        component: PuestoComponent,
+      },
+      {
+        path: 'rrhh/estado-civil',
+        component: EstadoCivilComponent,
+      },
+      {
+        path: 'rrhh/tipo-documento',
+        component: TipoDocumentoComponent,
+      },
+      // MODULO BANCOS
+      {
+        path: 'banco/bancos',
+        component: BancoComponent,
       },
     ]
   },  
