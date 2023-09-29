@@ -24,7 +24,7 @@ export class BancoService {
 
   cargar_bancos() {   
     this.errorMessage = ""; 
-    const url = `${this.basepath}seguridad/generales/bancos`;
+    const url = `${this.basepath}banco/bancos`;
 
     return this.http.get(url)
     .pipe(catchError(data => {
@@ -37,7 +37,7 @@ export class BancoService {
 
   eliminar_banco(id){
     this.errorMessage = "";
-    const url = `${this.basepath}seguridad/generales/bancos/${id}`;
+    const url = `${this.basepath}banco/bancos/${id}`;
 
     return this.http.delete(url)
     .pipe(
@@ -53,7 +53,7 @@ export class BancoService {
 
   insertar_banco(entidadForm){
     this.errorMessage = "";
-    const url = `${this.basepath}seguridad/generales/bancos/${this.authService.credenciales.userId}`;
+    const url = `${this.basepath}banco/bancos/${this.authService.credenciales.userId}`;
 
     const params = {
       IdMenu: entidadForm.IdMenu,
@@ -74,7 +74,7 @@ export class BancoService {
   actualizar_banco(entidadForm){
     this.errorMessage = "";
     const id = entidadForm.IdOpcion;
-    const url = `${this.basepath}seguridad/generales/bancos/${this.authService.credenciales.userId}/${id}`;
+    const url = `${this.basepath}banco/bancos/${this.authService.credenciales.userId}/${id}`;
 
     const params = {
       IdMenu: entidadForm.IdMenu,
