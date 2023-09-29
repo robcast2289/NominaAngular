@@ -41,11 +41,13 @@ export class AuthGuard implements CanActivate  {
   }
 
   checkLogin(url) {
+    
     if (this.autService.isLoggedIn && this.autService.credenciales.expiresIn) {
       if(new Date(this.autService.credenciales.expiresIn) > new Date()){
         return true;
       }
       else{
+        alert("Esta sesión ha Expirado");
         this.autService.logout();
       }
     }
@@ -57,6 +59,7 @@ export class AuthGuard implements CanActivate  {
         return true;
       }
       else{
+        alert("Esta sesión ha Expirado");
         this.autService.logout();
       }
       

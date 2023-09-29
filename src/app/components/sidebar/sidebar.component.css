@@ -134,6 +134,12 @@ a:focus {
     background: linear-gradient(to bottom, #c5b685 0%, #c5b086 51%, #d2cd91 100%);
 }
 
+#sidebar ul li a.logout:hover {
+    color: #fff;
+    /* background: #7386D5; */
+    background: linear-gradient(to bottom, #c59785 0%, #a26d6d 51%, #d29191 100%);
+}
+
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
