@@ -56,10 +56,7 @@ export class BancoService {
     const url = `${this.basepath}banco/bancos/${this.authService.credenciales.userId}`;
 
     const params = {
-      IdMenu: entidadForm.IdMenu,
       Nombre: entidadForm.Nombre,
-      OrdenMenu: entidadForm.OrdenMenu,
-      Pagina: entidadForm.Pagina
     };
 
     return this.http.put(url, params)
@@ -73,14 +70,11 @@ export class BancoService {
 
   actualizar_banco(entidadForm){
     this.errorMessage = "";
-    const id = entidadForm.IdOpcion;
+    const id = entidadForm.IdBanco;
     const url = `${this.basepath}banco/bancos/${this.authService.credenciales.userId}/${id}`;
 
     const params = {
-      IdMenu: entidadForm.IdMenu,
       Nombre: entidadForm.Nombre,
-      OrdenMenu: entidadForm.OrdenMenu,
-      Pagina: entidadForm.Pagina
     };
 
     return this.http.post(url, params)
