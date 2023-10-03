@@ -66,4 +66,6 @@ export class TablaBase {
         }
         this.fieldSort = field;
     }
+
+    
 }

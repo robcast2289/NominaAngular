@@ -71,7 +71,7 @@ export class TipodocumentoService {
 
   actualizar_tipodocumento(entidadForm){
     this.errorMessage = "";
-    const id = entidadForm.IdOpcion;
+    const id = entidadForm.IdTipoDocumento;
     const url = `${this.basepath}rrhh/tipodocumento/${this.authService.credenciales.userId}/${id}`;
 
     const params = {

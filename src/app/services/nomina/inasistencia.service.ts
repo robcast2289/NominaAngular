@@ -77,7 +77,7 @@ export class InasistenciaService {
 
   actualizar_inasistencia(entidadForm){
     this.errorMessage = "";
-    const id = entidadForm.IdOpcion;
+    const id = entidadForm.IdInasistencia;
     const url = `${this.basepath}nomina/inasistencia/${this.authService.credenciales.userId}/${id}`;
 
     const params = {

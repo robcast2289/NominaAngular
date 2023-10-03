@@ -24,16 +24,34 @@ export class CuDepartamentoComponent implements OnInit {
         // Nuevo
         this.departamentoService.insertar_departamento(entidadForm.value)        
         .subscribe(data => {
-          location.reload();
+          if(this.departamentoService.errorMessage){
+            this.myAlertTop();
+          }
+          else{
+            location.reload();
+          }
         });
       } else {
         // actualizar
         this.departamentoService.actualizar_departamento(entidadForm.value)        
         .subscribe(data => {
-          location.reload();
+          if(this.departamentoService.errorMessage){
+            this.myAlertTop();
+          }
+          else{
+            location.reload();
+          }
         });
       }
     }
+  }  
+
+  myAlertTop(){
+    $(".myAlert-top").show();
+    setTimeout(function(){
+      $(".myAlert-top").hide();   
+      this.opcionService.errorMessage = "";    
+    }, 8000);    
   }
 
 }

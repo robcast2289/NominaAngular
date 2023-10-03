@@ -21,6 +21,8 @@ export class PuestoService {
 
   errorMessage:string;
 
+  departamentos = [];
+
   constructor(private http: HttpClient, public authService: AuthService) { }
 
   cargar_puesto() {   
@@ -73,7 +75,7 @@ export class PuestoService {
 
   actualizar_puesto(entidadForm){
     this.errorMessage = "";
-    const id = entidadForm.IdOpcion;
+    const id = entidadForm.IdPuesto;
     const url = `${this.basepath}rrhh/puesto/${this.authService.credenciales.userId}/${id}`;
 
     const params = {
@@ -85,6 +87,17 @@ export class PuestoService {
     return this.http.post(url, params)
     .pipe(catchError(data => {
       this.errorMessage = data.error.mensaje;
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_departamentos() {    
+    const url = `${this.basepath}rrhh/departamento`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
       return of(data).pipe(
         map(val => data.error)
       );

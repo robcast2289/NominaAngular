@@ -56,7 +56,9 @@ export class DepartamentoComponent extends TablaBase implements OnInit {
       if(this.departamentoService.errorMessage){
         this.myAlertTop();
       }
-      this.obtenerDepartamento();
+      else{
+        this.obtenerDepartamento();
+      }
     });
   }
 

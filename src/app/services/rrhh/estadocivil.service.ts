@@ -71,7 +71,7 @@ export class EstadocivilService {
 
   actualizar_estadocivil(entidadForm){
     this.errorMessage = "";
-    const id = entidadForm.IdOpcion;
+    const id = entidadForm.IdEstadoCivil;
     const url = `${this.basepath}rrhh/estadocivil/${this.authService.credenciales.userId}/${id}`;
 
     const params = {
@@ -81,6 +81,7 @@ export class EstadocivilService {
 
     return this.http.post(url, params)
     .pipe(catchError(data => {
+      console.log(data);
       this.errorMessage = data.error.mensaje;
       return of(data).pipe(
         map(val => data.error)

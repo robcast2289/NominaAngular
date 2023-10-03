@@ -73,10 +73,11 @@ export class PeriodosService {
     }));
   }
 
-  actualizar_periodoplanilla(entidadForm){
+  /* actualizar_periodoplanilla(entidadForm){
     this.errorMessage = "";
-    const id = entidadForm.IdOpcion;
-    const url = `${this.basepath}nomina/periodoplanilla/${this.authService.credenciales.userId}/${id}`;
+    const anio = entidadForm.Anio;
+    const mes = entidadForm.Mes;
+    const url = `${this.basepath}nomina/periodoplanilla/${this.authService.credenciales.userId}/${anio}/${mes}`;
 
     const params = {
       Anio: entidadForm.Anio,
@@ -92,5 +93,5 @@ export class PeriodosService {
         map(val => data.error)
       );
     }));
-  }
+  } */
 }

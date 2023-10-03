@@ -71,7 +71,7 @@ export class StatusempleadoService {
 
   actualizar_statusempleado(entidadForm){
     this.errorMessage = "";
-    const id = entidadForm.IdOpcion;
+    const id = entidadForm.IdStatusEmpleado;
     const url = `${this.basepath}nomina/statusempleado/${this.authService.credenciales.userId}/${id}`;
 
     const params = {
