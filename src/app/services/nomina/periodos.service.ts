@@ -14,13 +14,27 @@ export class PeriodosService {
   basepath = URL_SERVICES;
 
   selectEntidad = {
-    Anio: null,
+    Anio: 2023,
     Mes: null,
-    FechaInicio: null,
-    FechaFin: null,
+    Cantidad: 1,
   };
 
   errorMessage:string;
+
+  meses = [
+    {value:1,Name:"Enero"},
+    {value:2,Name:"Febrero"},
+    {value:3,Name:"Marzo"},
+    {value:4,Name:"Abril"},
+    {value:5,Name:"Mayo"},
+    {value:6,Name:"Junio"},
+    {value:7,Name:"Julio"},
+    {value:8,Name:"Agosto"},
+    {value:9,Name:"Septiembre"},
+    {value:10,Name:"Octubre"},
+    {value:11,Name:"Noviembre"},
+    {value:12,Name:"Diciembre"},
+  ]
 
   constructor(private http: HttpClient, public authService: AuthService) { }
 
@@ -37,9 +51,9 @@ export class PeriodosService {
     }));
   }
 
-  eliminar_periodoplanilla(id){
+  eliminar_periodoplanilla(anio,mes){
     this.errorMessage = "";
-    const url = `${this.basepath}nomina/periodoplanilla/${id}`;
+    const url = `${this.basepath}nomina/periodoplanilla/${anio}/${mes}`;
 
     return this.http.delete(url)
     .pipe(
@@ -60,8 +74,7 @@ export class PeriodosService {
     const params = {
       Anio: entidadForm.Anio,
       Mes: entidadForm.Mes,
-      FechaInicio: entidadForm.FechaInicio,
-      FechaFin: entidadForm.FechaFin,
+      Cantidad: entidadForm.Cantidad,
     };
 
     return this.http.put(url, params)

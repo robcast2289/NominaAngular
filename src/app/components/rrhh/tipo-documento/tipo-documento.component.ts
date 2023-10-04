@@ -18,7 +18,7 @@ export class TipoDocumentoComponent extends TablaBase implements OnInit {
     private router: Router,
     private menuService: MenuService) {
       super();
-      this.menuService.titleActive = 'Estado Civil';
+      this.menuService.titleActive = 'Tipos de Documento';
      }
 
   ngOnInit() {
