@@ -39,6 +39,10 @@ export class InasistenciaComponent extends TablaBase implements OnInit {
     .subscribe(data => {
       this.spinner.hide();
       this.entidad = data;
+      this.entidad.forEach(element => {
+        element["FechaInicial"] = this.formatDate(new Date(element["FechaInicial"]),false);
+        element["FechaFinal"] = this.formatDate(new Date(element["FechaFinal"]),false);
+      });
       this.entidadTable = this.entidad;
     });
   }

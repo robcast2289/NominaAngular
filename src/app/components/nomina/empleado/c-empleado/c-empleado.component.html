@@ -1,0 +1,45 @@
+<div class="modal fade" id="empleadoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog  modal-xl" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel" class="text-success">{{ this.empleadoService.selectEntidad.IdEmpleado ? 'Editar Empleado '+this.empleadoService.selectEntidad.IdEmpleado : 'Nuevo Empleado' }}</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form action="" #entidadForm="ngForm" (ngSubmit)="guardarEntidad(entidadForm)">
+                  <input type="hidden" id="IdEmpleado" name="IdEmpleado" class="form-control" [(ngModel)]="this.empleadoService.selectEntidad.IdEmpleado">
+                  <!-- <strong><label for="" class="form-control text-primary subtitle">Información General</label></strong> -->
+                  
+                  <div class="form-row">
+                      <div class="form-group col-4">
+                        <label for="Nombre" class="bmd-label-floating">Nombre </label>
+                        <input type="text" id="Nombre" name="Nombre" #Nombre="ngModel" class="form-control" required="" [(ngModel)]="this.empleadoService.selectEntidad.Nombre">
+                        <small class="text-warning" *ngIf="entidadForm.submitted && Nombre.invalid">Campo requerido</small>
+                      </div>
+                      <div class="form-group col-4">
+                          <label for="Apellido" class="bmd-label-floating">Apellido </label>
+                          <input type="text" id="Apellido" name="Apellido" #Apellido="ngModel" class="form-control" required="" [(ngModel)]="this.empleadoService.selectEntidad.Apellido">
+                          <small class="text-warning" *ngIf="entidadForm.submitted && Apellido.invalid">Campo requerido</small>
+                      </div>
+                      <div class="form-group col-4">
+                        <label for="FechaContratacion" class="bmd-label-floating">Fecha Contratacion</label>
+                        <input type="date" id="FechaContratacion" name="FechaContratacion" #FechaContratacion="ngModel" class="form-control" required="" [(ngModel)]="this.empleadoService.selectEntidad.FechaContratacion">
+                        <small class="text-warning" *ngIf="entidadForm.submitted && FechaContratacion.invalid">Campo requerido</small>
+                      </div>                    
+                  </div>
+                  <div class="form-row">
+                    
+                  </div>
+                  
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button> &nbsp;
+                      <button type="submit" class="btn btn-raised btn-success">Guardar <i class="fa fa-save"></i></button>
+                  </div>
+              </form>
+          </div>
+          
+      </div>
+  </div>
+</div>

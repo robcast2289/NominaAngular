@@ -39,6 +39,11 @@ export class PeriodoComponent extends TablaBase implements OnInit {
     .subscribe(data => {
       this.spinner.hide();
       this.entidad = data;
+      this.entidad.forEach(element => {
+        const date = new Date(element["FechaAcceso"]);
+        element["FechaInicio"] = this.formatDate(new Date(element["FechaInicio"]+" 00:00:00"),false);
+        element["FechaFin"] = this.formatDate(new Date(element["FechaFin"]+" 00:00:00"),false);
+      });
       this.entidadTable = this.entidad;
     });
   }
