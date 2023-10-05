@@ -23,6 +23,8 @@ export class InasistenciaService {
 
   errorMessage:string;
 
+  empleados = [];
+
   constructor(private http: HttpClient, public authService: AuthService) { }
 
   cargar_inasistencia() {   
@@ -61,8 +63,8 @@ export class InasistenciaService {
     const params = {
       IdInasistencia: entidadForm.IdInasistencia,
       IdEmpleado: entidadForm.IdEmpleado,
-      FechaInicial: entidadForm.FechaInicial,
-      FechaFinal: entidadForm.FechaFinal,
+      FechaInicial: entidadForm.FechaInicial+"T00:00:00.000Z",
+      FechaFinal: entidadForm.FechaFinal+"T00:00:00.000Z",
       MotivoInasistencia: entidadForm.MotivoInasistencia,
     };
 
@@ -83,14 +85,25 @@ export class InasistenciaService {
     const params = {
       IdInasistencia: entidadForm.IdInasistencia,
       IdEmpleado: entidadForm.IdEmpleado,
-      FechaInicial: entidadForm.FechaInicial,
-      FechaFinal: entidadForm.FechaFinal,
+      FechaInicial: entidadForm.FechaInicial+"T00:00:00.000Z",
+      FechaFinal: entidadForm.FechaFinal+"T00:00:00.000Z",
       MotivoInasistencia: entidadForm.MotivoInasistencia,
     };
 
     return this.http.post(url, params)
     .pipe(catchError(data => {
       this.errorMessage = data.error.mensaje;
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_empleados() {    
+    const url = `${this.basepath}nomina/empleadocontratado`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
       return of(data).pipe(
         map(val => data.error)
       );
