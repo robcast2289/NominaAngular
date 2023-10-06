@@ -31,10 +31,33 @@ export class EmpleadoService {
     IdEmpleado: null,
     Nombre: null,
     Apellido: null,
-    FechaContratacion: null,    
+    FechaNacimiento: null,
+    IdGenero: null,
+    IdEstadoCivil: null,
+    Direccion: null,
+    Telefono: null,
+    CorreoElectronioco: null,
+    IdSucursal: null,
+    IdDepartamento: null,
+    IdPuesto: null,
+    FechaContratacion: null,   
+    IdStatusEmpleado: null,
+    IngresoSueldoBase: null,
+    IngresoBonificacionDecreto: null,
+    IngresoOtrosIngresos: null,
+    DescuentoIgss: null,
+    DescuentoIsr: null,
+    DescuentoInasistencias: null, 
   };
 
   errorMessage:string;
+
+  generos = [];
+  estadosciviles = [];
+  sucursales = [];
+  departamentos = [];
+  puestos = [];
+  statusempleados = [];
 
   constructor(private http: HttpClient, public authService: AuthService) { }
 
@@ -72,14 +95,96 @@ export class EmpleadoService {
     const url = `${this.basepath}nomina/empleado/${this.authService.credenciales.userId}`;
 
     const params = {
-      IdEmpleado: entidadForm.IdEmpleado,
-      IdPersona: entidadForm.IdInasistencia,
-      FechaContratacion: entidadForm.FechaInicial+"T00:00:00.000Z",
+      Nombre: entidadForm.Nombre,
+      Apellido: entidadForm.Apellido,
+      FechaNacimiento: entidadForm.FechaNacimiento,
+      IdGenero: entidadForm.IdGenero,
+      IdEstadoCivil: entidadForm.IdEstadoCivil,
+      Direccion: entidadForm.Direccion,
+      Telefono: entidadForm.Telefono,
+      CorreoElectronico: entidadForm.CorreoElectronico,
+      IdSucursal: entidadForm.IdSucursal,
+      IdPuesto: entidadForm.IdPuesto,
+      FechaContratacion: entidadForm.FechaContratacion,
+      IdStatusEmpleado: entidadForm.IdStatusEmpleado,
+      IngresoSueldoBase: entidadForm.IngresoSueldoBase,
+      IngresoBonificacionDecreto: entidadForm.IngresoBonificacionDecreto,
+      IngresoOtrosIngresos: entidadForm.IngresoOtrosIngresos,
+      DescuentoIgss: entidadForm.DescuentoIgss,
+      DescuentoIsr: entidadForm.DescuentoIsr,
+      DescuentoInasistencias: entidadForm.DescuentoInasistencias,
     };
-
+    console.log(params);
     return this.http.put(url, params)
     .pipe(catchError(data => {
       this.errorMessage = data.error.mensaje;
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+
+  cargar_genero(){
+    const url = `${this.basepath}seguridad/generales/genero`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_estadocivil(){
+    const url = `${this.basepath}rrhh/estadocivil`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_sucursal(){
+    const url = `${this.basepath}seguridad/generales/sucursal`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_departamento(idempresa){
+    const url = `${this.basepath}rrhh/departamentoporempresa/${idempresa}`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_puesto(iddepto){
+    const url = `${this.basepath}rrhh/puestopordepto/${iddepto}`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_statusempleado(){
+    const url = `${this.basepath}nomina/statusempleado`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
       return of(data).pipe(
         map(val => data.error)
       );

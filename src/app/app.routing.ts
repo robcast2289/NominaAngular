@@ -39,6 +39,7 @@ import { TipoDocumentoComponent } from './components/rrhh/tipo-documento/tipo-do
 
 import { BancoComponent } from './components/banco/banco/banco.component';
 import { BitacoraAccesoComponent } from './components/Seguridad/bitacora-acceso/bitacora-acceso.component';
+import { CEmpleadoComponent } from './components/nomina/empleado/c-empleado/c-empleado.component';
 
 const routes: Routes = [
   {
@@ -128,6 +129,10 @@ const routes: Routes = [
       {
         path: 'nomina/empleados',
         component: EmpleadoComponent,
+      },
+      {
+        path: 'nomina/empleados/nuevo',
+        component: CEmpleadoComponent,
       },
       {
         path: 'nomina/periodos',

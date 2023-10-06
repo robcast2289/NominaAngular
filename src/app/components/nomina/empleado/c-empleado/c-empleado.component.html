@@ -1,4 +1,4 @@
-<div class="modal fade" id="empleadoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+<div class="container" id="empleadoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
   <div class="modal-dialog  modal-xl" role="document">
       <div class="modal-content">
           <div class="modal-header">
@@ -9,29 +9,203 @@
           </div>
           <div class="modal-body">
               <form action="" #entidadForm="ngForm" (ngSubmit)="guardarEntidad(entidadForm)">
-                  <input type="hidden" id="IdEmpleado" name="IdEmpleado" class="form-control" [(ngModel)]="this.empleadoService.selectEntidad.IdEmpleado">
-                  <!-- <strong><label for="" class="form-control text-primary subtitle">Información General</label></strong> -->
                   
-                  <div class="form-row">
-                      <div class="form-group col-4">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" 
+                    href="#general" 
+                    id="ex1-tab-1"
+                    data-toggle="tab" 
+                    role="tab">General</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#contact"
+                    id="ex1-tab-2"
+                    data-toggle="tab" 
+                    role="tab">Contacto</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#company"
+                    id="ex1-tab-3"
+                    data-toggle="tab" 
+                    role="tab">Empresa</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#payroll"
+                    id="ex1-tab-4"
+                    data-toggle="tab" 
+                    role="tab">Nomina</a>
+                  </li>
+                  <!-- <li class="nav-item">
+                    <a class="nav-link" href="#info"
+                    id="ex1-tab-4"
+                    data-toggle="tab" 
+                    role="tab">Documentos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#info"
+                    id="ex1-tab-4"
+                    data-toggle="tab" 
+                    role="tab">Banco</a>
+                  </li> -->
+                </ul>
+                
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade show active" id="general">
+
+                    <input type="hidden" id="IdEmpleado" name="IdEmpleado" class="form-control" [(ngModel)]="this.empleadoService.selectEntidad.IdEmpleado">
+                    <!-- <strong><label for="" class="form-control text-primary subtitle">Información General</label></strong> -->
+                    <div class="form-row">
+                      <div class="form-group col-6">
                         <label for="Nombre" class="bmd-label-floating">Nombre </label>
                         <input type="text" id="Nombre" name="Nombre" #Nombre="ngModel" class="form-control" required="" [(ngModel)]="this.empleadoService.selectEntidad.Nombre">
                         <small class="text-warning" *ngIf="entidadForm.submitted && Nombre.invalid">Campo requerido</small>
                       </div>
-                      <div class="form-group col-4">
-                          <label for="Apellido" class="bmd-label-floating">Apellido </label>
-                          <input type="text" id="Apellido" name="Apellido" #Apellido="ngModel" class="form-control" required="" [(ngModel)]="this.empleadoService.selectEntidad.Apellido">
-                          <small class="text-warning" *ngIf="entidadForm.submitted && Apellido.invalid">Campo requerido</small>
+                      <div class="form-group col-6">
+                        <label for="Apellido" class="bmd-label-floating">Apellido </label>
+                        <input type="text" id="Apellido" name="Apellido" #Apellido="ngModel" class="form-control" required="" [(ngModel)]="this.empleadoService.selectEntidad.Apellido">
+                        <small class="text-warning" *ngIf="entidadForm.submitted && Apellido.invalid">Campo requerido</small>
                       </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-4">
+                        <label for="FechaNacimiento" class="bmd-label-floating">Fecha de Nacimiento</label>
+                        <input type="date" id="FechaNacimiento" name="FechaNacimiento" #FechaNacimiento="ngModel" class="form-control" required="" [(ngModel)]="this.empleadoService.selectEntidad.FechaNacimiento">
+                        <small class="text-warning" *ngIf="entidadForm.submitted && FechaNacimiento.invalid">Campo requerido</small>
+                      </div>                    
+                      <div class="form-group col-4">
+                        <label class="bmd-label-static">Genero</label>
+                        <select name="IdGenero" id="IdGenero" #IdGenero="ngModel" required class="form-control" [(ngModel)]="this.empleadoService.selectEntidad.IdGenero">
+                          <option value="{{genero.IdGenero}}" *ngFor="let genero of this.empleadoService.generos">{{ genero.Nombre }}</option>
+                        </select>
+                        <small class="text-warning" *ngIf="entidadForm.submitted && IdGenero.invalid">Campo requerido</small>
+                      </div>
+                      <div class="form-group col-4">
+                        <label class="bmd-label-static">Estado Civil</label>
+                        <select name="IdEstadoCivil" id="IdEstadoCivil" #IdEstadoCivil="ngModel" required class="form-control" [(ngModel)]="this.empleadoService.selectEntidad.IdEstadoCivil">
+                          <option value="{{estadocivil.IdEstadoCivil}}" *ngFor="let estadocivil of this.empleadoService.estadosciviles">{{ estadocivil.Nombre }}</option>
+                        </select>
+                        <small class="text-warning" *ngIf="entidadForm.submitted && IdEstadoCivil.invalid">Campo requerido</small>
+                      </div>
+                    </div>
+
+                  </div>
+                  <!-- CONTACTO -->
+                  <div role="tabpanel" class="tab-pane fade" id="contact">
+                    <div class="form-row">
+                      <div class="form-group col-12">
+                        <label for="Direccion" class="bmd-label-floating">Direccion </label>
+                        <input type="text" id="Direccion" name="Direccion" #Direccion="ngModel" class="form-control" required="" [(ngModel)]="this.empleadoService.selectEntidad.Direccion">
+                        <small class="text-warning" *ngIf="entidadForm.submitted && Direccion.invalid">Campo requerido</small>
+                      </div>
+                      <div class="form-group col-6">
+                        <label for="Telefono" class="bmd-label-floating">Teléfono </label>
+                        <input type="phone" id="Telefono" name="Telefono" #Telefono="ngModel" class="form-control" required="" [(ngModel)]="this.empleadoService.selectEntidad.Telefono">
+                        <small class="text-warning" *ngIf="entidadForm.submitted && Telefono.invalid">Campo requerido</small>
+                      </div>
+                      <div class="form-group col-6">
+                        <label for="CorreoElectronico" class="bmd-label-floating">Correo Electrónico </label>
+                        <input type="email" id="CorreoElectronico" name="CorreoElectronico" #CorreoElectronico="ngModel" class="form-control" [(ngModel)]="this.empleadoService.selectEntidad.CorreoElectronico">
+                        <small class="text-warning" *ngIf="entidadForm.submitted && CorreoElectronico.invalid">Campo requerido</small>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- EMPRESA -->
+                  <div role="tabpanel" class="tab-pane fade" id="company">
+                    <br>
+                    <strong><label for="" class="form-control text-primary subtitle">Ubicación</label></strong>
+                    <div class="form-row">
+                      <div class="form-group col-4">
+                        <label class="bmd-label-static">Sucursal</label>
+                        <select name="IdSucursal" id="IdSucursal" #IdSucursal="ngModel" required class="form-control" (change)="obtenerDepartamento()" [(ngModel)]="this.empleadoService.selectEntidad.IdSucursal">
+                          <option value="{{sucursal.IdSucursal}}" *ngFor="let sucursal of this.empleadoService.sucursales">{{ sucursal.Nombre }}</option>
+                        </select>                        
+                        <small class="text-warning" *ngIf="entidadForm.submitted && IdSucursal.invalid">Campo requerido</small>
+                      </div>
+                      <div class="form-group col-4">
+                        <label class="bmd-label-static">Departamento</label>
+                        <select name="IdDepartamento" id="IdDepartamento" #IdDepartamento="ngModel" required class="form-control" (change)="obtenerPuesto()" [(ngModel)]="this.empleadoService.selectEntidad.IdDepartamento">
+                          <option value="{{departamento.IdDepartamento}}" *ngFor="let departamento of this.empleadoService.departamentos">{{ departamento.Nombre }}</option>
+                        </select>
+                        <small class="text-warning" *ngIf="entidadForm.submitted && IdDepartamento.invalid">Campo requerido</small>
+                      </div>
+                      <div class="form-group col-4">
+                        <label class="bmd-label-static">Puesto</label>
+                        <select name="IdPuesto" id="IdPuesto" #IdPuesto="ngModel" required class="form-control" [(ngModel)]="this.empleadoService.selectEntidad.IdPuesto">
+                          <option value="{{puesto.IdPuesto}}" *ngFor="let puesto of this.empleadoService.puestos">{{ puesto.Nombre }}</option>
+                        </select>
+                        <small class="text-warning" *ngIf="entidadForm.submitted && IdPuesto.invalid">Campo requerido</small>
+                      </div>
+                    </div>
+                    <br>
+                    <strong><label for="" class="form-control text-primary subtitle">Contrato</label></strong>
+                    <div class="form-row">
+                      <div class="form-group col-4">
+                        <label class="bmd-label-static">Status</label>
+                        <select name="IdStatusEmpleado" id="IdStatusEmpleado" #IdStatusEmpleado="ngModel" required class="form-control" [(ngModel)]="this.empleadoService.selectEntidad.IdStatusEmpleado">
+                          <option value="{{statusempleado.IdStatusEmpleado}}" *ngFor="let statusempleado of this.empleadoService.statusempleados">{{ statusempleado.Nombre }}</option>
+                        </select>
+                        <small class="text-warning" *ngIf="entidadForm.submitted && IdStatusEmpleado.invalid">Campo requerido</small>
+                      </div>
+  
                       <div class="form-group col-4">
                         <label for="FechaContratacion" class="bmd-label-floating">Fecha Contratacion</label>
                         <input type="date" id="FechaContratacion" name="FechaContratacion" #FechaContratacion="ngModel" class="form-control" required="" [(ngModel)]="this.empleadoService.selectEntidad.FechaContratacion">
                         <small class="text-warning" *ngIf="entidadForm.submitted && FechaContratacion.invalid">Campo requerido</small>
-                      </div>                    
+                      </div>   
+
+                    </div>
                   </div>
-                  <div class="form-row">
-                    
+                  <!-- NOMINA -->
+                  <div role="tabpanel" class="tab-pane fade" id="payroll">
+                    <div class="form-row">
+                      <div class="form-group col-5">
+                        <strong><label for="" class="form-control text-primary subtitle">Ingresos</label></strong>
+                        <div class="form-row">
+                          <div class="form-group col-12">
+                            <label for="IngresoSueldoBase" class="bmd-label-floating">Sueldo Base </label>
+                            <input type="number" id="IngresoSueldoBase" name="IngresoSueldoBase" #IngresoSueldoBase="ngModel" class="form-control" required="" [(ngModel)]="this.empleadoService.selectEntidad.IngresoSueldoBase">
+                            <small class="text-warning" *ngIf="entidadForm.submitted && IngresoSueldoBase.invalid">Campo requerido</small>
+                          </div>
+                          <div class="form-group col-12">
+                            <label for="IngresoBonificacionDecreto" class="bmd-label-floating">Bonificación Decreto </label>
+                            <input type="number" id="IngresoBonificacionDecreto" name="IngresoBonificacionDecreto" #IngresoBonificacionDecreto="ngModel" class="form-control" required="" [(ngModel)]="this.empleadoService.selectEntidad.IngresoBonificacionDecreto">
+                            <small class="text-warning" *ngIf="entidadForm.submitted && IngresoBonificacionDecreto.invalid">Campo requerido</small>
+                          </div>
+                          <div class="form-group col-12">
+                            <label for="IngresoOtrosIngresos" class="bmd-label-floating">Otros Ingresos </label>
+                            <input type="number" id="IngresoOtrosIngresos" name="IngresoOtrosIngresos" #IngresoOtrosIngresos="ngModel" class="form-control" required="" [(ngModel)]="this.empleadoService.selectEntidad.IngresoOtrosIngresos">
+                            <small class="text-warning" *ngIf="entidadForm.submitted && IngresoOtrosIngresos.invalid">Campo requerido</small>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group offset-2 col-5">
+                        <strong><label for="" class="form-control text-primary subtitle">Descuentos</label></strong>
+                        <div class="form-row">
+                          <div class="form-group col-12">
+                            <label for="DescuentoIgss" class="bmd-label-floating">IGSS </label>
+                            <input type="number" id="DescuentoIgss" name="DescuentoIgss" #DescuentoIgss="ngModel" class="form-control" required="" [(ngModel)]="this.empleadoService.selectEntidad.DescuentoIgss">
+                            <small class="text-warning" *ngIf="entidadForm.submitted && DescuentoIgss.invalid">Campo requerido</small>
+                          </div>
+                          <div class="form-group col-12">
+                            <label for="DescuentoIsr" class="bmd-label-floating">ISR </label>
+                            <input type="number" id="DescuentoIsr" name="DescuentoIsr" #DescuentoIsr="ngModel" class="form-control" required="" [(ngModel)]="this.empleadoService.selectEntidad.DescuentoIsr">
+                            <small class="text-warning" *ngIf="entidadForm.submitted && DescuentoIsr.invalid">Campo requerido</small>
+                          </div>
+                          <div class="form-group col-12">
+                            <label for="DescuentoInasistencias" class="bmd-label-floating">Inasistencias </label>
+                            <input type="number" id="DescuentoInasistencias" name="DescuentoInasistencias" #DescuentoInasistencias="ngModel" class="form-control" required="" [(ngModel)]="this.empleadoService.selectEntidad.DescuentoInasistencias">
+                            <small class="text-warning" *ngIf="entidadForm.submitted && DescuentoInasistencias.invalid">Campo requerido</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                </div>
+
+                  
+                  
+                  
                   
                   <div class="modal-footer">
                       <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button> &nbsp;

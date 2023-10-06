@@ -77,6 +77,7 @@ import { BancoComponent } from './components/banco/banco/banco.component';
 import { CuBancoComponent } from './components/banco/banco/cu-banco/cu-banco.component';
 import { BitacoraAccesoComponent } from './components/Seguridad/bitacora-acceso/bitacora-acceso.component';
 import { CEmpleadoComponent } from './components/nomina/empleado/c-empleado/c-empleado.component';
+import { UEmpleadoComponent } from './components/nomina/empleado/u-empleado/u-empleado.component';
 
 @NgModule({
   declarations: [
@@ -131,7 +132,8 @@ import { CEmpleadoComponent } from './components/nomina/empleado/c-empleado/c-em
     CuInasistenciaComponent,
     EmpleadoComponent,
     BitacoraAccesoComponent,
-    CEmpleadoComponent
+    CEmpleadoComponent,
+    UEmpleadoComponent
   ],
   imports: [
     BrowserModule,
