@@ -27,6 +27,8 @@ import { StatusUsuarioComponent } from './components/Seguridad/status-usuario/st
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 import { EmpleadoComponent } from './components/nomina/empleado/empleado.component';
+import { CEmpleadoComponent } from './components/nomina/empleado/c-empleado/c-empleado.component';
+import { UEmpleadoComponent } from './components/nomina/empleado/u-empleado/u-empleado.component';
 import { PeriodoComponent } from './components/nomina/periodo/periodo.component';
 import { StatusEmpleadoComponent } from './components/nomina/status-empleado/status-empleado.component';
 import { FlujoStatusEmpleadoComponent } from './components/nomina/flujo-status-empleado/flujo-status-empleado.component';
@@ -39,7 +41,6 @@ import { TipoDocumentoComponent } from './components/rrhh/tipo-documento/tipo-do
 
 import { BancoComponent } from './components/banco/banco/banco.component';
 import { BitacoraAccesoComponent } from './components/Seguridad/bitacora-acceso/bitacora-acceso.component';
-import { CEmpleadoComponent } from './components/nomina/empleado/c-empleado/c-empleado.component';
 
 const routes: Routes = [
   {
@@ -133,6 +134,10 @@ const routes: Routes = [
       {
         path: 'nomina/empleados/nuevo',
         component: CEmpleadoComponent,
+      },
+      {
+        path: 'nomina/empleados/:IdEmpleado',
+        component: UEmpleadoComponent,
       },
       {
         path: 'nomina/periodos',

@@ -47,4 +47,32 @@ export class EmpleadoComponent extends TablaBase implements OnInit {
     });
   }
 
+  preActualizarEntidad(entidad) {
+    this.router.navigate(["/nomina/empleados/"+entidad.IdEmpleado])
+  }
+
+  eliminarEntidad(id: string) {
+    this.entidadDelete = [];
+    this.spinner.show();
+    this.empleadoService.eliminar_empleado(id)
+    .subscribe(data => {
+      this.spinner.hide();
+      if(this.empleadoService.errorMessage){
+        this.myAlertTop();
+      }
+      else{
+        this.obtenerEmpleado();
+      }
+    });
+  }
+
+
+  myAlertTop(){
+    $(".myAlert-top").show();
+    setTimeout(function(){
+      $(".myAlert-top").hide();   
+      this.opcionService.errorMessage = "";    
+    }, 8000);    
+  }
+
 }

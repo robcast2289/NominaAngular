@@ -3,9 +3,6 @@
       <div class="modal-content">
           <div class="modal-header">
               <h3 class="modal-title" id="exampleModalLabel" class="text-success">{{ this.empleadoService.selectEntidad.IdEmpleado ? 'Editar Empleado '+this.empleadoService.selectEntidad.IdEmpleado : 'Nuevo Empleado' }}</h3>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
           </div>
           <div class="modal-body">
               <form action="" #entidadForm="ngForm" (ngSubmit)="guardarEntidad(entidadForm)">
@@ -208,7 +205,7 @@
                   
                   
                   <div class="modal-footer">
-                      <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button> &nbsp;
+                      <button type="button" class="btn btn-raised btn-danger" (click)="back()" >Cancelar <i class="fa fa-times"></i></button> &nbsp;
                       <button type="submit" class="btn btn-raised btn-success">Guardar <i class="fa fa-save"></i></button>
                   </div>
               </form>

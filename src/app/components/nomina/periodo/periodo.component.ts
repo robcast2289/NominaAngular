@@ -18,7 +18,7 @@ export class PeriodoComponent extends TablaBase implements OnInit {
     private router: Router,
     private menuService: MenuService) {
       super();
-      this.menuService.titleActive = 'Status de Empleado';
+      this.menuService.titleActive = 'Períodos';
      }
 
   ngOnInit() {

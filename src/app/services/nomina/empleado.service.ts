@@ -29,6 +29,7 @@ export class EmpleadoService {
   }; */
   selectEntidad = {
     IdEmpleado: null,
+    IdPersona: null,
     Nombre: null,
     Apellido: null,
     FechaNacimiento: null,
@@ -36,7 +37,7 @@ export class EmpleadoService {
     IdEstadoCivil: null,
     Direccion: null,
     Telefono: null,
-    CorreoElectronioco: null,
+    CorreoElectronico: null,
     IdSucursal: null,
     IdDepartamento: null,
     IdPuesto: null,
@@ -58,12 +59,27 @@ export class EmpleadoService {
   departamentos = [];
   puestos = [];
   statusempleados = [];
+  documentos = [];
+  cuentasbancarias = []
 
   constructor(private http: HttpClient, public authService: AuthService) { }
 
   cargar_empleado() {   
     this.errorMessage = ""; 
     const url = `${this.basepath}nomina/empleado`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
+      this.errorMessage = data.error.mensaje;
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_empleado_id(idempleado) {   
+    this.errorMessage = ""; 
+    const url = `${this.basepath}nomina/empleado/${idempleado}`;
 
     return this.http.get(url)
     .pipe(catchError(data => {
@@ -97,7 +113,7 @@ export class EmpleadoService {
     const params = {
       Nombre: entidadForm.Nombre,
       Apellido: entidadForm.Apellido,
-      FechaNacimiento: entidadForm.FechaNacimiento,
+      FechaNacimiento: entidadForm.FechaNacimiento+"T00:00:00.000Z",
       IdGenero: entidadForm.IdGenero,
       IdEstadoCivil: entidadForm.IdEstadoCivil,
       Direccion: entidadForm.Direccion,
@@ -105,7 +121,7 @@ export class EmpleadoService {
       CorreoElectronico: entidadForm.CorreoElectronico,
       IdSucursal: entidadForm.IdSucursal,
       IdPuesto: entidadForm.IdPuesto,
-      FechaContratacion: entidadForm.FechaContratacion,
+      FechaContratacion: entidadForm.FechaContratacion+"T00:00:00.000Z",
       IdStatusEmpleado: entidadForm.IdStatusEmpleado,
       IngresoSueldoBase: entidadForm.IngresoSueldoBase,
       IngresoBonificacionDecreto: entidadForm.IngresoBonificacionDecreto,
@@ -122,6 +138,32 @@ export class EmpleadoService {
         map(val => data.error)
       );
     }));
+  }
+
+  limpiar_form(){
+    this.selectEntidad = {
+      IdEmpleado: null,
+      IdPersona: null,
+      Nombre: null,
+      Apellido: null,
+      FechaNacimiento: null,
+      IdGenero: null,
+      IdEstadoCivil: null,
+      Direccion: null,
+      Telefono: null,
+      CorreoElectronico: null,
+      IdSucursal: null,
+      IdDepartamento: null,
+      IdPuesto: null,
+      FechaContratacion: null,   
+      IdStatusEmpleado: null,
+      IngresoSueldoBase: null,
+      IngresoBonificacionDecreto: null,
+      IngresoOtrosIngresos: null,
+      DescuentoIgss: null,
+      DescuentoIsr: null,
+      DescuentoInasistencias: null, 
+    };
   }
 
 
@@ -182,6 +224,17 @@ export class EmpleadoService {
 
   cargar_statusempleado(){
     const url = `${this.basepath}nomina/statusempleado`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_documentospersona(idpersona){
+    const url = `${this.basepath}rrhh/documentospersona/${idpersona}`;
 
     return this.http.get(url)
     .pipe(catchError(data => {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Location } from '@angular/common';
 
@@ -12,10 +13,13 @@ import { EmpleadoService } from '../../../../services/nomina/empleado.service';
 export class CEmpleadoComponent implements OnInit {
 
   constructor(
-    public empleadoService:EmpleadoService
+    private location:Location,
+    public empleadoService:EmpleadoService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
+    this.empleadoService.limpiar_form();
     this.obtenerGenero();
     this.obtenerEstadoCivil();
     this.obtenerSucursal();
@@ -32,20 +36,16 @@ export class CEmpleadoComponent implements OnInit {
           }
           else{
             //location.reload();
+            this.router.navigate(["nomina/empleados/"+data]);
           }
         });      
     }
   }  
 
-  /* prueba(ev){
-    let sucursal = this.empleadoService.sucursales.filter(rowData => {
-      if(rowData["IdSucursal"] == this.empleadoService.selectEntidad.IdSucursal)
-        return true;
-    })
-    console.log(sucursal);
-    this.obtnerDepartamento(sucursal[0]["IdEmpresa"]);
-    //alert("Hola");
-  } */
+  back(){
+    //this.location.back();
+    this.router.navigate(["nomina/empleados"]);
+  }
 
   obtenerGenero(){
     this.empleadoService.cargar_genero()
