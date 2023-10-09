@@ -2,7 +2,7 @@
   <div class="modal-dialog  modal-xl" role="document">
       <div class="modal-content">
           <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel" class="text-success">{{ this.empleadoService.selectEntidad.IdEmpleado ? 'Editar Empleado '+this.empleadoService.selectEntidad.IdEmpleado : 'Nuevo Empleado' }}</h3>
+              <h3 class="modal-title" id="exampleModalLabel" class="text-success">{{ this.empleadoService.selectEntidad.IdEmpleado ? 'Editar Empleado '+this.empleadoService.selectEntidad.IdEmpleado+' - '+this.dataEmpleado["Nombre"]+' '+this.dataEmpleado["Apellido"] : 'Cargando datos...' }}</h3>
           </div>
           <div class="modal-body">
               <form action="" #entidadForm="ngForm" (ngSubmit)="guardarEntidad(entidadForm)">
@@ -51,6 +51,7 @@
                   <div role="tabpanel" class="tab-pane fade show active" id="general">
 
                     <input type="hidden" id="IdEmpleado" name="IdEmpleado" class="form-control" [(ngModel)]="this.empleadoService.selectEntidad.IdEmpleado">
+                    <input type="hidden" id="IdPersona" name="IdPersona" class="form-control" [(ngModel)]="this.empleadoService.selectEntidad.IdPersona">
                     <!-- <strong><label for="" class="form-control text-primary subtitle">Información General</label></strong> -->
                     <div class="form-row">
                       <div class="form-group col-6">
@@ -214,10 +215,7 @@
                                 <tr *ngFor="let entidad of this.empleadoService.documentos">
                                     <td>{{ entidad.TipoDocumento }}</td>
                                     <td>{{ entidad.NoDocumento }}</td>                                 
-                                    <td data-toggle="modal" data-target="#inasistenciaModal" (click)="preActualizarEntidad(entidad)">
-                                        <i class="fa fa-edit text-primary"></i>
-                                    </td>
-                                    <td data-toggle="modal" data-target="#alertModal" (click)="setEntidadDel(entidad)">
+                                    <td (click)="deleteDocument(entidad.IdTipoDocumento)">
                                         <i class="fa fa-trash text-danger"></i>
                                     </td>
                                 </tr>
@@ -229,19 +227,73 @@
                         <strong><label for="" class="form-control text-primary subtitle">Agregar Documentos</label></strong>
                         <div class="form-row">
                           <div class="col-12">
-                            <label for="">Tipo de Documento</label>
-                            <input type="text" name="" id="" class="form-control">
+                            <label class="bmd-label-static">Tipo de documento</label>
+                            <select name="IdTipoDocumento" id="IdTipoDocumento" #IdTipoDocumento="ngModel" class="form-control" [(ngModel)]="this.entidadDocumentos.IdTipoDocumento">
+                              <option value="{{tipodocumento.IdTipoDocumento}}" *ngFor="let tipodocumento of this.empleadoService.tipodocumentos">{{ tipodocumento.Nombre }}</option>
+                            </select>
+                            <small class="text-warning" *ngIf="entidadForm.submitted && IdTipoDocumento.invalid">Campo requerido</small>
                           </div>
                           <div class="col-12">
-                            <label for="">Número de Documento</label>
-                            <input type="text" name="" id="" class="form-control">
+                            <label for="NoDocumento" class="bmd-label-floating">Número de Documento </label>
+                            <input type="text" id="NoDocumento" name="NoDocumento" #NoDocumento="ngModel" class="form-control" [(ngModel)]="this.entidadDocumentos.NoDocumento">
+                            <small class="text-warning" *ngIf="entidadForm.submitted && NoDocumento.invalid">Campo requerido</small>
                           </div>
                         </div>
                       </div>
                     </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-sm btn-raised btn-secondary" (click)="clearDocument()" >Cancelar <i class="fa fa-times"></i></button> &nbsp;
+                      <button type="button" class="btn btn-sm btn-raised btn-primary" (click)="saveDocument()">Guardar <i class="fa fa-save"></i></button>
+                    </div>
                   </div>
                   <!-- BANCO -->
                   <div role="tabpanel" class="tab-pane fade" id="bank">
+                    <div class="form-row">
+                      <div class="col-8">
+                        <div class="card form-control-rc">
+                          <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col" data-toggle="Banco" >Banco </th>
+                                    <th scope="col" data-toggle="NumeroDeCuenta" >Número de Cuenta </th>                                  
+                                    <th scope="col" data-toggle="Activa" >Activa </th>                                  
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let entidad of this.empleadoService.cuentasbancarias">
+                                    <td>{{ entidad.Banco }}</td>
+                                    <td>{{ entidad.NumeroDeCuenta }}</td>                                 
+                                    <td>{{ entidad.Activa == '1' ? 'Activa' : 'Inactiva' }}</td>                                 
+                                    <td (click)="deleteCuentaBancaria(entidad.IdCuentaBancaria)">
+                                        <i class="fa fa-trash text-danger"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>                      
+                      <div class="col-4">
+                        <strong><label for="" class="form-control text-primary subtitle">Agregar Cuenta Bancaria</label></strong>
+                        <div class="form-row">
+                          <div class="col-12">
+                            <label class="bmd-label-static">Banco</label>
+                            <select name="IdBanco" id="IdBanco" #IdBanco="ngModel" class="form-control" [(ngModel)]="this.entidadCuentaBancaria.IdBanco">
+                              <option value="{{banco.IdBanco}}" *ngFor="let banco of this.empleadoService.bancos">{{ banco.Nombre }}</option>
+                            </select>
+                            <small class="text-warning" *ngIf="entidadForm.submitted && IdBanco.invalid">Campo requerido</small>
+                          </div>
+                          <div class="col-12">
+                            <label for="NumeroDeCuenta" class="bmd-label-floating">Número de Cuenta </label>
+                            <input type="text" id="NumeroDeCuenta" name="NumeroDeCuenta" #NumeroDeCuenta="ngModel" class="form-control" [(ngModel)]="this.entidadCuentaBancaria.NumeroDeCuenta">
+                            <small class="text-warning" *ngIf="entidadForm.submitted && NumeroDeCuenta.invalid">Campo requerido</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-sm btn-raised btn-secondary" (click)="clearCuentaBancaria()" >Cancelar <i class="fa fa-times"></i></button> &nbsp;
+                      <button type="button" class="btn btn-sm btn-raised btn-primary" (click)="saveCuentaBancaria()">Guardar <i class="fa fa-save"></i></button>
+                    </div>
                   </div>
                 </div>
 

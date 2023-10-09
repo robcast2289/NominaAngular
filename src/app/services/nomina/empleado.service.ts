@@ -61,6 +61,8 @@ export class EmpleadoService {
   statusempleados = [];
   documentos = [];
   cuentasbancarias = []
+  tipodocumentos = [];
+  bancos = [];
 
   constructor(private http: HttpClient, public authService: AuthService) { }
 
@@ -140,6 +142,43 @@ export class EmpleadoService {
     }));
   }
 
+  actualizar_empleado(entidadForm){
+    this.errorMessage = "";
+    const id = entidadForm.IdEmpleado;
+    const url = `${this.basepath}nomina/empleado/${this.authService.credenciales.userId}/${id}`;
+
+    const params = {
+      IdEmpleado: entidadForm.IdEmpleado,
+      IdPersona: entidadForm.IdPersona,
+      Nombre: entidadForm.Nombre,
+      Apellido: entidadForm.Apellido,
+      FechaNacimiento: entidadForm.FechaNacimiento+"T00:00:00.000Z",
+      IdGenero: entidadForm.IdGenero,
+      IdEstadoCivil: entidadForm.IdEstadoCivil,
+      Direccion: entidadForm.Direccion,
+      Telefono: entidadForm.Telefono,
+      CorreoElectronico: entidadForm.CorreoElectronico,
+      IdSucursal: entidadForm.IdSucursal,
+      IdPuesto: entidadForm.IdPuesto,
+      FechaContratacion: entidadForm.FechaContratacion+"T00:00:00.000Z",
+      IdStatusEmpleado: entidadForm.IdStatusEmpleado,
+      IngresoSueldoBase: entidadForm.IngresoSueldoBase,
+      IngresoBonificacionDecreto: entidadForm.IngresoBonificacionDecreto,
+      IngresoOtrosIngresos: entidadForm.IngresoOtrosIngresos,
+      DescuentoIgss: entidadForm.DescuentoIgss,
+      DescuentoIsr: entidadForm.DescuentoIsr,
+      DescuentoInasistencias: entidadForm.DescuentoInasistencias,
+    };
+    console.log(params);
+    return this.http.post(url, params)
+    .pipe(catchError(data => {
+      this.errorMessage = data.error.mensaje;
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
   limpiar_form(){
     this.selectEntidad = {
       IdEmpleado: null,
@@ -164,6 +203,65 @@ export class EmpleadoService {
       DescuentoIsr: null,
       DescuentoInasistencias: null, 
     };
+  }
+
+  insertar_documentopersona(datos){
+    this.errorMessage = "";
+    const url = `${this.basepath}rrhh/documentospersona/${this.authService.credenciales.userId}`;
+
+    return this.http.put(url,datos)
+    .pipe(catchError(data => {
+      this.errorMessage = data.error.mensaje;
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  eliminar_documentopersona(idTipoDocumento,IdPersona){
+    this.errorMessage = "";
+    const url = `${this.basepath}rrhh/documentospersona/${idTipoDocumento}/${IdPersona}`;
+
+    return this.http.delete(url)
+    .pipe(
+      catchError(data => {
+        //data.error.mensaje
+        this.errorMessage = data.error.mensaje;
+        return of(data).pipe(
+          map(val => data.error)
+        );
+      })
+    );
+  }
+
+
+  insertar_cuentabancariaempleado(datos){
+    this.errorMessage = "";
+    const url = `${this.basepath}nomina/cuentabancariaempleado/${this.authService.credenciales.userId}`;
+
+    return this.http.put(url,datos)
+    .pipe(catchError(data => {
+      this.errorMessage = data.error.mensaje;
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  eliminar_cuentabancariaempleado(idcuenta){
+    this.errorMessage = "";
+    const url = `${this.basepath}nomina/cuentabancariaempleado/${idcuenta}`;
+
+    return this.http.delete(url)
+    .pipe(
+      catchError(data => {
+        //data.error.mensaje
+        this.errorMessage = data.error.mensaje;
+        return of(data).pipe(
+          map(val => data.error)
+        );
+      })
+    );
   }
 
 
@@ -235,6 +333,39 @@ export class EmpleadoService {
 
   cargar_documentospersona(idpersona){
     const url = `${this.basepath}rrhh/documentospersona/${idpersona}`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_tipodocumento(){
+    const url = `${this.basepath}rrhh/tipodocumento`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_cuentabancariaempleado(idempleado){
+    const url = `${this.basepath}nomina/cuentabancariaempleado/${idempleado}`;
+
+    return this.http.get(url)
+    .pipe(catchError(data => {
+      return of(data).pipe(
+        map(val => data.error)
+      );
+    }));
+  }
+
+  cargar_banco(){
+    const url = `${this.basepath}banco/bancos`;
 
     return this.http.get(url)
     .pipe(catchError(data => {

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Location } from '@angular/common';
 import { NgxSpinnerService } from 'ngx-spinner';
-
+import { MenuService } from '../../../../services/menu.service';
 import { EmpleadoService } from '../../../../services/nomina/empleado.service';
 
 @Component({
@@ -14,6 +14,17 @@ import { EmpleadoService } from '../../../../services/nomina/empleado.service';
 })
 export class UEmpleadoComponent implements OnInit {
   id:number;
+  dataEmpleado:any;
+
+  entidadDocumentos = {
+    IdTipoDocumento: null,
+    NoDocumento: null,
+  
+  }
+  entidadCuentaBancaria = {
+    IdBanco: null,
+    NumeroDeCuenta: null,
+  }
 
   constructor(
     private _Activatedroute:ActivatedRoute,
@@ -21,13 +32,18 @@ export class UEmpleadoComponent implements OnInit {
     public empleadoService:EmpleadoService,
     private router: Router,
     private spinner: NgxSpinnerService,
-  ) { }
+    private menuService: MenuService
+  ) { 
+    this.menuService.titleActive = 'Empleados';
+  }
 
   ngOnInit() {
     this.obtenerGenero();
     this.obtenerEstadoCivil();
     this.obtenerSucursal();
     this.obtenerStatusEmpleado();
+    this.obtenerTipoDocumento();
+    this.obtenerBanco();
     this._Activatedroute.params.subscribe(params => { 
       this.id = params['IdEmpleado']; 
       this.obtenerEmpleado(this.id);
@@ -40,6 +56,7 @@ export class UEmpleadoComponent implements OnInit {
     this.empleadoService.cargar_empleado_id(id)
     .subscribe(data => {
       this.spinner.hide();
+      this.dataEmpleado = data;
       //this.role = data;
       this.empleadoService.selectEntidad.IdEmpleado = data["IdEmpleado"];
       this.empleadoService.selectEntidad.IdPersona = data["IdPersona"];
@@ -66,20 +83,21 @@ export class UEmpleadoComponent implements OnInit {
       this.obtenerDepartamento(true);
       this.obtenerPuesto(true);
       this.obtenerDocumentosPersona()
+      this.obtenerCuentaBancariaEmpleado();
     });
   }
 
   guardarEntidad(entidadForm: NgForm) {
     if (entidadForm.valid) {
         // Nuevo
-        this.empleadoService.insertar_empleado(entidadForm.value)        
+        this.empleadoService.actualizar_empleado(entidadForm.value)        
         .subscribe(data => {
           if(this.empleadoService.errorMessage){
             this.myAlertTop();
           }
           else{
-            //location.reload();
-            this.router.navigate(["nomina/empleados/"+data]);
+            location.reload();
+            //this.router.navigate(["nomina/empleados/"+data]);
           }
         });      
     }
@@ -88,6 +106,71 @@ export class UEmpleadoComponent implements OnInit {
   back(){
     //this.location.back();
     this.router.navigate(["nomina/empleados"]);
+  }
+
+  clearDocument(){
+    this.entidadDocumentos = {
+      IdTipoDocumento: null,
+      NoDocumento: null,
+    }
+  }
+
+  saveDocument(){
+    const params = {
+      IdTipoDocumento: this.entidadDocumentos.IdTipoDocumento,
+      IdPersona: this.empleadoService.selectEntidad.IdPersona,
+      NoDocumento: this.entidadDocumentos.NoDocumento
+    }
+    this.empleadoService.insertar_documentopersona(params)
+    .subscribe(data => {
+      this.obtenerDocumentosPersona();
+      this.clearDocument();
+    });
+  }
+
+  deleteDocument(idtipodoc){
+    this.empleadoService.eliminar_documentopersona(idtipodoc,this.empleadoService.selectEntidad.IdPersona)
+    .subscribe(data => {
+      if(this.empleadoService.errorMessage){
+        this.myAlertTop();
+      }
+      else{
+        this.obtenerDocumentosPersona();
+      }
+    });
+  
+  }
+
+
+  clearCuentaBancaria(){
+    this.entidadCuentaBancaria = {
+      IdBanco: null,
+      NumeroDeCuenta: null,
+    }
+  }
+  saveCuentaBancaria(){
+    const params = {
+      IdEmpleado: this.empleadoService.selectEntidad.IdEmpleado,
+      IdBanco: this.entidadCuentaBancaria.IdBanco,
+      NumeroDeCuenta: this.entidadCuentaBancaria.NumeroDeCuenta
+    }
+    this.empleadoService.insertar_cuentabancariaempleado(params)
+    .subscribe(data => {
+      this.obtenerCuentaBancariaEmpleado();
+      this.clearCuentaBancaria();
+    });
+  }
+
+  deleteCuentaBancaria(idcuenta){
+    this.empleadoService.eliminar_cuentabancariaempleado(idcuenta)
+    .subscribe(data => {
+      if(this.empleadoService.errorMessage){
+        this.myAlertTop();
+      }
+      else{
+        this.obtenerCuentaBancariaEmpleado();
+      }
+    });
   }
 
   obtenerGenero(){
@@ -146,6 +229,27 @@ export class UEmpleadoComponent implements OnInit {
     this.empleadoService.cargar_documentospersona(this.empleadoService.selectEntidad.IdPersona)
     .subscribe(data => {
       this.empleadoService.documentos = data;
+    });
+  }
+
+  obtenerTipoDocumento(){
+    this.empleadoService.cargar_tipodocumento()
+    .subscribe(data => {
+      this.empleadoService.tipodocumentos = data;
+    });
+  }
+
+  obtenerCuentaBancariaEmpleado(){
+    this.empleadoService.cargar_cuentabancariaempleado(this.empleadoService.selectEntidad.IdEmpleado)
+    .subscribe(data => {
+      this.empleadoService.cuentasbancarias = data;
+    });
+  }
+
+  obtenerBanco(){
+    this.empleadoService.cargar_banco()
+    .subscribe(data => {
+      this.empleadoService.bancos = data;
     });
   }
 
