@@ -6,6 +6,7 @@ import { AuthService } from '../auth.service';
 
 import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -64,7 +65,7 @@ export class EmpleadoService {
   tipodocumentos = [];
   bancos = [];
 
-  constructor(private http: HttpClient, public authService: AuthService) { }
+  constructor(private http: HttpClient, public authService: AuthService, private router:Router) { }
 
   cargar_empleado() {   
     this.errorMessage = ""; 
@@ -85,7 +86,7 @@ export class EmpleadoService {
 
     return this.http.get(url)
     .pipe(catchError(data => {
-      this.errorMessage = data.error.mensaje;
+      this.router.navigate(["404notfound"]);
       return of(data).pipe(
         map(val => data.error)
       );

@@ -1,0 +1,172 @@
+<section id="planillacabecera">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-brand">Opciones</div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <!-- <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li> -->
+        <li class="nav-item">
+          <div class="nav-link" (click)="back()">
+            <i class="fa fa-reply"></i> Regresar
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="this.planilla">
+            <i class="fa fa-gears"></i> Funciones
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="this.planilla">
+            <div class="dropdown-item disabled" [ngClass]="{'disabled':this.planilla['FechaHoraProcesada']!=null}" (click)="crearPlanilla()" >Crear</div>
+            <div class="dropdown-item" [ngClass]="{'disabled':this.planilla['FechaHoraProcesada']!=null}" (click)="calcularPlanilla()" >Calcular</div>
+            <div class="dropdown-item" [ngClass]="{'disabled':(this.planilla['FechaHoraProcesada']==null && this.planilla['FechaHoraCalculada']==null)}" (click)="pagarPlanilla()" >Pagar</div>
+            <!-- <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a> -->
+          </div>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li> -->
+      </ul>
+     <!--  <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+    </div>
+  </nav>
+  <div class="container">
+    <div class="card">
+      <div class="card-body" *ngIf="this.planilla">
+        <div class="form-row">
+          <div class="form-group col-3">
+            <label for="Anio" class="bmd-label-floating">Año: </label>
+            <input type="text" name="Anio" id="Anio" class="form-control" disabled value="{{ this.planilla['Anio'] }}">
+          </div>
+          <div class="form-group col-3">
+            <label for="Mes" class="bmd-label-floating">Mes: </label>
+            <input type="text" name="Mes" id="Mes" class="form-control" disabled value="{{this.planilla['Mes']}}">
+          </div>
+          <div class="form-group col-3">
+            <label for="FechaInicio" class="bmd-label-floating">Fecha Inicial: </label>
+            <input type="text" name="FechaInicio" id="FechaInicio" class="form-control" disabled value="{{this.planilla['FechaInicio']}}">
+          </div>
+          <div class="form-group col-3">
+            <label for="FechaFin" class="bmd-label-floating">Fecha Final: </label>
+            <input type="text" name="FechaFin" id="FechaFin" class="form-control" disabled value="{{this.planilla['FechaFin']}}">
+          </div>        
+        </div>
+        <div class="form-row">
+          <div class="form-group col-3">
+            <label for="Empleados" class="bmd-label-floating">Cantidad de Empleados: </label>
+            <input type="text" name="Empleados" id="Empleados" class="form-control" disabled value="{{this.planilla['Empleados']}}">
+          </div>
+          <div class="form-group col-3">
+            <label for="TotalIngresos" class="bmd-label-floating">Total Ingresos: </label>
+            <input type="text" name="TotalIngresos" id="TotalIngresos" class="form-control" disabled value="{{ this.planilla['TotalIngresos'].toLocaleString('en-us', {minimumFractionDigits: 2}) }}">
+          </div>
+          <div class="form-group col-3">
+            <label for="TotalDescuentos" class="bmd-label-floating">Total Descuentos: </label>
+            <input type="text" name="TotalDescuentos" id="TotalDescuentos" class="form-control" disabled value="{{ this.planilla['TotalDescuentos'].toLocaleString('en-us', {minimumFractionDigits: 2}) }}">
+          </div>
+          <div class="form-group col-3">
+            <label for="SalarioNeto" class="bmd-label-floating">Salario Neto: </label>
+            <input type="text" name="SalarioNeto" id="SalarioNeto" class="form-control" disabled value="{{ this.planilla['SalarioNeto'].toLocaleString('en-us', {minimumFractionDigits: 2}) }}">
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="col-sx-12 col-sm-6 col-md-4"></div>      
+    <div class="row" style="margin-top: 20px">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <input type="search" class="form-control" placeholder="Buscar" (ngModelChange)="funcSearch($event)" [(ngModel)]="buscar">
+        </div>
+    </div>
+    <div class="card form-control-rc">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" data-toggle="IdEmpleado" (click)="funcSort($event)">Empleado <i class="{{ 'IdEmpleado' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                    <th scope="col" data-toggle="NombreEmpleado" (click)="funcSort($event)">NombreEmpleado <i class="{{ 'NombreEmpleado' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                    <th class="text-right" scope="col" data-toggle="TotalIngresos" (click)="funcSort($event)">Total Ingresos <i class="{{ 'TotalIngresos' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                    <th class="text-right" scope="col" data-toggle="TotalDescuentos" (click)="funcSort($event)">Total Descuentos <i class="{{ 'TotalDescuentos' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                    <th class="text-right" scope="col" data-toggle="SalarioNeto" (click)="funcSort($event)">Salario Neto <i class="{{ 'SalarioNeto' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                    <!-- <th scope="col" *ngIf="this.Permisos.Cambio == 1">&nbsp;</th> -->
+                    <th scope="col" *ngIf="this.Permisos.Baja == 1">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody> 
+              <ng-container *ngFor="let entidad of entidadTable | paginate: { itemsPerPage: 10, currentPage: page }">
+                <tr data-toggle="collapse" [attr.data-target]="'#'+entidad.IdEmpleado" aria-expanded="false" [attr.aria-controls]="entidad.IdEmpleado">
+
+                  <td>{{ entidad.IdEmpleado }}</td>
+                  <td>{{ entidad.NombreEmpleado }}</td>
+                  <td class="text-right">{{ entidad.TotalIngresos.toLocaleString('en-us', {minimumFractionDigits: 2}) }}</td>
+                  <td class="text-right">{{ entidad.TotalDescuentos.toLocaleString('en-us', {minimumFractionDigits: 2}) }}</td>
+                  <td class="text-right">{{ entidad.SalarioNeto.toLocaleString('en-us', {minimumFractionDigits: 2}) }}</td>
+                  <!-- <td data-toggle="modal" data-target="#periodoModal" (click)="preActualizarEntidad(entidad)" *ngIf="this.Permisos.Cambio == 1">
+                      <i class="fa fa-edit text-primary"></i>
+                  </td> -->
+                  <td data-toggle="modal" data-target="#alertModal" (click)="setEntidadDel(entidad)" *ngIf="this.Permisos.Baja == 1">
+                      <i class="fa fa-trash text-danger"></i>
+                  </td>
+
+                </tr>
+                <tr id="{{entidad.IdEmpleado}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <td colspan="5">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="form-row">
+                          <div class="form-group col-5">
+                            <strong><label for="" class="form-control text-primary subtitle">Ingresos</label></strong>
+                            <div class="form-row">
+                              <div class="form-group col-4">
+                                <label for="IngresoSueldoBase" class="bmd-label-floating">Sueldo Base: </label>
+                                <input type="text" name="IngresoSueldoBase" id="IngresoSueldoBase" class="form-control" disabled value="{{ entidad.IngresoSueldoBase.toLocaleString('en-us', {minimumFractionDigits: 2}) }}">
+                              </div>
+                              <div class="form-group col-4">
+                                <label for="IngresoBonificacionDecreto" class="bmd-label-floating">Bono Decreto: </label>
+                                <input type="text" name="IngresoBonificacionDecreto" id="IngresoBonificacionDecreto" class="form-control" disabled value="{{ entidad.IngresoBonificacionDecreto.toLocaleString('en-us', {minimumFractionDigits: 2}) }}">
+                              </div>
+                              <div class="form-group col-4">
+                                <label for="IngresoOtrosIngresos" class="bmd-label-floating">Otros Ingresos: </label>
+                                <input type="text" name="IngresoOtrosIngresos" id="IngresoOtrosIngresos" class="form-control" disabled value="{{ entidad.IngresoOtrosIngresos.toLocaleString('en-us', {minimumFractionDigits: 2}) }}">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group offset-2 col-5">
+                            <strong><label for="" class="form-control text-primary subtitle">Descuentos</label></strong>
+                            <div class="form-row">
+                              <div class="form-group col-4">
+                                <label for="DescuentoIgss" class="bmd-label-floating">IGSS: </label>
+                                <input type="text" name="DescuentoIgss" id="DescuentoIgss" class="form-control" disabled value="{{ entidad.DescuentoIgss.toLocaleString('en-us', {minimumFractionDigits: 2}) }}">
+                              </div>
+                              <div class="form-group col-4">
+                                <label for="DescuentoIsr" class="bmd-label-floating">ISR: </label>
+                                <input type="text" name="DescuentoIsr" id="DescuentoIsr" class="form-control" disabled value="{{ entidad.DescuentoIsr.toLocaleString('en-us', {minimumFractionDigits: 2}) }}">
+                              </div>
+                              <div class="form-group col-4">
+                                <label for="DescuentoInasistencias" class="bmd-label-floating">Inasistencias: </label>
+                                <input type="text" name="DescuentoInasistencias" id="DescuentoInasistencias" class="form-control" disabled value="{{ entidad.DescuentoInasistencias.toLocaleString('en-us', {minimumFractionDigits: 2}) }}">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+        </table>
+        <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true">
+        </pagination-controls>
+    </div>
+</div>
+</section>

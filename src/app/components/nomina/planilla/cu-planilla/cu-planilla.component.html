@@ -1,0 +1,38 @@
+<div class="modal fade" id="planillacabeceraModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog  modal-xl" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel" class="text-success">Nuevo Registro</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form action="" #entidadForm="ngForm" (ngSubmit)="guardarEntidad(entidadForm)">
+                  <input type="hidden" id="IdInasistencia" name="IdInasistencia" class="form-control" [(ngModel)]="this.planillacabeceraService.selectEntidad.IdInasistencia">
+                  <!-- <strong><label for="" class="form-control text-primary subtitle">Información General</label></strong> -->
+                  <div class="form-row">
+                    <div class="form-group col-6">
+                      <label for="Anio" class="bmd-label-floating">Año</label>
+                      <input type="number" id="Anio" name="Anio" #Anio="ngModel" class="form-control" required="" [(ngModel)]="this.planillacabeceraService.selectEntidad.Anio">
+                      <small class="text-warning" *ngIf="entidadForm.submitted && Anio.invalid">Campo requerido</small>
+                    </div>       
+                    <div class="form-group col-6">
+                      <label class="bmd-label-static">Mes</label>
+                      <select name="Mes" id="Mes" class="form-control" [(ngModel)]="this.planillacabeceraService.selectEntidad.Mes">
+                        <option value="{{mes.value}}" *ngFor="let mes of this.planillacabeceraService.meses">{{ mes.Name }}</option>
+                      </select>
+                    </div> 
+                  </div>
+                  
+                  
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button> &nbsp;
+                      <button type="submit" class="btn btn-raised btn-success">Guardar <i class="fa fa-save"></i></button>
+                  </div>
+              </form>
+          </div>
+          
+      </div>
+  </div>
+</div>

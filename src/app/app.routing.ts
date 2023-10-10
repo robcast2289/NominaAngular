@@ -41,6 +41,8 @@ import { TipoDocumentoComponent } from './components/rrhh/tipo-documento/tipo-do
 
 import { BancoComponent } from './components/banco/banco/banco.component';
 import { BitacoraAccesoComponent } from './components/Seguridad/bitacora-acceso/bitacora-acceso.component';
+import { PlanillaComponent } from './components/nomina/planilla/planilla.component';
+import { PlanillaDetalleComponent } from './components/nomina/planilla-detalle/planilla-detalle.component';
 
 const routes: Routes = [
   {
@@ -154,6 +156,14 @@ const routes: Routes = [
       {
         path: 'nomina/flujo-status-empleado',
         component: FlujoStatusEmpleadoComponent,
+      },
+      {
+        path: 'nomina/planilla',
+        component: PlanillaComponent,
+      },
+      {
+        path: 'nomina/planilla/:IdPlanilla',
+        component: PlanillaDetalleComponent,
       },
       // MODULO RRHH
       {

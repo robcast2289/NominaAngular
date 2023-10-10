@@ -1,0 +1,70 @@
+<section id="planillacabecera">
+  <div class="container">
+      <div class="col-sx-12 col-sm-6 col-md-4"></div>      
+      <div class="row" style="margin-top: 20px">
+          <div class="col-4 col-sm-4 col-md-4 col-lg-3" *ngIf="Permisos.Alta == 1">
+            <button class="btn btn-raised btn-secondary form-control" data-toggle="modal" data-target="#planillacabeceraModal" (click)="limpiarForm()">Crear Planilla <i class="fa fa-plus"></i></button>
+          </div>
+          <div class="col-8 col-sm-8 col-md-8 col-lg-9">
+              <input type="search" class="form-control" placeholder="Buscar" (ngModelChange)="funcSearch($event)" [(ngModel)]="buscar">
+          </div>
+      </div>
+      <div class="card form-control-rc">
+          <table class="table table-hover table-striped">
+              <thead>
+                  <tr>
+                      <th scope="col" data-toggle="Anio" (click)="funcSort($event)">Año <i class="{{ 'Anio' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="Mes" (click)="funcSort($event)">Mes <i class="{{ 'Mes' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="FechaInico" (click)="funcSort($event)">Fecha Inico <i class="{{ 'FechaInico' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="FechaFin" (click)="funcSort($event)">Fecha Fin <i class="{{ 'FechaFin' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="Empleados" (click)="funcSort($event)">Empleados <i class="{{ 'Empleados' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" data-toggle="Status" (click)="funcSort($event)">Status <i class="{{ 'Status' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
+                      <th scope="col" *ngIf="this.Permisos.Cambio == 1">&nbsp;</th>
+                      <th scope="col" *ngIf="this.Permisos.Baja == 1">&nbsp;</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let entidad of entidadTable | paginate: { itemsPerPage: 10, currentPage: page }">
+                      <td>{{ entidad.Anio }}</td>
+                      <td>{{ entidad.Mes }}</td>
+                      <td>{{ entidad.FechaInicio }}</td>
+                      <td>{{ entidad.FechaFin }}</td>
+                      <td>{{ entidad.Empleados }}</td>
+                      <td>{{ entidad.FechaHoraProcesada == null ? 'En Proceso' : 'Pagada' }}</td>
+                      <td (click)="verDetalle(entidad)" *ngIf="this.Permisos.Cambio == 1">
+                          <i class="fa fa-list text-primary"> Ver Detalle</i>
+                      </td>
+                      <td data-toggle="modal" data-target="#alertModal" (click)="setEntidadDel(entidad)" *ngIf="this.Permisos.Baja == 1">
+                          <i class="fa fa-trash text-danger"></i>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+          <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" autoHide="true">
+          </pagination-controls>
+      </div>
+  </div>
+</section>
+
+<!-- Modal Alert -->
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog  modal-md" role="document">
+      <div class="modal-content modal-alert">
+          <div class="modal-body">
+              Confirma que desea eliminar el registro: {{ this.entidadDelete['IdInasistencia'] }}?
+              <hr>
+              <div class="row text-center">
+                  <button type="button" class="btn btn-secondary btn-sm col-4 offset-1" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button>
+                  <button type="button" class="btn btn-danger btn-sm col-4 offset-2" data-dismiss="modal" (click)="eliminarEntidad(this.entidadDelete['IdInasistencia'])">Eliminar <i class="fa fa-trash"></i></button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="myAlert-top alert alert-danger">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Error!</strong> {{ this.planillacabeceraService.errorMessage }}
+  </div>
+
+<app-cu-planilla></app-cu-planilla>
