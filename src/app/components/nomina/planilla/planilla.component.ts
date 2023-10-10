@@ -54,22 +54,22 @@ export class PlanillaComponent extends TablaBase implements OnInit {
 
   /* preActualizarEntidad(entidad) {
     this.router.navigate(["/nomina/empleados/"+entidad.IdEmpleado])
-  }
+  } */
 
   eliminarEntidad(id: string) {
     this.entidadDelete = [];
     this.spinner.show();
-    this.planillacabeceraService.eliminar_empleado(id)
+    this.planillacabeceraService.eliminar_planillacabecera(id)
     .subscribe(data => {
       this.spinner.hide();
       if(this.planillacabeceraService.errorMessage){
         this.myAlertTop();
       }
       else{
-        this.obtenerEmpleado();
+        this.obtenerPlanillaCabecera();
       }
     });
-  } */
+  }
 
 
   myAlertTop(){
