@@ -50,9 +50,9 @@ export class PlanillacabeceraService {
     }));
   }
 
-  eliminar_planillacabecera(id){
+  eliminar_planillacabecera(anio,mes){
     this.errorMessage = "";
-    const url = `${this.basepath}nomina/planillacabecera/${id}`;
+    const url = `${this.basepath}nomina/planillacabecera/${anio}/${mes}`;
 
     return this.http.delete(url)
     .pipe(

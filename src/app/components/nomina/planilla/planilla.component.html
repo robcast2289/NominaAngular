@@ -30,7 +30,7 @@
                       <td>{{ entidad.FechaInicio }}</td>
                       <td>{{ entidad.FechaFin }}</td>
                       <td>{{ entidad.Empleados }}</td>
-                      <td>{{ entidad.FechaHoraProcesada == null ? 'En Proceso' : 'Pagada' }}</td>
+                      <td>{{ entidad.FechaHoraProcesada == null && entidad.FechaHoraCalculada == null ? 'Creado' : (entidad.FechaHoraProcesada == null && entidad.FechaHoraCalculada != null ? 'En Proceso' : 'Pagada' ) }}</td>
                       <td (click)="verDetalle(entidad)" *ngIf="this.Permisos.Cambio == 1">
                           <i class="fa fa-list text-primary"> Ver Detalle</i>
                       </td>
@@ -55,7 +55,7 @@
               <hr>
               <div class="row text-center">
                   <button type="button" class="btn btn-secondary btn-sm col-4 offset-1" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button>
-                  <button type="button" class="btn btn-danger btn-sm col-4 offset-2" data-dismiss="modal" (click)="eliminarEntidad(this.entidadDelete['IdInasistencia'])">Eliminar <i class="fa fa-trash"></i></button>
+                  <button type="button" class="btn btn-danger btn-sm col-4 offset-2" data-dismiss="modal" (click)="eliminarEntidad(this.entidadDelete['Anio'],this.entidadDelete['Mes'])">Eliminar <i class="fa fa-trash"></i></button>
               </div>
           </div>
       </div>

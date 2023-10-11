@@ -22,7 +22,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="this.planilla">
             <div class="dropdown-item disabled" [ngClass]="{'disabled':this.planilla['FechaHoraProcesada']!=null}" (click)="crearPlanilla()" >Crear</div>
             <div class="dropdown-item" [ngClass]="{'disabled':this.planilla['FechaHoraProcesada']!=null}" (click)="calcularPlanilla()" >Calcular</div>
-            <div class="dropdown-item" [ngClass]="{'disabled':(this.planilla['FechaHoraProcesada']==null && this.planilla['FechaHoraCalculada']==null)}" (click)="pagarPlanilla()" >Pagar</div>
+            <div class="dropdown-item" [ngClass]="{'disabled':(this.planilla['FechaHoraProcesada']!=null && this.planilla['FechaHoraCalculada']!=null)}" (click)="pagarPlanilla()" >Pagar</div>
             <!-- <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a> -->
           </div>
@@ -97,8 +97,6 @@
                     <th class="text-right" scope="col" data-toggle="TotalIngresos" (click)="funcSort($event)">Total Ingresos <i class="{{ 'TotalIngresos' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
                     <th class="text-right" scope="col" data-toggle="TotalDescuentos" (click)="funcSort($event)">Total Descuentos <i class="{{ 'TotalDescuentos' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
                     <th class="text-right" scope="col" data-toggle="SalarioNeto" (click)="funcSort($event)">Salario Neto <i class="{{ 'SalarioNeto' == fieldSort ? (fieldSortDirection == 'desc' ? 'fa fa-long-arrow-down' : (fieldSortDirection == 'asc' ? 'fa fa-long-arrow-up' : '')) : ''}}"></i></th>
-                    <!-- <th scope="col" *ngIf="this.Permisos.Cambio == 1">&nbsp;</th> -->
-                    <th scope="col" *ngIf="this.Permisos.Baja == 1">&nbsp;</th>
                 </tr>
             </thead>
             <tbody> 
@@ -110,12 +108,6 @@
                   <td class="text-right">{{ entidad.TotalIngresos.toLocaleString('en-us', {minimumFractionDigits: 2}) }}</td>
                   <td class="text-right">{{ entidad.TotalDescuentos.toLocaleString('en-us', {minimumFractionDigits: 2}) }}</td>
                   <td class="text-right">{{ entidad.SalarioNeto.toLocaleString('en-us', {minimumFractionDigits: 2}) }}</td>
-                  <!-- <td data-toggle="modal" data-target="#periodoModal" (click)="preActualizarEntidad(entidad)" *ngIf="this.Permisos.Cambio == 1">
-                      <i class="fa fa-edit text-primary"></i>
-                  </td> -->
-                  <td data-toggle="modal" data-target="#alertModal" (click)="setEntidadDel(entidad)" *ngIf="this.Permisos.Baja == 1">
-                      <i class="fa fa-trash text-danger"></i>
-                  </td>
 
                 </tr>
                 <tr id="{{entidad.IdEmpleado}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">

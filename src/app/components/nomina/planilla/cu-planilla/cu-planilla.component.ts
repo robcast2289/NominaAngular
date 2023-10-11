@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Location } from '@angular/common';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 import { PlanillacabeceraService } from '../../../../services/nomina/planillacabecera.service';
 
 @Component({
@@ -12,6 +12,7 @@ import { PlanillacabeceraService } from '../../../../services/nomina/planillacab
 export class CuPlanillaComponent implements OnInit {
 
   constructor(
+    private spinner: NgxSpinnerService,
     public planillacabeceraService:PlanillacabeceraService
   ) { }
 
@@ -21,13 +22,15 @@ export class CuPlanillaComponent implements OnInit {
   guardarEntidad(entidadForm: NgForm) {
     if (entidadForm.valid) {
         // Nuevo
+        this.spinner.show();
         this.planillacabeceraService.insertar_planillacabecera(entidadForm.value)        
         .subscribe(data => {
+          this.spinner.hide();
           if(this.planillacabeceraService.errorMessage){
             this.myAlertTop();
           }
           else{
-            //location.reload();
+            location.reload();
           }
         });      
     }

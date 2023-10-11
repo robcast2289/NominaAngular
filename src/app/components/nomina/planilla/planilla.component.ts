@@ -56,10 +56,14 @@ export class PlanillaComponent extends TablaBase implements OnInit {
     this.router.navigate(["/nomina/empleados/"+entidad.IdEmpleado])
   } */
 
-  eliminarEntidad(id: string) {
+  setEntidadDel(entidad: any) {
+    this.entidadDelete = entidad;
+  }
+
+  eliminarEntidad(anio:number,mes:number) {
     this.entidadDelete = [];
     this.spinner.show();
-    this.planillacabeceraService.eliminar_planillacabecera(id)
+    this.planillacabeceraService.eliminar_planillacabecera(anio,mes)
     .subscribe(data => {
       this.spinner.hide();
       if(this.planillacabeceraService.errorMessage){
