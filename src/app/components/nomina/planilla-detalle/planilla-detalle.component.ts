@@ -46,7 +46,12 @@ export class PlanillaDetalleComponent extends TablaBase implements OnInit {
     this.planillacabeceraService.cargar_planillacabecera_id(anio,mes)
     .subscribe(data => {
       this.spinner.hide();
-      this.planilla = data;      
+      this.planilla = data;     
+      this.planilla["FechaHoraCalculada"] = this.planilla["FechaHoraCalculada"] != null ? this.formatDate(new Date(this.planilla["FechaHoraCalculada"]),false) : this.planilla["FechaHoraCalculada"];
+      this.planilla["FechaHoraProcesada"] = this.planilla["FechaHoraProcesada"] != null ? this.formatDate(new Date(this.planilla["FechaHoraProcesada"]),false) : this.planilla["FechaHoraProcesada"];
+      this.planilla["FechaInicio"] = this.formatDate(new Date(this.planilla["FechaInicio"]+" 00:00:00"),false);
+      this.planilla["FechaFin"] = this.formatDate(new Date(this.planilla["FechaFin"]+" 00:00:00"),false);
+      this.planilla["MesName"] = this.planillacabeceraService.meses.find(x => x.value == this.planilla["Mes"]).Name;
 
       this.obtenerPlanillaDetalle(anio,mes);
     });

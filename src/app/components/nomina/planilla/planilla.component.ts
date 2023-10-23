@@ -43,6 +43,9 @@ export class PlanillaComponent extends TablaBase implements OnInit {
         //console.log(element);
         element["FechaCalculada"] = this.formatDate(new Date(element["FechaCalculada"]),true);
         element["FechaProcesada"] = this.formatDate(new Date(element["FechaProcesada"]),true);
+        element["FechaInicio"] = this.formatDate(new Date(element["FechaInicio"]+" 00:00:00"),false);
+        element["FechaFin"] = this.formatDate(new Date(element["FechaFin"]+" 00:00:00"),false);
+        element["MesName"] = this.planillacabeceraService.meses.find(x => x.value == element["Mes"]).Name;
       });
       this.entidadTable = this.entidad;
     });
@@ -73,6 +76,13 @@ export class PlanillaComponent extends TablaBase implements OnInit {
         this.obtenerPlanillaCabecera();
       }
     });
+  }
+
+  limpiarForm() {
+    this.planillacabeceraService.selectEntidad = {
+      Anio: new Date().getFullYear(),
+      Mes: new Date().getMonth()+1,
+    };
   }
 
 

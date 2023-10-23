@@ -24,7 +24,7 @@
               <tbody>
                   <tr *ngFor="let entidad of entidadTable | paginate: { itemsPerPage: 10, currentPage: page }">
                       <td>{{ entidad.Anio }}</td>
-                      <td>{{ entidad.Mes }}</td>
+                      <td>{{ entidad.MesName }}</td>
                       <td>{{ entidad.FechaInicio }}</td>
                       <td>{{ entidad.FechaFin }}</td>
                       <!-- <td data-toggle="modal" data-target="#periodoModal" (click)="preActualizarEntidad(entidad)" *ngIf="this.Permisos.Cambio == 1">
@@ -47,7 +47,7 @@
   <div class="modal-dialog  modal-md" role="document">
       <div class="modal-content modal-alert">
           <div class="modal-body">
-              Confirma que desea eliminar el Periodo: {{ this.entidadDelete['FechaInicio'] - this.entidadDelete['FechaFin'] }}?
+              Confirma que desea eliminar el Periodo: {{ this.entidadDelete['FechaInicio'] }} - {{ this.entidadDelete['FechaFin'] }}?
               <hr>
               <div class="row text-center">
                   <button type="button" class="btn btn-secondary btn-sm col-4 offset-1" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></button>

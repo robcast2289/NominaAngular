@@ -22,7 +22,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="this.planilla">
             <div class="dropdown-item disabled" [ngClass]="{'disabled':this.planilla['FechaHoraProcesada']!=null}" (click)="crearPlanilla()" >Crear</div>
             <div class="dropdown-item" [ngClass]="{'disabled':this.planilla['FechaHoraProcesada']!=null}" (click)="calcularPlanilla()" >Calcular</div>
-            <div class="dropdown-item" [ngClass]="{'disabled':(this.planilla['FechaHoraProcesada']!=null && this.planilla['FechaHoraCalculada']!=null)}" (click)="pagarPlanilla()" >Pagar</div>
+            <div class="dropdown-item" [ngClass]="{'disabled':(this.planilla['FechaHoraProcesada']!=null && this.planilla['FechaHoraCalculada']!=null) || (this.planilla['FechaHoraProcesada']==null && this.planilla['FechaHoraCalculada']==null)}" (click)="pagarPlanilla()" >Pagar</div>
             <!-- <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a> -->
           </div>
@@ -41,13 +41,13 @@
     <div class="card">
       <div class="card-body" *ngIf="this.planilla">
         <div class="form-row">
-          <div class="form-group col-3">
+          <div class="form-group col-1">
             <label for="Anio" class="bmd-label-floating">Año: </label>
             <input type="text" name="Anio" id="Anio" class="form-control" disabled value="{{ this.planilla['Anio'] }}">
           </div>
-          <div class="form-group col-3">
+          <div class="form-group col-2">
             <label for="Mes" class="bmd-label-floating">Mes: </label>
-            <input type="text" name="Mes" id="Mes" class="form-control" disabled value="{{this.planilla['Mes']}}">
+            <input type="text" name="Mes" id="Mes" class="form-control" disabled value="{{this.planilla['MesName']}}">
           </div>
           <div class="form-group col-3">
             <label for="FechaInicio" class="bmd-label-floating">Fecha Inicial: </label>
@@ -56,6 +56,10 @@
           <div class="form-group col-3">
             <label for="FechaFin" class="bmd-label-floating">Fecha Final: </label>
             <input type="text" name="FechaFin" id="FechaFin" class="form-control" disabled value="{{this.planilla['FechaFin']}}">
+          </div>        
+          <div class="form-group col-3">
+            <label for="FechaProcesada" class="bmd-label-floating">Fecha procesada: </label>
+            <input type="text" name="FechaProcesada" id="FechaProcesada" class="form-control" disabled value="{{this.planilla['FechaHoraProcesada']}}">
           </div>        
         </div>
         <div class="form-row">
